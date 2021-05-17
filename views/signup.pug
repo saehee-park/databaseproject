@@ -2,39 +2,48 @@ extends layout
 
 //-회원가입 페이지
 block content
-    .row
-        .col
-            label.form-label(for='inputName') 이름
-            input#inputName.form-control(type='name' name="name" required)
-    .row
-        .col.align-self-center
-            label.form-label(for='inputID') ID
-            input#inputID.form-control(type='id' name="id" required)
-        .col.align-self-center
-            button.id_overlap_button(type='button' onclick='id_overlap_check()') 중복검사
-            br
-    .row
-        .col
-            label.form-label(for="inputPassword") Password
-            input#inputPassword.form-control(type="password" name="password" required)
-    .row
-        .col
-            label.form-label(for="inputEducation") 최종학력
-            select#inputState.form-select(name="education" size="1")
-                option(value='High school graduate') 고졸
-                option(value='University graduation') 대졸
-                option(value='Master\'s degree') 석사이상
-    .row
-        .col
-            label.form-label(for="inputDept") 부서
-            select#inputState.form-select(name="department" size="1")
-                option(value='Marketing') 마케팅
-                option(value='Research') 연구관리
-                option(value='Management') 경영관리
-                option(value='Developer') 개발
-    .row
-        .col
-            button.btn.btn-primary.mb-3.signupBtn(type='submit') 회원가입
+    form(action="/signUp", method='post')
+        .row
+            .col
+                .form-group
+
+                    label.form-label(for='inputName') 이름
+                    input#inputName.form-control(type='name' name="name" required)
+        .row
+            .col.align-self-center
+                .form-group
+                    label.form-label(for='inputID') ID
+                    input#inputID.form-control(type='id' name="id" required)
+            .col.align-self-center
+                .form-group
+                    button.id_overlap_button(type='button' onclick='id_overlap_check()') 중복검사
+                    br
+        .row
+            .col
+                .form-group
+                    label.form-label(for="inputPassword") Password
+                    input#inputPassword.form-control(type="password" name="password" required)
+        .row
+            .col
+                .form-group
+                    label.form-label(for="inputEducation") 최종학력
+                    select#inputState.form-select(name="education" size="1")
+                        option(value='High school graduate') 고졸
+                        option(value='University graduation') 대졸
+                        option(value='Master\'s degree') 석사이상
+        .row
+            .col
+                .form-group
+                    label.form-label(for="inputDept") 부서
+                    select#inputState.form-select(name="department" size="1")
+                        option(value='Marketing') 마케팅
+                        option(value='Research') 연구관리
+                        option(value='Management') 경영관리
+                        option(value='Developer') 개발
+        .row
+            .col
+                .form-group
+                    button.btn.btn-primary.mb-3.signupBtn(type='submit') 회원가입
     
 
 
