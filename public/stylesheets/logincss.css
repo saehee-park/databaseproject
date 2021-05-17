@@ -6,23 +6,27 @@
     margin: 0 auto;
     align-items: center;
     width: 30%;
+    background-color: burlywood;
   }
   
 
 input.myinput {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 0%;
+    margin-right: 0%;
     width: 60%;
+    
     /* text-align: center; */
 }
 
   
   button.loginButton{
-   width: 100%;
+   width: 60%;
+   
   }
   
   button.signinButton{
-    width: 100%;
+    width: 60%;
+    
   }
   
 
