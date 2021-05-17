@@ -3,6 +3,16 @@ const Sequelize = require('sequelize');
 module.exports = class Employee extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
+            emp_no: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
+            },
+            id: {
+                type: Sequelize.STRING(100),
+                allowNull: false,
+            },
             password: {
                 type: Sequelize.STRING(100),
                 allowNull: false,
@@ -37,9 +47,9 @@ module.exports = class Employee extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Employee.hasMany(db.Task, { foreinKey: 'taskID', departmenttargetKey: 'id'});
-        db.Employee.hasMany(db.Department, { foreinKey: 'departmentID', sourceKey: 'id'});
-        db.Employee.hasMany(db.EmpSkill, { foreinKey: 'empSkillID', sourceKey: 'id'});
-
+        db.Employee.hasMany(db.Task, { foreinKey: 'taskID', targetKey: 'id'});
+        db.Employee.hasMany(db.EmpSkill, { foreinKey: 'empID', sourceKey: 'emp_no'});
+        db.Employee.belongsTo(db.Department, { foreinKey: 'departmentId', targetKey: 'dept_no'});
+        
     }
 };

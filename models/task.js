@@ -42,18 +42,3 @@ module.exports = class Task extends Sequelize.Model {
         db.Task.belongsTo(db.Employee, { foreinKey: 'employeeID', 'targetKey': 'id'});
     }
 };
-
-/*
-TABLE[Task]
-
-업무 번호 AUTO_INCREMENT
-프로젝트 번호 FK
-사원 번호 FK
-
-업무 제목 = Varchar(50)
-업무 내용 = Text
-마감일 = DATETIME
-제출 파일 = {}
-현재 상태 = {시작 전, 진행 중, 검증 중, 완료}
-제출 여부 = { True, False } => 제출 파일이 NULL이면 False
-*/
