@@ -3,14 +3,15 @@ extends layout
 block content
 
   .loginView
+    .p 회원가입
     .row
       p 회원 로그인
       .row 
         .input-group.mb-3
-        input.form-control.myinput(type='text' placeholder='아이디' aria-label='Username' aria-describedby='basic-addon1')
+        input.form-control.myinput(type='text' name="id" placeholder='아이디' aria-label='Username' aria-describedby='basic-addon1')
       .row
         .input-group.mb-3
-        input.form-control.myinput(type='password' placeholder='비밀번호' aria-label='Username' aria-describedby='basic-addon1')
+        input.form-control.myinput(type='password' name='password' placeholder='비밀번호' aria-label='Userpassword' aria-describedby='basic-addon1')
       br
       br
       .row  
@@ -23,10 +24,10 @@ block content
       p 비회원 로그인
       .row 
         .input-group.mb-3
-        input.form-control.myinput(type='text' placeholder='고객아이디' aria-label='Username' aria-describedby='basic-addon1')
+        input.form-control.myinput(type='text' name='clientId' placeholder='고객아이디' aria-label='Clientname' aria-describedby='basic-addon1')
       .row
         .input-group.mb-3
-        input.form-control.myinput(type='password' placeholder='인증키' aria-label='Username' aria-describedby='basic-addon1')
+        input.form-control.myinput(type='password' name= 'certifiedKey' placeholder='인증키' aria-label='Clientkey' aria-describedby='basic-addon1')
 
       br
       .row
