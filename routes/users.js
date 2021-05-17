@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Employee = require('../models/employee');
+var Employee = require('../models/emp');
 const catchErrors = require('../lib/async-error');
 var bcrypt = require('bcrypt');
 
@@ -33,9 +33,9 @@ function validateForm(form){
     return '비밀번호를 입력해주세요.';
   }
 
-  if (password !== password_confirmation) {
-    return '비밀번호가 일치하지 않습니다.';
-  }
+  // if (password !== password_confirmation) {
+  //   return '비밀번호가 일치하지 않습니다.';
+  // }
 
   if (password.length < 7) {
     return '비밀번호가 너무 짧습니다. (8자 이상)';
@@ -49,7 +49,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Users' });
 });
 
-router.get('/sign_up', (req, res) => {
+router.get('/signup', (req, res) => {
   res.render('signup', {});
 });
 
@@ -95,11 +95,17 @@ router.post('/signup', catchErrors(async (req, res, next) => {
   }
 
   var password = await generateHash(req.body.password);
+
   user = await Employee.create({
     name: req.body.name,
-    id: req.body.id,
-    password: password
+    ID: req.body.id,
+    PWD: password,
+    dept_no: null,
+    authorization_no: null,
+    education: null,
+    work_experience: null
   });
+
   req.flash('success', 'Registered successfully. Please sign in.');
   res.redirect('/');
 }));
