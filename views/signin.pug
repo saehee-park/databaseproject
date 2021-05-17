@@ -1,0 +1,37 @@
+extends layout
+//-회원,비회원 로그인 페이지
+block content
+
+  .loginView
+    .row
+      p 회원 로그인
+      .row 
+        .input-group.mb-3
+        input.form-control.myinput(type='text' placeholder='아이디' aria-label='Username' aria-describedby='basic-addon1')
+      .row
+        .input-group.mb-3
+        input.form-control.myinput(type='password' placeholder='비밀번호' aria-label='Username' aria-describedby='basic-addon1')
+      br
+      br
+      .row  
+        .col 
+          button.btn.btn-primary.mb-3.loginButton(type='submit') 로그인
+        .col
+          button.btn.btn-primary.mb-3.signinButton(type='submit') 회원가입
+    br
+    .row
+      p 비회원 로그인
+      .row 
+        .input-group.mb-3
+        input.form-control.myinput(type='text' placeholder='고객아이디' aria-label='Username' aria-describedby='basic-addon1')
+      .row
+        .input-group.mb-3
+        input.form-control.myinput(type='password' placeholder='인증키' aria-label='Username' aria-describedby='basic-addon1')
+
+      br
+      .row
+        .col 
+          button.btn.btn-primary.mb-3.loginButton(type='submit') 로그인
+
+
+
