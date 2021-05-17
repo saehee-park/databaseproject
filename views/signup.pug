@@ -2,11 +2,11 @@ extends layout
 
 //-회원가입 페이지
 block content
+    p 회원가입
     form(action="/users/signup", method='post')
         .row
             .col
                 .form-group
-
                     label.form-label(for='inputName') 이름
                     input#inputName.form-control(type='name' name="name" required)
         .row
