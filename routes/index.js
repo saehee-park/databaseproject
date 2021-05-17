@@ -1,17 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 
 router.get('/test', function(req, res, next) {
   res.render('index2', { title: 'Express', name: 'han sh' });
 });
 
 /*로그인 화면*/
-router.get('/test2', function(req, res, next){
+router.get('/', function(req, res, next){
   res.render('signin', { title: 'Express' });
 }); 
 
@@ -33,6 +29,11 @@ router.get('/nav_management', function(req, res, next){
 /*프로젝트 등록 페이지*/
 router.get('/addproject', function(req, res, next){
   res.render('addProject', { title: 'Express' });
+});
+
+/*개인정보 수정*/
+router.get('/myprofileedit', function(req, res, next){
+  res.render('myProfileEdit', { title: 'Express' });
 });
 
 module.exports = router;

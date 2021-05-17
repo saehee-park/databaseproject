@@ -5,11 +5,11 @@ block content
     .row
         .col
             label.form-label(for='inputName') 이름
-            input#inputName.form-control(type='text' required)
+            input#inputName.form-control(type='name' name="name" required)
     .row
         .col.align-self-center
             label.form-label(for='inputID') ID
-            input#inputID.form-control(type='text' required)
+            input#inputID.form-control(type='id' name="id" required)
         .col.align-self-center
             button.id_overlap_button(type='button' onclick='id_overlap_check()') 중복검사
             br
@@ -20,14 +20,14 @@ block content
     .row
         .col
             label.form-label(for="inputEducation") 최종학력
-            select#inputState.form-select
+            select#inputState.form-select(name="education" size="1")
                 option(value='High school graduate') 고졸
                 option(value='University graduation') 대졸
                 option(value='Master\'s degree') 석사이상
     .row
         .col
             label.form-label(for="inputDept") 부서
-            select#inputState.form-select
+            select#inputState.form-select(name="department" size="1")
                 option(value='Marketing') 마케팅
                 option(value='Research') 연구관리
                 option(value='Management') 경영관리
