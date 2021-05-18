@@ -1,0 +1,46 @@
+extends ../layout 
+
+//- 프로젝트 수정
+block content
+  .container 
+    form(action="#", method="post")
+      h1.text-center-mt-5 Project Modify
+
+        .form-group
+            .row.align-items-center
+                .col.mt-4
+                h3 프로젝트명
+                input.form-control(type="text", placeholder="project name", name="name")
+            .row.align-items-center.mt-4
+                .col
+                h3 착수일자
+                input.form-control(type="date", placeholder="starts", name="begin_date")
+            .row.align-items-center.mt-4
+                .col
+                h3 종료일자
+                input.form-control(type="date", placeholder="ends", name="end_date")
+            .row.align-items-center.mt-4
+                .col
+                h3 거래처
+                select.form-control(name="client", size="1")
+            .row.align-items-center.mt-4
+                .col
+                h3 프로젝트 상세설명
+                input.form-control(type="text", placeholder="프로젝트에 대한 간단한 설명", name="detail")
+            .row.align-items-center.mt-4
+                .col 
+                h3 프로젝트 진행상태
+                select.form-control(name="client", size = "1")
+                    option 진행중
+                    option 보류
+                    option 완료
+            .row.align-items-center.mt-4
+                .col 
+                h3 투입 직원
+                select.form-control(name="client")
+                    option 홍길동
+                    option 강동원
+                    option 공유
+            .row.justify-content-start.mt-4
+                .col(style="margin-bottom: 1em")
+                button.btn.btn-outline-dark(type="submit", style="float: right") Project Modify

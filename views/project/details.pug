@@ -1,0 +1,34 @@
+extends ../layout 
+
+//- 프로젝트 상세 설명
+block content
+  .container 
+    form(action="#", method="post")
+      h1.text-center-mt-5 Project Details
+
+
+      div.card-group 
+        .card 
+          h4 프로젝트명
+          p.name DB프로젝트
+          h4 프로젝트 설명
+          p.details 이 프로젝트는 .... 그래그래그거에요 교수님께서 데베프 수업때 해달라고 하신 그거에요.
+          h4 프로젝트 담당자
+          p.PM 4조
+          h4 거래처
+          p.client 전종훈 교수님
+          h4 투입 직원
+          h6.employee 이름: 홍길동
+          p.duty 직무: FrontEnd
+          h6.employee 이름: 저팔계
+          p.duty 직무: BackEnd
+          h4 진행 상태
+          p.status 진행중
+          if(authorization != 0)
+            <a href="#" class="btn btn-outline-dark">프로젝트 수정</a>
+            <a href="#" class="btn btn-outline-dark">프로젝트 삭제</a>
+          <a href="#" class="btn btn-outline-dark">List로 돌아가기</a>
+
+
+
+

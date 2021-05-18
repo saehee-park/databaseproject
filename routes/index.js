@@ -162,5 +162,30 @@ router.get('/inputcustomer', function(req, res, next){
   res.render('evaluation/inputCustomer_evaluation', { title: 'Express' });
 });
 
+/*project list*/
+router.get('/project/list', function(req, res, next){
+  res.render('project/list', { title: 'Express' });
+});
+
+/*project create*/
+router.get('/project/new', function(req, res, next){
+  res.render('project/new', { title: 'Express' });
+});
+
+/*project details*/
+router.get('/project/details', function(req, res, next){
+  res.render('project/details', { title: 'Express' });
+});
+
+/*project modify*/
+router.get('/project/modify', function(req, res, next){
+  res.render('project/modify', { title: 'Express' });
+});
+
+/*add Client*/
+router.get('/addclient', function(req, res, next){
+  res.render('addclient', { title: 'Express' });
+});
+
 
 module.exports = router;
