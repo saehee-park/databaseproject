@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Employee = require('../models/emp');
+var Employee = require('../models/employee');
 const catchErrors = require('../lib/async-error');
 var bcrypt = require('bcrypt');
 

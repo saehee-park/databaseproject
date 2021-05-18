@@ -16,11 +16,11 @@ module.exports = class Task extends Sequelize.Model {
                 allowNull: false,
                 defaultValue: Sequelize.NOW,
             },
-            submit_status: {
+            submit_state: {
                 type: Sequelize.BOOLEAN,
                 defaultValue: false,
             },
-            current_status: {
+            current_state: {
                 type: Sequelize.ENUM(['uncheck', 'progress', 'verify', 'end']),
                 defaultValue: 'uncheck',
             },
@@ -30,7 +30,7 @@ module.exports = class Task extends Sequelize.Model {
             timestamps: false,
             underscored: false,
             modelName: 'Task',
-            tableName: 'tasks',
+            tableName: 'task',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
@@ -38,22 +38,7 @@ module.exports = class Task extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Task.belongsTo(db.Project, { foreinKey: 'projectID',targetKey: 'id'});
-        db.Task.belongsTo(db.Employee, { foreinKey: 'employeeID', 'targetKey': 'id'});
+        // Employee Model과 연결
+        db.Task.belongsTo(db.Employee, { foreignKey: 'emp_no', targetKey: 'emp_no'});
     }
 };
-
-/*
-TABLE[Task]
-
-업무 번호 AUTO_INCREMENT
-프로젝트 번호 FK
-사원 번호 FK
-
-업무 제목 = Varchar(50)
-업무 내용 = Text
-마감일 = DATETIME
-제출 파일 = {}
-현재 상태 = {시작 전, 진행 중, 검증 중, 완료}
-제출 여부 = { True, False } => 제출 파일이 NULL이면 False
-*/
