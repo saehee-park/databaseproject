@@ -1,0 +1,42 @@
+extends ../layout
+
+//-마이페이지//
+
+block content
+    div(name="mypageview")
+    section.fdb-block.fp-active(data-block-type="contents" data-id="1" draggable="true")
+        .container
+            .row.text-left.align-items-center
+                .col-10.col-sm-6.m-auto.m-lg-0.col-lg-4
+                .col-10.col-lg-8.pt-4.pt-lg-0
+                    h1 user name
+                        .row.mt-3
+                            .col-12.col-sm-6.pt-3.pt-sm-0
+                                h3
+                                    strong 아이디
+                                        p.text-h3.ml-3
+                                            | user id
+                            .col-12.col-sm-6.pt-3.pt-sm-0
+                                h3
+                                    strong 비밀번호
+                                        p.text-h3.ml-3
+                                            | user password
+                            .col-12.col-sm-6.pt-3.pt-sm-0
+                                h3
+                                    strong 학력
+                                        p.text-h3.ml-3
+                                            | 고졸
+                            .col-12.col-sm-6.pt-3.pt-sm-0
+                                h3
+                                    strong skill
+                                        p.text-h3.ml-3
+                                            | skill
+                            .col-12.col-sm-6.pt-3.pt-sm-0
+                                h3
+                                    strong 경력
+                                        p.text-h3.ml-3
+                                            | n년차
+                            .col-12.col-sm-12.pt-3.pt-sm-0
+                                a.btn.btn-black.btn-empty(href='/myProfileEdit', style='float: right') 수정
+                        
+
