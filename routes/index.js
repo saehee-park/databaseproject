@@ -101,10 +101,10 @@ router.post('/signup', catchErrors(async (req, res, next) => {
     name: req.body.name,
     ID: req.body.id,
     PWD: password,
-    dept_no: null,
-    authorization_no: null,
-    education: null,
-    work_experience: null
+    dept_no: req.body.dept_no,
+    authorization_no: 0,
+    education: req.body.education,
+    work_experience: req.body.work_experience
   });
 
   req.flash('success', 'Registered successfully. Please sign in.');
