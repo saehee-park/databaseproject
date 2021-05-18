@@ -166,4 +166,9 @@ router.get('/project/modify', function(req, res, next){
   res.render('project/modify', { title: 'Express' });
 });
 
+/*add Client*/
+router.get('/addclient', function(req, res, next){
+  res.render('addclient', { title: 'Express' });
+});
+
 module.exports = router;

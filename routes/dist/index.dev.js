@@ -251,5 +251,12 @@ router.get('/project/modify', function (req, res, next) {
     title: 'Express'
   });
 });
+/*add Client*/
+
+router.get('/addclient', function (req, res, next) {
+  res.render('addclient', {
+    title: 'Express'
+  });
+});
 module.exports = router;
 //# sourceMappingURL=index.dev.js.map
