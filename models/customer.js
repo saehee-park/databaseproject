@@ -1,24 +1,24 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Skill extends Sequelize.Model {
+module.exports = class Customer extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            skill_no: {
+            customer_id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
             },
-            skill_name: {
-                type: Sequelize.STRING(100),
+            customer_name: {
+                type: Sequelize.STRING(255),
                 allowNull: false,
             },
         }, {
             sequelize,
             timestamps: false,
             underscored: false,
-            modelName: 'Skill',
-            tableName: 'skills',
+            modelName: 'Customer',
+            tableName: 'customer',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
@@ -26,6 +26,6 @@ module.exports = class Skill extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Skill.belongsToMany(db.Employee, { through: 'EmpSkill'});
+        db.Customer.hasMany(db.CustomerEvaluation, { foreignKey: 'customer_id', sourceKey: 'customer_id'});
     }
 };

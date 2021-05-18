@@ -1,24 +1,24 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Skill extends Sequelize.Model {
+module.exports = class Authorization extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            skill_no: {
+            authorization_no: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
             },
-            skill_name: {
-                type: Sequelize.STRING(100),
+            authorization_name: {
+                type: Sequelize.STRING(45),
                 allowNull: false,
             },
         }, {
             sequelize,
             timestamps: false,
             underscored: false,
-            modelName: 'Skill',
-            tableName: 'skills',
+            modelName: 'Authorization',
+            tableName: 'authorization',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
@@ -26,6 +26,6 @@ module.exports = class Skill extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Skill.belongsToMany(db.Employee, { through: 'EmpSkill'});
+        db.Authorization.hasOne(db.Employee, { foreignKey: 'authorization_no', sourceKey: 'authorization_no'});
     }
 };
