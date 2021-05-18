@@ -8,7 +8,7 @@ module.exports = class EmpSkill extends Sequelize.Model {
             timestamps: false,
             underscored: false,
             modelName: 'EmpSkill',
-            tableName: 'emp_skills',
+            tableName: 'emp_skill',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
@@ -16,7 +16,5 @@ module.exports = class EmpSkill extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.EmpSkill.belongsTo(db.Employee, { foreinKey: 'empID', targetKey: 'emp_no'});
-        db.EmpSkill.belongsTo(db.Skill, { foreinKey: 'skillID', targetKey: 'id'});
     }
 };

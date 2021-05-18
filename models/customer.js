@@ -1,27 +1,24 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Department extends Sequelize.Model {
+module.exports = class Customer extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            dept_no: {
+            customer_id: {
                 type: Sequelize.INTEGER,
-                primaryKey: true,
-                autoIncrement: true,
-            },
-            dept_name: {
-                type: Sequelize.STRING(45),
                 allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
             },
-            dept_leader_no: {
-                type: Sequelize.STRING(45),
+            customer_name: {
+                type: Sequelize.STRING(255),
                 allowNull: false,
             },
         }, {
             sequelize,
             timestamps: false,
             underscored: false,
-            modelName: 'Department',
-            tableName: 'department',
+            modelName: 'Customer',
+            tableName: 'customer',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
@@ -29,6 +26,6 @@ module.exports = class Department extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Department.hasMany(db.Employee, { foreignKey: 'dept_no', sourceKey: 'dept_no'});
+        db.Customer.hasMany(db.CustomerEvaluation, { foreignKey: 'customer_id', sourceKey: 'customer_id'});
     }
 };

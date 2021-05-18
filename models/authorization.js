@@ -1,18 +1,15 @@
 const Sequelize = require('sequelize');
 
-module.exports = class Department extends Sequelize.Model {
+module.exports = class Authorization extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
-            dept_no: {
+            authorization_no: {
                 type: Sequelize.INTEGER,
-                primaryKey: true,
-                autoIncrement: true,
-            },
-            dept_name: {
-                type: Sequelize.STRING(45),
                 allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
             },
-            dept_leader_no: {
+            authorization_name: {
                 type: Sequelize.STRING(45),
                 allowNull: false,
             },
@@ -20,8 +17,8 @@ module.exports = class Department extends Sequelize.Model {
             sequelize,
             timestamps: false,
             underscored: false,
-            modelName: 'Department',
-            tableName: 'department',
+            modelName: 'Authorization',
+            tableName: 'authorization',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
@@ -29,6 +26,6 @@ module.exports = class Department extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Department.hasMany(db.Employee, { foreignKey: 'dept_no', sourceKey: 'dept_no'});
+        db.Authorization.hasOne(db.Employee, { foreignKey: 'authorization_no', sourceKey: 'authorization_no'});
     }
 };

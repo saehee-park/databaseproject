@@ -1,0 +1,33 @@
+/*
+로그인 뷰 css
+*/
+
+.loginView {
+    margin: 0 auto;
+    align-items: center;
+    width: 30%;
+    background-color: burlywood;
+  }
+  
+
+input.myinput {
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 60%;
+    
+    /* text-align: center; */
+}
+
+  
+  button.loginButton{
+   width: 60%;
+   
+  }
+  
+  button.signinButton{
+    width: 60%;
+    
+  }
+  
+
+  
