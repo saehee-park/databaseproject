@@ -40,6 +40,30 @@ block content
                         option(value='Research') 연구관리
                         option(value='Management') 경영관리
                         option(value='Developer') 개발
+
+        .row
+            .col 
+                .form-group 
+                    label.form-label(for="inputSkill") skill 
+                        br
+                        .form-check.form-check-inline
+                            input#inlineCheckbox1.form-check-input(type='checkbox' value='java')
+                            label.form-check-label(for='inlineCheckbox1') Java
+                        .form-check.form-check-inline
+                            input#inlineCheckbox2.form-check-input(type='checkbox' value='C')
+                            label.form-check-label(for='inlineCheckbox2') C/C++
+                        .form-check.form-check-inline
+                            input#inlineCheckbox2.form-check-input(type='checkbox' value='html')
+                            label.form-check-label(for='inlineCheckbox2') HTML
+                        .form-check.form-check-inline
+                            input#inlineCheckbox2.form-check-input(type='checkbox' value='python')
+                            label.form-check-label(for='inlineCheckbox2') python
+                        .form-check.form-check-inline
+                            input#inlineCheckbox3.form-check-input(type='checkbox' value='skilletc' onclick='checkDisable(this.form')
+                            label.form-check-label(for='inlineCheckbox3') 기타
+                            input(name='etc' type='text' disabled='')
+
+
         .row
             .col
                 .form-group

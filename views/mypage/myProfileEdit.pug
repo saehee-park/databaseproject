@@ -1,0 +1,82 @@
+extends ../layout
+
+//- 마이 페이지
+block content
+    form(action='/', method="POST")
+        div(name="myprofileedit")
+        section.fdb-block.fp-active(data-block-type="contents" data-id="1" draggable="true")
+        .container
+            .row.text-left.align-items-center
+                .col-10.col-sm-6.m-auto.m-lg-0.col-lg-4
+                .col-10.col-lg-8.pt-4.pt-lg-0
+                    h1 user name
+                    .row.mt-3
+                        .col-12.col-sm-6.pt-3.pt-sm-0
+                            h3
+                                strong 직원명
+                                    input.form-control.text-h3.ml-3(type="text", name="name" )
+                        .col-12.col-sm-6.pt-3.pt-sm-0
+                            h3
+                                strong 아이디
+                                    input.form-control.text-h3.ml-3(type="text", name="id" )
+                        .col-12.col-sm-6.pt-3.pt-sm-0
+                            h3
+                                strong 비밀번호
+                                    input.form-control.text-h3.ml-3(type="password", name="password" placeholder="new password")
+                        .col-12.col-sm-6.pt-3.pt-sm-0
+                            h3
+                                strong 학력
+                                    label.form-label(for="inputEducation") 최종학력
+                                    select#inputState.form-select(name="education" size="1")
+                                        option(value='High school graduate') 고졸
+                                        option(value='University graduation') 대졸
+                                        option(value='Master\'s degree') 석사
+                                        option(value='Doctor\'s degree') 박사
+                        .col-12.col-sm-6.pt-3.pt-sm-0
+                            h3
+                                strong skill 
+                                    p.text-h3.ml-3
+                                        .form-check.form-check-inline
+                                            input#inlineCheckbox1.form-check-input(type='checkbox' value='java')
+                                            label.form-check-label(for='inlineCheckbox1') Java
+                                        .form-check.form-check-inline
+                                            input#inlineCheckbox2.form-check-input(type='checkbox' value='C')
+                                            label.form-check-label(for='inlineCheckbox2') C/C++
+                                        .form-check.form-check-inline
+                                            input#inlineCheckbox2.form-check-input(type='checkbox' value='html')
+                                            label.form-check-label(for='inlineCheckbox2') HTML
+                                        .form-check.form-check-inline
+                                            input#inlineCheckbox2.form-check-input(type='checkbox' value='python')
+                                            label.form-check-label(for='inlineCheckbox2') python
+                                        .form-check.form-check-inline
+                                            input#inlineCheckbox3.form-check-input(type='checkbox' value='skilletc' onclick='checkDisable(this.form')
+                                            label.form-check-label(for='inlineCheckbox3') 기타
+                                            input(name='etc' type='text' disabled='')
+                        .col-12.col-sm-6.pt-3.pt-sm-0
+                            h3
+                                strong 경력
+                                    input.form-control.text-h3.ml-3(type="text", name="education" readonly='')
+                        .col-12.col-sm-12.pt-3.pt-sm-0
+                            button.btn.btn-black.btn-empty(type="submit", style="float: right") 수정완료
+                        .col-12.col-sm-12.pt-3.pt-sm-0
+                            button.btn.btn-gray.btn-empty(type="submit", style="float: right") 회원탈퇴
+
+
+
+
+
+
+                        //-       strong 직원명
+                        //-             input.form-control.text-h3.ml-3(type="text", name="name" value=user.name)
+                        //- .col-12.col-sm-6.pt-3.pt-sm-0
+                        //-     h3
+                        //-         strong 아이디
+                        //-             input.form-control.text-h3.ml-3(type="text", name="id" value=user.ID)
+                        //- .col-12.col-sm-6.pt-3.pt-sm-0
+                        //-     h3
+                        //-         strong 비밀번호
+                        //-             input.form-control.text-h3.ml-3(type="password", name="password" placeholder="new password")
+                        //- .col-12.col-sm-6.pt-3.pt-sm-0
+                        //-     h3
+                        //-         strong 학력
+                        //-             input.form-control.text-h3.ml-3(type="text", name="education" value=user.EDUCATION)

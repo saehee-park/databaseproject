@@ -141,9 +141,26 @@ router.get('/addproject', function(req, res, next){
   res.render('addProject', { title: 'Express' });
 });
 
+/*마이페이지*/
+router.get('/mypage', function(req, res, next){
+  res.render('mypage/mypageview', { title: 'Express' });
+});
+
+
 /*개인정보 수정*/
 router.get('/myprofileedit', function(req, res, next){
-  res.render('myProfileEdit', { title: 'Express' });
+  res.render('mypage/myProfileEdit', { title: 'Express' });
 });
+
+/*고객평가 해당 직원 리스트 페이지*/
+router.get('/customerlist', function(req, res, next){
+  res.render('evaluation/customer_evaluation', { title: 'Express' });
+});
+
+/*고객평가 입력페이지*/
+router.get('/inputcustomer', function(req, res, next){
+  res.render('evaluation/inputCustomer_evaluation', { title: 'Express' });
+});
+
 
 module.exports = router;
