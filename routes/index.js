@@ -104,10 +104,10 @@ router.post('/signup', catchErrors(async (req, res, next) => {
     name: req.body.name,
     ID: req.body.id,
     PWD: password,
-    dept_no: null,
-    authorization_no: null,
-    education: null,
-    work_experience: null
+    dept_no: req.body.dept_no,
+    authorization_no: 0,
+    education: req.body.education,
+    work_experience: req.body.work_experience
   });
 
   req.flash('success', 'Registered successfully. Please sign in.');
@@ -163,6 +163,31 @@ router.get('/customerlist', function(req, res, next){
 /*고객평가 입력페이지*/
 router.get('/inputcustomer', function(req, res, next){
   res.render('evaluation/inputCustomer_evaluation', { title: 'Express' });
+});
+
+/*project list*/
+router.get('/project/list', function(req, res, next){
+  res.render('project/list', { title: 'Express' });
+});
+
+/*project create*/
+router.get('/project/new', function(req, res, next){
+  res.render('project/new', { title: 'Express' });
+});
+
+/*project details*/
+router.get('/project/details', function(req, res, next){
+  res.render('project/details', { title: 'Express' });
+});
+
+/*project modify*/
+router.get('/project/modify', function(req, res, next){
+  res.render('project/modify', { title: 'Express' });
+});
+
+/*add Client*/
+router.get('/addclient', function(req, res, next){
+  res.render('addclient', { title: 'Express' });
 });
 
 

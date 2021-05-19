@@ -7,5 +7,7 @@ a {
   color: #00B7FF;
 }
 
-
-
+.card-group {
+  padding-top: 20px;
+  margin: 10px;
+}
