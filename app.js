@@ -10,6 +10,8 @@ const { sequelize } = require('./models');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var projectsRouter = require('./routes/projects');
+var pmEvaluationRouter = require('./routes/pm_evaluation');
+var peerEvaluationRouter = require('./routes/peer_evaluation');
 
 var app = express();
 
@@ -59,9 +61,13 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+// 라우터 연결
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
+app.use('/peer_evaluation', peerEvaluationRouter);
+app.use('/pm_evaluation', pmEvaluationRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

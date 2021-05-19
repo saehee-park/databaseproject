@@ -59,3 +59,10 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2021-05-17 11:52:00
+
+
+
+-- INSERT INTO employee (ID, PWD, name, resident_registeration_number, education, dept_no, authorization_no, work_experience) VALUES ('test', '1234', '홍길동', '123456-1234567', 'college', 1, 1, 3.5);
+
+-- INSERT INTO department (dept_name, dept_leader_no) VALUES ('test', 'test');
+-- INSERT INTO authorization (authorization_name) VALUES ('1');
