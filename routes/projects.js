@@ -3,6 +3,7 @@ var Participation = require('../models/participation');
 var Project = require('../models/project');
 var Customer = require('../models/customer');
 var router = express.Router();
+const catchErrors = require('../lib/async-error');
 
 router.post('/list', async (req, res, next) => {
   try {

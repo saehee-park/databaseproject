@@ -184,13 +184,33 @@ router.get("/myprofileedit", function (req, res, next) {
 });
 
 /*고객평가 해당 직원 리스트 페이지*/
-router.get("/customerlist", function (req, res, next) {
-    res.render("evaluation/customer_evaluation", { title: "Express" });
+router.get('/evaluation/customer_evaluation', function(req, res, next){
+  res.render('evaluation/customer_evaluation', { title: 'Express' });
 });
 
 /*고객평가 입력페이지*/
-router.get("/inputcustomer", function (req, res, next) {
-    res.render("evaluation/inputCustomer_evaluation", { title: "Express" });
+router.get('/evaluation/inputCustomer_evaluation', function(req, res, next){
+  res.render('evaluation/inputCustomer_evaluation', { title: 'Express' });
+});
+
+/*동료평가 해당 직원 리스트 페이지*/
+router.get('/evaluation/peer_evaluation', function(req, res, next){
+  res.render('evaluation/peer_evaluation', { title: 'Express' });
+});
+
+/*동료평가 입력페이지*/
+router.get('/evaluation/inputPeer_evaluation', function(req, res, next){
+  res.render('evaluation/inputPeer_evaluation', { title: 'Express' });
+});
+
+/*PM평가 해당 직원 리스트 페이지*/
+router.get('/evaluation/pm_evaluation', function(req, res, next){
+  res.render('evaluation/pm_evaluation', { title: 'Express' });
+});
+
+/*PM평가 입력페이지*/
+router.get('/evaluation/inputPm_evaluation', function(req, res, next){
+  res.render('evaluation/inputPm_evaluation', { title: 'Express' });
 });
 
 /*project list*/
