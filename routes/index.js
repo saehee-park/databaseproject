@@ -162,6 +162,16 @@ router.get('/inputcustomer', function(req, res, next){
   res.render('evaluation/inputCustomer_evaluation', { title: 'Express' });
 });
 
+/*동료평가 해당 직원 리스트 페이지*/
+router.get('/peerlist', function(req, res, next){
+  res.render('evaluation/peer_evaluation', { title: 'Express' });
+});
+
+/*동료평가 입력페이지*/
+router.get('/inputpeer', function(req, res, next){
+  res.render('evaluation/inputPeer_evaluation', { title: 'Express' });
+});
+
 /*project list*/
 router.get('/project/list', function(req, res, next){
   res.render('project/list', { title: 'Express' });
@@ -185,6 +195,11 @@ router.get('/project/modify', function(req, res, next){
 /*add Client*/
 router.get('/addclient', function(req, res, next){
   res.render('addclient', { title: 'Express' });
+});
+
+
+router.get('/navbar', function(req, res, next){
+  res.render('includes/navbar', { title: 'Express' });
 });
 
 
