@@ -6,10 +6,11 @@ const { PMEvaluation } = require('../models');
 // 라우터 설정
 router.route('/')
 .get(async (req, res, next) => {
-    res.render('pm_evaluation');
+    res.render('evaluation/pm_evaluation');
 })
 .post(async (req, res, next) => {
     try {
+        console.log(req.body);
         const pmEvaluation = await PMEvaluation.create({
             evaulation_content1:  req.body.content1,
             evaulation_score1:  req.body.score1,

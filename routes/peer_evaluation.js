@@ -7,7 +7,7 @@ const { PeerEvaluation } = require('../models');
 // 라우터 설정
 router.route('/')
 .get(async (req, res, next) => {
-    res.render('peer_evaluation');
+    res.render('evaluation/peer_evaluation');
 })
 .post(async (req, res, next) => {
     try {
