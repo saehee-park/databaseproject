@@ -1,5 +1,5 @@
 extends ../layout
-//-동료평가 해당 직원 리스트 페이지
+//-pm평가 해당 직원 리스트 페이지
 block content
     .container 
         table.custom_list.table-striped.table-hover
@@ -15,7 +15,7 @@ block content
                     td.projectNum  04
                     td.projectName  데이터베이스 프로젝트
                     td.partEmployee  홍길동
-                    td.eval_state.a#inputcustomer_eval.btn.btn-link(href='/evaluation/inputCustomer_evaluation') 미입력
+                    td.eval_state.a#inputcustomer_eval.btn.btn-link(href='/evaluation/inputPm_evaluation') 미입력
 
                 tr
                     td.projectNum  04
@@ -26,4 +26,6 @@ block content
                     td.projectNum  04
                     td.projectName  데이터베이스 프로젝트
                     td.partEmployee  이명지
-                    td.eval_state.a#inputcustomer_eval.btn.btn-link(href='/evaluation/inputCustomer_evaluation') 미입력
+                    td.eval_state.a#inputcustomer_eval.btn.btn-link(href='/evaluation/inputPm_evaluation') 미입력
+
+
