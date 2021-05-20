@@ -42,10 +42,10 @@ router.post('/detail', async (req, res, next) => {
   }
 });
 
-router.get('/new', function (req, res, next) {
-  //customer list를 res로 전달
-  res.render('project/new', {});
-});
+router.get('/new', catchErrors(async (req, res, next) => {
+  const customers = await Customer.findAll();
+  res.render('project/new', { customers: customers });
+}));
 
 router.post('/new', async (req, res, next) => {
   //새로 추가한 customer이면 customer create하고 id 받아서 적용
