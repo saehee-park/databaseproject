@@ -4,6 +4,7 @@ var Employee = require('../models/employee');
 const catchErrors = require('../lib/async-error');
 var bcrypt = require('bcrypt');
 
+
 function generateHash(password){
   return bcrypt.hash(password, 10);
 }

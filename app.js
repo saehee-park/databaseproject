@@ -1,3 +1,4 @@
+// Import module
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,21 +6,26 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var flash = require('connect-flash');
+
+//Import Model
 const { sequelize } = require('./models');
 
+
+// Import Router
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var projectsRouter = require('./routes/projects');
 var pmEvaluationRouter = require('./routes/pm_evaluation');
 var peerEvaluationRouter = require('./routes/peer_evaluation');
 
+// Use express
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-
+// Connect Database Model to Server 
 sequelize.sync({ force: false })
   .then(() => {
     console.log('Connection has been established successfully.');
@@ -41,6 +47,7 @@ async function connectionTesting() {
   }
 }
 
+// Use Middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -54,6 +61,9 @@ app.use(session({
   cookie: { maxAge: 24* 60 * 60 * 1000 } // 24 hours
 }));
 app.use(flash());
+
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use(function(req, res, next) {
   res.locals.currentUser = req.session.user;

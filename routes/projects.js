@@ -2,6 +2,7 @@ var express = require('express');
 var Participation = require('../models/participation');
 var Project = require('../models/project');
 var Customer = require('../models/customer');
+const catchErrors = require('../lib/async-error');
 var router = express.Router();
 
 router.post('/list', async (req, res, next) => {
