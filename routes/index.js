@@ -1,27 +1,13 @@
 var express = require("express");
 var router = express.Router();
-<<<<<<< HEAD
-var Employee = require('../models/employee');
-const catchErrors = require('../lib/async-error');
-var bcrypt = require('bcrypt');
-
-
-function generateHash(password){
-  return bcrypt.hash(password, 10);
-}
-
-function comparePassword(password, hash){
-  return bcrypt.compare(password, hash);
-=======
 var Employee = require("../models/employee");
-var skills = require("../models/skill");
-var emp_skill = require("../models/emp_skill");
+var Skills = require("../models/skill");
+var EmpSkill = require("../models/emp_skill");
 const catchErrors = require("../lib/async-error");
 var bcrypt = require("bcrypt");
 
 function generateHash(password) {
     return bcrypt.hash(password, 10);
->>>>>>> bab0da165816ea20aeb59155bf03e5c59f724bf5
 }
 
 function comparePassword(password, hash) {
@@ -65,9 +51,10 @@ router.get("/", function (req, res, next) {
     res.render("index", { title: "Index" });
 });
 
-router.get("/signup", (req, res) => {
-    res.render("signup", {});
-});
+router.get("/signup", catchErrors(async (req, res, next) => {
+    const skills = await Skills.findAll();
+    res.render("signup", {skills: skills});
+}));
 
 router.get("/mypage", async (req, res) => {
     if (!req.session.authorization) res.json({ message: "you should login" });
@@ -75,10 +62,10 @@ router.get("/mypage", async (req, res) => {
         where: { authorization_no: req.session.authorization },
     });
     const { id, pwd, education, name, work_experience, emp_no } = user;
-    const userSkills = await skills.findAll({
+    const userSkills = await Skills.findAll({
         include: [
             {
-                model: emp_skill,
+                model: EmpSkill,
                 where: [`emp_no = ${emp_no}`],
             },
         ],
@@ -94,8 +81,7 @@ router.get("/mypage", async (req, res) => {
     });
 });
 
-router
-    .route("/signin")
+router.route("/signin")
     .get((req, res) => {
         res.render("signin", {});
     })
@@ -110,53 +96,59 @@ router
                 return res.redirect("back");
             }
 
-            const compare = await comparePassword(req.body.password, user.PWD);
-            if (!compare) {
-                req.flash("danger", "Passsword do not match.");
-                return res.redirect("back");
-            }
+            // const compare = await comparePassword(req.body.password, user.PWD);
+            // if (!compare) {
+            //     req.flash("danger", "Passsword do not match.");
+            //     return res.redirect("back");
+            // }
 
             req.session.user = user;
             req.session.authorization = user.authorization_no;
+            console.log(user);
+            console.log(user.authorization_no);
             req.flash("success", "Welcome!");
             return res.redirect("/");
         })
     );
 
-router.post(
-    "/signup",
-    catchErrors(async (req, res, next) => {
-        console.log(req.body);
+router.post("/signup", catchErrors(async (req, res, next) => {
+    console.log(req.body);
 
-        var err = validateForm(req.body);
-        if (err) {
-            req.flash("danger", err);
-            return res.redirect("back");
-        }
+    var err = validateForm(req.body);
+    if (err) {
+        req.flash("danger", err);
+        return res.redirect("back");
+    }
 
-        var user = await Employee.findOne({ id: req.body.id });
+    var user = await Employee.findOne({ where: {ID: req.body.id} });
 
-        if (user) {
-            req.flash("danger", "이미 존재하는 ID 입니다.");
-            return res.redirect("back");
-        }
+    if (user) {
+        req.flash("danger", "이미 존재하는 ID 입니다.");
+        return res.redirect("back");
+    }
 
-        var password = await generateHash(req.body.password);
+    var password = await generateHash(req.body.password);
 
-        user = await Employee.create({
-            name: req.body.name,
-            ID: req.body.id,
-            PWD: password,
-            dept_no: null,
-            authorization_no: null,
-            education: null,
-            work_experience: null,
+    user = await Employee.create({
+        name: req.body.name,
+        ID: req.body.id,
+        PWD: password,
+        dept_no: req.body.department,
+        authorization_no: null,
+        education: req.body.education,
+        work_experience: null
+    });
+
+    for(let skill of req.body.skills) {
+        await EmpSkill.create({
+            emp_no: user.emp_no,
+            skill_no: skill
         });
-
-        req.flash("success", "Registered successfully. Please sign in.");
-        res.redirect("/");
-    })
-);
+    }
+    
+    req.flash("success", "Registered successfully. Please sign in.");
+    res.redirect("/");
+}));
 
 router.get("/signout", (req, res, next) => {
     delete req.session.user;

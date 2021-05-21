@@ -1,3 +1,4 @@
+const { INTEGER } = require('sequelize');
 const Sequelize = require('sequelize');
 
 module.exports = class Participation extends Sequelize.Model {
@@ -9,7 +10,7 @@ module.exports = class Participation extends Sequelize.Model {
             },
             duty: {
                 type: Sequelize.STRING(255),
-                allowNull: false,
+                allowNull: true,
             }
         }, {
             sequelize,
