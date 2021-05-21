@@ -46,7 +46,6 @@ module.exports = class Project extends Sequelize.Model {
 
         // PMEvaluation Model과 연결
         db.Project.hasMany(db.PMEvaluation, { foreignKey: 'project_no', sourceKey: 'project_no'});
-<<<<<<< HEAD
 
         // Employee Model과 연결
         db.Project.belongsToMany(db.Employee, { through: 'Participation', foreignKey: 'project_no'});
@@ -54,10 +53,7 @@ module.exports = class Project extends Sequelize.Model {
         // Customer Model과 연결
         db.Project.belongsTo(db.Customer, {foreignKey: 'customer_id', targetKey: 'customer_id'});
 
-=======
-        
         // Participation Model 연결
         db.Project.belongsToMany(db.Employee, { through: 'Participation', as: 'Project_no', foreignKey:'project_no' });
->>>>>>> 5e69274a1c31dec3c5028a3165bd33ced8a550bc
     }
 };

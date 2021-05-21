@@ -15,6 +15,7 @@ const { sequelize } = require('./models');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var projectsRouter = require('./routes/projects');
+var evaluationRouter = require('./routes/evaluation');
 var pmEvaluationRouter = require('./routes/pm_evaluation');
 var peerEvaluationRouter = require('./routes/peer_evaluation');
 
@@ -25,7 +26,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-<<<<<<< HEAD
 // Connect Database Model to Server 
 sequelize.sync({ force: false })
   .then(() => {
@@ -39,9 +39,7 @@ sequelize.sync({ force: false })
 // Testing database connection?
 
 // Version.1 - 테이블 없으면 테이블 생성한다고 계속 log 보냄;
-=======
 // database connection
->>>>>>> 5e69274a1c31dec3c5028a3165bd33ced8a550bc
 async function connectionTesting() {
   try {
     await sequelize.authenticate();
@@ -51,12 +49,9 @@ async function connectionTesting() {
   }
 }
 
-<<<<<<< HEAD
 // Use Middleware
-=======
 connectionTesting();
 
->>>>>>> 5e69274a1c31dec3c5028a3165bd33ced8a550bc
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -88,6 +83,9 @@ app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
 app.use('/peer_evaluation', peerEvaluationRouter);
 app.use('/pm_evaluation', pmEvaluationRouter);
+app.use('/evaluation', evaluationRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
