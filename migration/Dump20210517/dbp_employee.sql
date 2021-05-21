@@ -63,3 +63,5 @@ UNLOCK TABLES;
 
 
 INSERT INTO employee (ID, PWD, name, resident_registeration_number, education, dept_no, authorization_no, work_experience) VALUES ('test', '1234', '홍길동', '123456-1234567', 'college', 3, 1, 3.5);
+INSERT INTO employee (ID, PWD, name, resident_registeration_number, education, dept_no, authorization_no, work_experience) VALUES ('test2', '1234', '길동홍', '123456-1234567', 'college', 3, 1, 3.5);
+INSERT INTO employee (ID, PWD, name, resident_registeration_number, education, dept_no, authorization_no, work_experience) VALUES ('test3', '1234', '동홍길', '123456-1234567', 'college', 3, 1, 3.5);

@@ -11,23 +11,31 @@ router.route('/')
     res.render('evaluation/peer_evaluation');
 })
 .post(async (req, res, next) => {
-    console.log(req.session.user);
-    console.log(req.session.authorization);
+    console.log(req.session.user.emp_no);
+    console.log(req.body.score1);
+    console.log(req.body.score2);
+    console.log(req.body.content1);
+    console.log(req.body.content2);
+    console.log(req.body.non_evaluator_no);
+    console.log(req.body.project_no);
+
+
     try {
-        const peerEvaluation = await Peervaluation.create({
-            evaulation_content1:  req.body.content1,
-            evaulation_score1:  req.body.score1,
-            evaulation_content2:  req.body.content2,
-            evaulation_score2:  req.body.score2,
+        const peerEvaluation = await PeerEvaluation.create({
+            evaluation_content1:  req.body.content1,
+            evaluation_score1:  parseInt(req.body.score1),
+            evaluation_content2:  req.body.content2,
+            evaluation_score2:  parseInt(req.body.score2),
             evaluator_no: req.session.user.emp_no,
-            non_evaluator_no: req.body.non_evaluator_no,
-            project_no: req.body.project_no,
+            non_evaluator_no: parseInt(req.body.non_evaluator_no),
+            project_no: parseInt(req.body.project_no),
         });
         console.log('새로운 고객 평가가 등록되었습니다.');
-        res.send('true');
+        return res.send('true');
     } catch (err) {
         console.log("고객 평가가 등록되지 않았습니다.");
-        next(err);
+        console.error(err);
+        return res.send('false');
     }
 
 });
@@ -76,7 +84,9 @@ router.route('/employee_list/:project_no')
           const employee = await Employee.findOne({
             where: { emp_no: participations[i].emp_no }
           });
-          employee_list.push([participations[i].emp_no, employee.name]);
+          if(participations[i].emp_no != req.session.user.emp_no){
+            employee_list.push([participations[i].emp_no, employee.name]);
+          }
         }
         
         // 참여한 리스트 전달
