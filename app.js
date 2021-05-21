@@ -54,7 +54,7 @@ app.use(function(req, res, next) {
 });
 
 
-// 라우터 연결
+// Connection Router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
