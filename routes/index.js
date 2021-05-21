@@ -56,10 +56,6 @@ router.get("/signup", catchErrors(async (req, res, next) => {
     res.render("signup", {skills: skills});
 }));
 
-router.get('/management', function (req, res, next) {
-    res.render('management',{});
-});
-
 router.get("/mypage", async (req, res) => {
     if (!req.session.authorization) res.json({ message: "you should login" });
     const user = await Employee.findOne({

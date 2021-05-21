@@ -24,6 +24,10 @@ module.exports = class Project extends Sequelize.Model {
             state: {
                 type: Sequelize.STRING(255),
                 allowNull: false,
+            },
+            description: {
+                type: Sequelize.STRING(255),
+                allowNull: false
             }
         }, {
             sequelize,

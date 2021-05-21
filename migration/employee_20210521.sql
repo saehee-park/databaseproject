@@ -1,1 +1,0 @@
-ALTER TABLE employee DROP resident_registeration_number;

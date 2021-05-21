@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var projectsRouter = require('./routes/projects');
 var pmEvaluationRouter = require('./routes/pm_evaluation');
 var peerEvaluationRouter = require('./routes/peer_evaluation');
+var managementRouter = require('./routes/management');
 
 var app = express();
 
@@ -59,6 +60,7 @@ app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
 app.use('/peer_evaluation', peerEvaluationRouter);
 app.use('/pm_evaluation', pmEvaluationRouter);
+app.use('/management', managementRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
