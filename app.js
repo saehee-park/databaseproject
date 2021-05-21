@@ -1,3 +1,4 @@
+// Import module
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,21 +6,40 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var flash = require('connect-flash');
+
+//Import Model
 const { sequelize } = require('./models');
 
+
+// Import Router
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var projectsRouter = require('./routes/projects');
+var evaluationRouter = require('./routes/evaluation');
 var pmEvaluationRouter = require('./routes/pm_evaluation');
 var peerEvaluationRouter = require('./routes/peer_evaluation');
 var managementRouter = require('./routes/management');
 
+// Use express
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// Connect Database Model to Server 
+sequelize.sync({ force: false })
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  }).catch((err) => {
+    console.log('Unable to connect to the database:', err);
+  });
+
+
+
+// Testing database connection?
+
+// Version.1 - 테이블 없으면 테이블 생성한다고 계속 log 보냄;
 // database connection
 async function connectionTesting() {
   try {
@@ -30,6 +50,7 @@ async function connectionTesting() {
   }
 }
 
+// Use Middleware
 connectionTesting();
 
 app.use(logger('dev'));
@@ -46,6 +67,9 @@ app.use(session({
 }));
 app.use(flash());
 
+// app.use(passport.initialize());
+// app.use(passport.session());
+
 app.use(function(req, res, next) {
   res.locals.currentUser = req.session.user;
   res.locals.authorization = req.session.authorization;
@@ -60,6 +84,7 @@ app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
 app.use('/peer_evaluation', peerEvaluationRouter);
 app.use('/pm_evaluation', pmEvaluationRouter);
+app.use('/evaluation', evaluationRouter);
 app.use('/management', managementRouter);
 
 // catch 404 and forward to error handler

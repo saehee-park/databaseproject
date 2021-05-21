@@ -6,7 +6,6 @@ module.exports = class Authorization extends Sequelize.Model {
             authorization_no: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
-                autoIncrement: true,
                 primaryKey: true,
             },
             authorization_name: {

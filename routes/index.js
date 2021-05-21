@@ -96,11 +96,11 @@ router.route("/signin")
                 return res.redirect("back");
             }
 
-            const compare = await comparePassword(req.body.password, user.PWD);
-            if (!compare) {
-                req.flash("danger", "Passsword do not match.");
-                return res.redirect("back");
-            }
+            // const compare = await comparePassword(req.body.password, user.PWD);
+            // if (!compare) {
+            //     req.flash("danger", "Passsword do not match.");
+            //     return res.redirect("back");
+            // }
 
             req.session.user = user;
             req.session.authorization = user.authorization_no;

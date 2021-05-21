@@ -26,6 +26,7 @@ module.exports = class Customer extends Sequelize.Model {
     }
 
     static associate(db) {
+        // CustomerEvaluation Model과 연결
         db.Customer.hasMany(db.CustomerEvaluation, { foreignKey: 'customer_id', sourceKey: 'customer_id'});
 
         // Project model 연결

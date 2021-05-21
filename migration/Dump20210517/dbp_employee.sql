@@ -23,15 +23,15 @@ DROP TABLE IF EXISTS `employee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `employee` (
-  `ID` varchar(100) NOT NULL,
-  `PWD` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `resident_registrantion_number` varchar(100) NOT NULL,
-  `education` varchar(100) NOT NULL,
-  `dept_no` int NOT NULL,
-  `authorization_no` int NOT NULL,
-  `work_experience` float NOT NULL,
   `emp_no` int NOT NULL AUTO_INCREMENT,
+  `ID` varchar(100) NOT NULL,
+  `PWD` varchar(100) NOT NULL, 
+  `name` varchar(100) NOT NULL,
+  `resident_registeration_number` varchar(100) NOT NULL,
+  `education` ENUM('high-school', 'college', 'master', 'ph-d') NOT NULL,
+  `dept_no` int NOT NULL,
+  `work_experience` float NOT NULL,
+  `authorization_no` int NOT NULL,
   PRIMARY KEY (`emp_no`),
   KEY `authorization_no` (`authorization_no`),
   KEY `dept_no` (`dept_no`),
@@ -62,7 +62,4 @@ UNLOCK TABLES;
 
 
 
--- INSERT INTO employee (ID, PWD, name, resident_registeration_number, education, dept_no, authorization_no, work_experience) VALUES ('test', '1234', '홍길동', '123456-1234567', 'college', 1, 1, 3.5);
-
--- INSERT INTO department (dept_name, dept_leader_no) VALUES ('test', 'test');
--- INSERT INTO authorization (authorization_name) VALUES ('1');
+INSERT INTO employee (ID, PWD, name, resident_registeration_number, education, dept_no, authorization_no, work_experience) VALUES ('test', '1234', '홍길동', '123456-1234567', 'college', 3, 1, 3.5);
