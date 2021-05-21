@@ -23,9 +23,9 @@ DROP TABLE IF EXISTS `department`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `department` (
-  `dept_no` int NOT NULL,
+  `dept_no` int NOT NULL AUTO_INCREMENT,
   `dept_name` varchar(45) NOT NULL,
-  `dept_leader_no` int NOT NULL,
+  `dept_leader_no` int NULL,
   PRIMARY KEY (`dept_no`),
   KEY `dept_leader_no` (`dept_leader_no`),
   CONSTRAINT `department_ibfk_1` FOREIGN KEY (`dept_leader_no`) REFERENCES `employee` (`emp_no`)
@@ -37,6 +37,7 @@ CREATE TABLE `department` (
 --
 
 LOCK TABLES `department` WRITE;
+INSERT INTO `department` (dept_name) VALUES ('마케팅'), ('연구관리'), ('경영관리'), ('개발');
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 UNLOCK TABLES;

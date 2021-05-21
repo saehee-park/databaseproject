@@ -24,11 +24,11 @@ DROP TABLE IF EXISTS `project`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `project` (
   `project_no` int NOT NULL AUTO_INCREMENT,
-  `customer_id` int NOT NULL,
   `project_name` varchar(255) NOT NULL,
   `start_date` datetime NOT NULL,
-  `end_date` varchar(45) NOT NULL,
+  `end_date` datetime NOT NULL,
   `state` varchar(255) NOT NULL,
+  `customer_id` int NOT NULL,
   PRIMARY KEY (`project_no`),
   KEY `customer_id` (`customer_id`),
   CONSTRAINT `project_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`)

@@ -51,10 +51,10 @@ module.exports = class Employee extends Sequelize.Model {
 
     static associate(db) {
         // Skill Model과 연결
-        db.Employee.belongsToMany(db.Skill, { through: 'EmpSkill'});
+        db.Employee.belongsToMany(db.Skill, { through: 'EmpSkill', foreignKey: 'emp_no'});
 
         // Participation Model과 연결
-        db.Employee.belongsToMany(db.Project, { through: 'Participation'});
+        db.Employee.belongsToMany(db.Project, { through: 'Participation', foreignKey: 'emp_no'});
 
         // Authorization Model과 연결
         db.Employee.belongsTo(db.Authorization, { foreignKey: 'authorization_no', targetKey: 'authorization_no'});
@@ -73,7 +73,7 @@ module.exports = class Employee extends Sequelize.Model {
         // 고객 평가 Model과 연결
         db.Employee.hasMany(db.PeerEvaluation, { foreignKey: 'non_evaluator_no', sourceKey: 'emp_no'});
 
-        // Skill Model과 연결
+        // Task Model과 연결
         db.Employee.hasMany(db.Task, { foreignKey: 'emp_no', sourceKey: 'emp_no'});
 
     }
