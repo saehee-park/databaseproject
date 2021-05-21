@@ -1,24 +1,20 @@
-// 전역 변수
-var project_no = null;
-var non_evaluator_no = null;
+// 전역변수
+var project_no;
+var non_evaluator_no;
+console.log('hi');
+// 동료 평가 로딩시 서버에 GET요청하는 function
+async function getProjectList() {
+    console.log('hi');
+    // project list 받아오기
+    const project_list = await axios.get('/peer_evaluation/project_list');
 
-// window onload시 프로젝트 리스트를 가져오고 이벤트 리스너를 등록함
-window.onload = async function () {
-    setProjectSelector();
-    connectEventListener();
-};
-
-async function setProjectSelector() {
-    // project List 받아오기
-    const project_list = await axios.get('/peer_evaluation/project_list/');
-    
     // option에 추가
     for(let project in project_list) {
         var project_select = document.getElementById('project');
 
         var option = document.createElement('option');
-        option.value = project[0];
-        option.innerText = project[1];
+        option.value = project.project_no;
+        option.innerText = project.project_name;
 
         project_select.appendChild(option);
     }
@@ -42,8 +38,8 @@ async function getParticipatedEmployee(project_no) {
         var employee_select = document.getElementById('employee');
 
         var option = document.createElement('option');
-        option.value = employee[0];
-        option.innerText = employee[1];
+        option.value = employee.emp_no;
+        option.innerText = employee.name;
 
         employee_select.appendChild(option);
     }
@@ -88,16 +84,13 @@ document.getElementById('peer_evaluation_form').addEventListener('submit', async
         }
 
         // Server에 /pm_evaluation POST 요청
-        const result = await axios.post('/peer_evaluation', { content1, content2, score1, score2, project_no,  non_evaluator_no });
-        if(result == 'true') {
-            alert('성공적으로 평가를 마쳤습니다!');
-            window.location.replace('/peer_evaluation');
-            
-        } else {
-            alert('평가가 서버에 저장되지 않았습니다.');
-        }
+        await axios.post('/peer_evaluation', { content1, content2, score1, score2, project_no,  non_evaluator_no });
+
     } catch(err) {
         console.error(err);
     }    
 });
 
+window.onload = function () {
+    getProjectList();
+};

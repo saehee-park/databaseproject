@@ -15,6 +15,7 @@ const { sequelize } = require('./models');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var projectsRouter = require('./routes/projects');
+var evaluationRouter = require('./routes/evaluation');
 var pmEvaluationRouter = require('./routes/pm_evaluation');
 var peerEvaluationRouter = require('./routes/peer_evaluation');
 
@@ -33,11 +34,7 @@ sequelize.sync({ force: false })
     console.log('Unable to connect to the database:', err);
   });
 
-
-
-// Testing database connection?
-
-// Version.1 - 테이블 없으면 테이블 생성한다고 계속 log 보냄;
+// database connection
 async function connectionTesting() {
   try {
     await sequelize.authenticate();
@@ -46,6 +43,7 @@ async function connectionTesting() {
     console.error('Unable to connect to the database:', error);
   }
 }
+connectionTesting();
 
 // Use Middleware
 app.use(logger('dev'));
@@ -79,6 +77,9 @@ app.use('/users', usersRouter);
 app.use('/projects', projectsRouter);
 app.use('/peer_evaluation', peerEvaluationRouter);
 app.use('/pm_evaluation', pmEvaluationRouter);
+app.use('/evaluation', evaluationRouter);
+app.use('/management', managementRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
