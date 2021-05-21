@@ -14,7 +14,7 @@ block content
                 //- input.form-control(type="text" name="employee" value=`employee_name` readonly)
                 select#employee.form-select(name="project" size="1")
         br      
-        form(action="/", method='post')
+        form#peer_evaluation_form(action="/", method='post')
             .form-group
                 label(for="inputWorkScore") 업무수행 평가 점수
                 input#inputworkscore.form-control(type="number" name="work_score" min="0" max="100" placeholder="0~100점")
@@ -30,4 +30,4 @@ block content
             button.btn.btn-primary(type="submit") 평가 등록 
 
         script(src='https://unpkg.com/axios/dist/axios.min.js')
-        script(src="./front/peer_evaluation.js")
+        script(src="/peer_evaluation.js")

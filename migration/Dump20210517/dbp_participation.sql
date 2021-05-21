@@ -53,3 +53,9 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2021-05-17 11:51:59
+
+INSERT INTO participation (participation_date, duty, emp_no, project_no) VALUES ('2021-06-01', '테스터', 2, 1);
+INSERT INTO participation (participation_date, duty, emp_no, project_no) VALUES ('2021-06-01', '테스터', 2, 2);
+INSERT INTO participation (participation_date, duty, emp_no, project_no) VALUES ('2021-06-02', '앱개발자', 3, 1);
+INSERT INTO participation (participation_date, duty, emp_no, project_no) VALUES ('2021-06-02', '앱개발자', 3, 2);
+
