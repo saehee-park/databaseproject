@@ -24,5 +24,6 @@ module.exports = class Participation extends Sequelize.Model {
     }
 
     static associate(db) {
+        
     }
 };

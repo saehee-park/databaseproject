@@ -5,7 +5,7 @@ var Customer = require('../models/customer');
 const catchErrors = require('../lib/async-error');
 var router = express.Router();
 
-router.post('/list', catchErrors(async (req, res, next) => {
+router.get('/', catchErrors(async (req, res, next) => {
   const participations = await Participation.findAll({
     where: { emp_no: req.session.user.emp_no },
     include:[
@@ -15,7 +15,7 @@ router.post('/list', catchErrors(async (req, res, next) => {
       }    
     ]
   });
-  res.render('project/list', {projects: participations});
+  res.render('project/list', { projects: participations });
 }));
 
 router.post('/detail', catchErrors(async (req, res, next) => {
