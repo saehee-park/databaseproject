@@ -106,7 +106,7 @@ router.route("/signin")
             req.session.authorization = user.authorization_no;
             console.log(user);
             console.log(user.authorization_no);
-            req.flash("success", "Welcome!");
+            req.flash("success", `${user.name}님 환영합니다!`);
             return res.redirect("/");
         })
     );
@@ -146,7 +146,7 @@ router.post("/signup", catchErrors(async (req, res, next) => {
         });
     }
     
-    req.flash("success", "Registered successfully. Please sign in.");
+    req.flash("success", "정상적으로 회원가입되었습니다.");
     res.redirect("/");
 }));
 

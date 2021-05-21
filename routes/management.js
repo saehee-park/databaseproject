@@ -59,7 +59,7 @@ router.post('/project/register', catchErrors(async (req, res, next) => {
     });
   }
 
-  req.flash('success', '성공적으로 등록되었습니다.');
+  req.flash('success', '정상적으로 등록되었습니다.');
   res.render('project/list', {});
 }));
 
