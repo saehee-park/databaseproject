@@ -9,7 +9,7 @@ module.exports = class Participation extends Sequelize.Model {
             },
             duty: {
                 type: Sequelize.STRING(255),
-                allowNull: false,
+                allowNull: true,
             }
         }, {
             sequelize,

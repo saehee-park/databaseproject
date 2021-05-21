@@ -21,10 +21,6 @@ module.exports = class Employee extends Sequelize.Model {
                 type: Sequelize.STRING(100),
                 allowNull: false,
             },
-            resident_registeration_number: {
-                type: Sequelize.STRING(100),
-                allowNull: false,
-            },
             education: {
                 type: Sequelize.ENUM(['high-school', 'college', 'master', 'ph-d']),
                 allowNull: false,
