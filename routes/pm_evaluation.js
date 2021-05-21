@@ -11,15 +11,6 @@ router.route('/')
     res.render('evaluation/pm_evaluation');
 })
 .post(async (req, res, next) => {
-    console.log(req.session.user.emp_no);
-    console.log(req.body.score1);
-    console.log(req.body.score2);
-    console.log(req.body.content1);
-    console.log(req.body.content2);
-    console.log(req.body.non_evaluator_no);
-    console.log(req.body.project_no);
-
-
     try {
         const pmEvaluation = await PMEvaluation.create({
             evaluation_content1:  req.body.content1,
