@@ -25,6 +25,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+<<<<<<< HEAD
 // Connect Database Model to Server 
 sequelize.sync({ force: false })
   .then(() => {
@@ -38,6 +39,9 @@ sequelize.sync({ force: false })
 // Testing database connection?
 
 // Version.1 - 테이블 없으면 테이블 생성한다고 계속 log 보냄;
+=======
+// database connection
+>>>>>>> 5e69274a1c31dec3c5028a3165bd33ced8a550bc
 async function connectionTesting() {
   try {
     await sequelize.authenticate();
@@ -47,7 +51,12 @@ async function connectionTesting() {
   }
 }
 
+<<<<<<< HEAD
 // Use Middleware
+=======
+connectionTesting();
+
+>>>>>>> 5e69274a1c31dec3c5028a3165bd33ced8a550bc
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

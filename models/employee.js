@@ -21,10 +21,6 @@ module.exports = class Employee extends Sequelize.Model {
                 type: Sequelize.STRING(100),
                 allowNull: false,
             },
-            resident_registeration_number: {
-                type: Sequelize.STRING(100),
-                allowNull: false,
-            },
             education: {
                 type: Sequelize.ENUM(['high-school', 'college', 'master', 'ph-d']),
                 allowNull: false,
@@ -54,7 +50,11 @@ module.exports = class Employee extends Sequelize.Model {
         db.Employee.belongsToMany(db.Skill, { through: 'EmpSkill', foreignKey: 'emp_no'});
 
         // Participation Model과 연결
+<<<<<<< HEAD
         db.Employee.belongsToMany(db.Project, { through: 'Participation', foreignKey: 'emp_no'});
+=======
+        db.Employee.belongsToMany(db.Project, { foreignKey: 'emp_no', as: 'Emp_no', through: 'Participation' });
+>>>>>>> 5e69274a1c31dec3c5028a3165bd33ced8a550bc
 
         // Authorization Model과 연결
         db.Employee.belongsTo(db.Authorization, { foreignKey: 'authorization_no', targetKey: 'authorization_no'});
