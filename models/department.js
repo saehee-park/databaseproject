@@ -13,8 +13,8 @@ module.exports = class Department extends Sequelize.Model {
                 allowNull: false,
             },
             dept_leader_no: {
-                type: Sequelize.STRING(45),
-                allowNull: false,
+                type: Sequelize.INTEGER,
+                allowNull: true,
             },
         }, {
             sequelize,

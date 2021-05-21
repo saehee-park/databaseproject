@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `peer_evaluation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `peer_evaluation` (
-  `project_no` int NOT NULL,
+  `evaluation_content1` varchar(255) NOT NULL,
+  `evaluation_score1` int NOT NULL,
+  `evaluation_content2` varchar(255) NOT NULL,
+  `evaluation_score2` int NOT NULL,
   `evaluator_no` int NOT NULL,
   `non_evaluator_no` int NOT NULL,
-  `evaluation_score1` varchar(45) NOT NULL,
-  `evaluation_content1` varchar(255) NOT NULL,
-  `evaluation_score2` varchar(45) NOT NULL,
-  `evaluation_content2` varchar(255) NOT NULL,
+  `project_no` int NOT NULL,
   PRIMARY KEY (`project_no`,`evaluator_no`,`non_evaluator_no`),
   KEY `evaluator_no` (`evaluator_no`),
   KEY `non_evaluator_no` (`non_evaluator_no`),
