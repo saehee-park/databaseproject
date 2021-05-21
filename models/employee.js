@@ -50,8 +50,7 @@ module.exports = class Employee extends Sequelize.Model {
         db.Employee.belongsToMany(db.Skill, { through: 'EmpSkill', foreignKey: 'emp_no'});
 
         // Participation Model과 연결
-        db.Employee.belongsToMany(db.Project, { through: 'Participation', foreignKey: 'emp_no'});
-        // db.Employee.belongsToMany(db.Project, { foreignKey: 'emp_no', as: 'Emp_no', through: 'Participation' });
+        db.Employee.belongsToMany(db.Project, { foreignKey: 'emp_no', as: 'emp_project', through: 'Participation' });
 
         // Authorization Model과 연결
         db.Employee.belongsTo(db.Authorization, { foreignKey: 'authorization_no', targetKey: 'authorization_no'});

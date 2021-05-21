@@ -1,0 +1,12 @@
+extends ../layout 
+
+block content 
+  .container 
+    h1.mb-5.d-flex.justify-content-center  거래처 목록
+    each customer in customers
+      .row 
+        .card
+          .card-body
+            h3.card-title.mb-3.d-flex.justify-content-center= customer.customer_name
+            .d-grid.gap-2.mt-2
+              a.btn.btn-outline-warning(href='#') 거래처 수정하기

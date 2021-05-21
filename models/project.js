@@ -24,6 +24,10 @@ module.exports = class Project extends Sequelize.Model {
             state: {
                 type: Sequelize.STRING(255),
                 allowNull: false,
+            },
+            description: {
+                type: Sequelize.STRING(255),
+                allowNull: false
             }
         }, {
             sequelize,
@@ -54,6 +58,6 @@ module.exports = class Project extends Sequelize.Model {
         db.Project.belongsTo(db.Customer, {foreignKey: 'customer_id', targetKey: 'customer_id'});
 
         // Participation Model 연결
-        db.Project.belongsToMany(db.Employee, { through: 'Participation', as: 'Project_no', foreignKey:'project_no' });
+        db.Project.belongsToMany(db.Employee, { through: 'Participation', as: 'project_emp', foreignKey:'project_no' });
     }
 };
