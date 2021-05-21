@@ -1,7 +1,9 @@
 extends ../layout
-//-동료평가 입력페이지
+
+//-동료평가 해당 직원 리스트 페이지
 block content
     .container 
+<<<<<<< HEAD
         .row.align-items-center.mt-4
             .col 
                 h3.mb-3.ml-3 평가 프로젝트
@@ -29,4 +31,31 @@ block content
     
     script(src='https://unpkg.com/axios/dist/axios.min.js')
     script(src="./peer_evaluation.js")         
+=======
+        table.custom_list.table-striped.table-hover
+            thead
+                tr
+                    th 프로젝트 번호 |
+                    th 프로젝트 명 | 
+                    th 참여 직원 |
+                    th 평가상태 
+                    
+            tbody
+                tr
+                    td.projectNum  04
+                    td.projectName  데이터베이스 프로젝트
+                    td.partEmployee  홍길동
+                    td.eval_state.a#inputcustomer_eval.btn.btn-link(href='/evaluation/inputCustomer_evaluation') 미입력
+
+                tr
+                    td.projectNum  04
+                    td.projectName  데이터베이스 프로젝트
+                    td.partEmployee  김이박
+                    td.eval_state  입력
+                tr
+                    td.projectNum  04
+                    td.projectName  데이터베이스 프로젝트
+                    td.partEmployee  이명지
+                    td.eval_state.a#inputcustomer_eval.btn.btn-link(href='/evaluation/inputCustomer_evaluation') 미입력
+>>>>>>> bab0da165816ea20aeb59155bf03e5c59f724bf5
 
