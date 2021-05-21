@@ -53,5 +53,7 @@ module.exports = class Project extends Sequelize.Model {
         // Customer Model과 연결
         db.Project.belongsTo(db.Customer, {foreignKey: 'customer_id', targetKey: 'customer_id'});
 
+        // Participation Model 연결
+        db.Project.belongsToMany(db.Employee, { through: 'Participation', as: 'project_emp', foreignKey:'project_no' });
     }
 };

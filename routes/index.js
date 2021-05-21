@@ -1,18 +1,5 @@
 var express = require("express");
 var router = express.Router();
-<<<<<<< HEAD
-var Employee = require('../models/employee');
-const catchErrors = require('../lib/async-error');
-var bcrypt = require('bcrypt');
-
-
-function generateHash(password){
-  return bcrypt.hash(password, 10);
-}
-
-function comparePassword(password, hash){
-  return bcrypt.compare(password, hash);
-=======
 var Employee = require("../models/employee");
 var skills = require("../models/skill");
 var emp_skill = require("../models/emp_skill");
@@ -21,7 +8,6 @@ var bcrypt = require("bcrypt");
 
 function generateHash(password) {
     return bcrypt.hash(password, 10);
->>>>>>> bab0da165816ea20aeb59155bf03e5c59f724bf5
 }
 
 function comparePassword(password, hash) {
@@ -110,11 +96,11 @@ router
                 return res.redirect("back");
             }
 
-            const compare = await comparePassword(req.body.password, user.PWD);
-            if (!compare) {
-                req.flash("danger", "Passsword do not match.");
-                return res.redirect("back");
-            }
+            // const compare = await comparePassword(req.body.password, user.PWD);
+            // if (!compare) {
+            //     req.flash("danger", "Passsword do not match.");
+            //     return res.redirect("back");
+            // }
 
             req.session.user = user;
             req.session.authorization = user.authorization_no;
