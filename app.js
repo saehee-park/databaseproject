@@ -19,19 +19,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-
-sequelize.sync({ force: false })
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  }).catch((err) => {
-    console.log('Unable to connect to the database:', err);
-  });
-
-
-
-// Testing database connection?
-
-// Version.1 - 테이블 없으면 테이블 생성한다고 계속 log 보냄;
+// database connection
 async function connectionTesting() {
   try {
     await sequelize.authenticate();
@@ -40,6 +28,8 @@ async function connectionTesting() {
     console.error('Unable to connect to the database:', error);
   }
 }
+
+connectionTesting();
 
 app.use(logger('dev'));
 app.use(express.json());
