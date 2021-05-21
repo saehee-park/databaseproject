@@ -18,6 +18,7 @@ var projectsRouter = require('./routes/projects');
 var evaluationRouter = require('./routes/evaluation');
 var pmEvaluationRouter = require('./routes/pm_evaluation');
 var peerEvaluationRouter = require('./routes/peer_evaluation');
+var managementRouter = require('./routes/management');
 
 // Use express
 var app = express();
@@ -25,14 +26,6 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
-// Connect Database Model to Server 
-sequelize.sync({ force: false })
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  }).catch((err) => {
-    console.log('Unable to connect to the database:', err);
-  });
 
 // database connection
 async function connectionTesting() {
