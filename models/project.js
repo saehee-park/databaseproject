@@ -48,6 +48,6 @@ module.exports = class Project extends Sequelize.Model {
         db.Project.hasMany(db.PMEvaluation, { foreignKey: 'project_no', sourceKey: 'project_no'});
         
         // Participation Model 연결
-        db.Project.belongsToMany(db.Employee, { through: 'Participation', as: 'Project_no', foreignKey:'project_no' });
+        db.Project.belongsToMany(db.Employee, { through: 'Participation', as: 'project_emp', foreignKey:'project_no' });
     }
 };

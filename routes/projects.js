@@ -2,20 +2,24 @@ var express = require('express');
 var Participation = require('../models/participation');
 var Project = require('../models/project');
 var Customer = require('../models/customer');
+var Employee = require('../models/employee');
 const catchErrors = require('../lib/async-error');
 var router = express.Router();
 
 router.get('/', catchErrors(async (req, res, next) => {
-  const participations = await Participation.findAll({
-    where: { emp_no: req.session.user.emp_no },
-    include:[
+  const projects = await Project.findAll({
+    include: [
       {
-        model: Project,
-        attributes: ['project_name', 'start_date', 'end_date', 'state']
-      }    
+        model: Employee,
+        as: 'project_emp',
+        through: {
+          where: { emp_no: req.session.user.emp_no }
+        }
+      }
     ]
   });
-  res.render('project/list', { projects: participations });
+  console.log(projects);
+  res.render('project/list', { projects: projects });
 }));
 
 router.post('/detail', catchErrors(async (req, res, next) => {
@@ -23,7 +27,8 @@ router.post('/detail', catchErrors(async (req, res, next) => {
     where: { project_no: req.body.proejct_no },
     include: [
       {
-        model: Participation
+        model: Employee,
+        as: 'project_emp'
       },
       {
         model: Customer

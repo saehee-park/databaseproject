@@ -1,0 +1,9 @@
+INSERT INTO `skills` (`skill_name`) VALUES ('JAVA');
+INSERT INTO `skills` (`skill_name`) VALUES ('C');
+INSERT INTO `skills` (`skill_name`) VALUES ('C++');
+INSERT INTO `skills` (`skill_name`) VALUES ('C#');
+INSERT INTO `skills` (`skill_name`) VALUES ('Python');
+INSERT INTO `skills` (`skill_name`) VALUES ('JavaScript');
+INSERT INTO `skills` (`skill_name`) VALUES ('Go');
+INSERT INTO `skills` (`skill_name`) VALUES ('Mysql');
+INSERT INTO `skills` (`skill_name`) VALUES ('MariaDB');

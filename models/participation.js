@@ -1,3 +1,4 @@
+const { INTEGER } = require('sequelize');
 const Sequelize = require('sequelize');
 
 module.exports = class Participation extends Sequelize.Model {
@@ -24,6 +25,5 @@ module.exports = class Participation extends Sequelize.Model {
     }
 
     static associate(db) {
-        
     }
 };
