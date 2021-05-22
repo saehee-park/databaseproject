@@ -242,6 +242,11 @@ router.get('/management/evaluationResult_inquiry', function(req, res, next){
     res.render('management/evaluationResult_inquiry', { title: 'Express' });
   });
 
+/*특정직원의 고객평가 상세결과 페이지*/
+router.get('/evaluation/resultCustomer_eval', function(req, res, next){
+    res.render('evaluation/resultCustomer_eval', { title: 'Express' });
+  });
+
 /*project list*/
 router.get("/project/list", function (req, res, next) {
     res.render("project/list", { title: "Express" });

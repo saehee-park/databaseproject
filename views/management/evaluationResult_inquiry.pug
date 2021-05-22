@@ -6,16 +6,17 @@ block content
         .table-responsive
             .table-wrapper
                 .table-title
-                    .row
-                        .col-sm-1
-                            select#researchOption.form-control
-                                option 직원명
-                                option 직원번호
-                                option 프로젝트명
-                        .col-sm-2
-                            input#inputInformation.form-control(type='information')
-                        .col-sm-1
-                            button.btn.btn-primary(type='button' value='inquiry' title='inquiry') 조회
+                    form(action="#", method="post")
+                        .row
+                            .col-sm-1
+                                select#researchOption.form-control
+                                    option 직원명
+                                    option 직원번호
+                                    option 프로젝트명
+                            .col-sm-2
+                                input#inputInformation.form-control(type='information')
+                            .col-sm-1
+                                button.btn.btn-primary(type='button' value='inquiry' title='inquiry') 조회
                     br
                 table.table.table-bordered
                     thead
