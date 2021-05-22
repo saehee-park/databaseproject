@@ -227,6 +227,12 @@ router.get('/evaluation/inputCustomer_evaluation', function(req, res, next){
   res.render('evaluation/inputCustomer_evaluation', { title: 'Express' });
 });
 
+/*고객평가서 항목 수정페이지*/
+router.get('/evaluation/modification_customerEval', function(req, res, next){
+    res.render('evaluation/modification_customerEval', { title: 'Express' });
+  });
+
+
 /*project list*/
 router.get("/project/list", function (req, res, next) {
     res.render("project/list", { title: "Express" });
