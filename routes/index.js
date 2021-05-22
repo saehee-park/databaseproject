@@ -217,6 +217,16 @@ router.get('/evaluation/inputPm_evaluation', function(req, res, next){
   res.render('evaluation/inputPm_evaluation', { title: 'Express' });
 });
 
+/*고객평가 해당 직원 리스트 페이지*/
+router.get('/evaluation/customer_evaluation', function(req, res, next){
+  res.render('evaluation/customer_evaluation', { title: 'Express' });
+});
+
+/*고객평가 입력페이지*/
+router.get('/evaluation/inputCustomer_evaluation', function(req, res, next){
+  res.render('evaluation/inputCustomer_evaluation', { title: 'Express' });
+});
+
 /*project list*/
 router.get("/project/list", function (req, res, next) {
     res.render("project/list", { title: "Express" });
