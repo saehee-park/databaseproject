@@ -12,7 +12,7 @@ app.set('view engine','pug')
 //}));
 
 router.get('/',function(req,res){
-	if(req.session.login){
+	if(req.session.signin){
 		models.User.findOne({
 			where: {id: req.session.idx}
 		}).then(function(info){
