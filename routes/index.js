@@ -232,6 +232,15 @@ router.get('/evaluation/modification_customerEval', function(req, res, next){
     res.render('evaluation/modification_customerEval', { title: 'Express' });
   });
 
+/*업무능력서 항목 수정페이지*/
+router.get('/evaluation/modification_peerEval', function(req, res, next){
+    res.render('evaluation/modification_peerEval', { title: 'Express' });
+  });
+
+/*특정직원의 동료,pm,peer평가 결과(점수,합계,평균)를 확인하는 페이지*/
+router.get('/management/evaluationResult_inquiry', function(req, res, next){
+    res.render('management/evaluationResult_inquiry', { title: 'Express' });
+  });
 
 /*project list*/
 router.get("/project/list", function (req, res, next) {
