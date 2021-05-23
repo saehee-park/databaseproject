@@ -1,22 +1,27 @@
 extends ../layout
 
-//-특정직원의 고객평가 상세결과 페이지
+//-특정직원의 동료평가 상세결과 페이지
 block content
     .container 
         form(action="#", method="post")
-            h2 고객평가 결과
-            .row.align-items-center.mt-4
-                .col 
-                    h3.mb-3.ml-3 피평가자
+            h2 PM평가 결과
+            .form-group.row
+                label.col-sm-1.col-form-label.col-form-label-lg(for='evaluated') 피평가자
+                .col-sm-4
                     input.form-control(type="text" name="employee_name" value=`employee_name` readonly)
-                .col
-                    h3.mb-3.ml-3 평가자(고객)
-                    input.form-control(type="text" name="customer_name" value=`customer_name` readonly)
-                .col
-                    h3.mb-3.ml-3 프로젝트명
-                    input.form-control(type="text" name="project_name" value=`project_name` readonly)
+                label.col-sm-1.input-group-text(for='validatedInputGroupSelect') 평가자(동료)
+                select.col-sm-3#validatedInputGroupSelect.custom-select(required='')
+                                        option(value='') 동료...
+                                        option(value='1') 김명지
+                                        option(value='2') 홍길동
+                                        option(value='3') 김이박
+                button.col-sm-1.btn.btn-outline-secondary(type='button') 검색
+
             br      
             form(action="/", method='post')
+                .form-group
+                    label(for='project_name') 프로젝트명
+                    input#inputProjectName.form-control(type="text" name="project_name" min="0" max="100" placeholder="0~100점" readonly)
                 .form-group
                     label(for="inputWorkScore") 업무수행 평가 점수
                     input#inputworkscore.form-control(type="number" name="work_score" min="0" max="100" placeholder="0~100점" readonly)

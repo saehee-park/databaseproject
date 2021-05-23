@@ -247,6 +247,16 @@ router.get('/evaluation/resultCustomer_eval', function(req, res, next){
     res.render('evaluation/resultCustomer_eval', { title: 'Express' });
   });
 
+/*특정직원의 PM평가 상세결과 페이지*/
+router.get('/evaluation/resultPm_eval', function(req, res, next){
+    res.render('evaluation/resultPm_eval', { title: 'Express' });
+  });
+
+/*특정직원의 동료평가 상세결과 페이지*/
+router.get('/evaluation/resultPeer_eval', function(req, res, next){
+    res.render('evaluation/resultPeer_eval', { title: 'Express' });
+  });
+
 /*project list*/
 router.get("/project/list", function (req, res, next) {
     res.render("project/list", { title: "Express" });

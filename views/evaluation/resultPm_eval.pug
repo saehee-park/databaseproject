@@ -1,17 +1,17 @@
 extends ../layout
 
-//-특정직원의 고객평가 상세결과 페이지
+//-특정직원의 pm평가 상세결과 페이지
 block content
     .container 
         form(action="#", method="post")
-            h2 고객평가 결과
+            h2 PM평가 결과
             .row.align-items-center.mt-4
                 .col 
                     h3.mb-3.ml-3 피평가자
                     input.form-control(type="text" name="employee_name" value=`employee_name` readonly)
                 .col
-                    h3.mb-3.ml-3 평가자(고객)
-                    input.form-control(type="text" name="customer_name" value=`customer_name` readonly)
+                    h3.mb-3.ml-3 평가자(PM)
+                    input.form-control(type="text" name="PM_name" value=`PM_name` readonly)
                 .col
                     h3.mb-3.ml-3 프로젝트명
                     input.form-control(type="text" name="project_name" value=`project_name` readonly)
