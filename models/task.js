@@ -40,5 +40,9 @@ module.exports = class Task extends Sequelize.Model {
     static associate(db) {
         // Employee Model과 연결
         db.Task.belongsTo(db.Employee, { foreignKey: 'emp_no', targetKey: 'emp_no'});
+
+        // Project Model과 연결
+        db.Task.belongsTo(db.Project, { foreignKey: 'project_no', targetKey: 'project_no'});
+
     }
 };
