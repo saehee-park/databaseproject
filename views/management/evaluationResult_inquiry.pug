@@ -10,17 +10,24 @@ block content
                         .row
                             .col-sm-1
                                 select#researchOption.form-control
-                                    option 직원명
-                                    option 직원번호
-                                    option 프로젝트명
+                                    option.entire 전체
+                                    option.employeeName 직원명
+                                    option.employeeNum 직원번호
+                                    option.projectName 프로젝트명
                             .col-sm-2
                                 input#inputInformation.form-control(type='information')
                             .col-sm-1
                                 button.btn.btn-primary(type='button' value='inquiry' title='inquiry') 조회
+                            .col-sm-5
+                            .col-sm-1
+                                button.btn.btn-primary(type='button' value='good_employee_add' title='good_employee_add') 우수직원선정
+                            .col-sm-1
+                                button.btn.btn-primary(type='button' value='good_employee_delete' title='good_employee_delete') 우수직원취소
                     br
                 table.table.table-bordered
                     thead
-                        tr
+                        tr  
+                            th check
                             th 직원명
                             th 프로젝트명
                             th 동료평가
@@ -30,36 +37,42 @@ block content
                             th 평균
                     tbody
                         tr
-                            td 김명지
-                            td 카카오톡ver5.03
-                            td
+                            td.goodEmployeeCheck
+                                input(type='checkbox' aria-label='good_employee' value='good_employee')
+                            td.employeeName 김명지
+                            td.projectName 카카오톡ver5.03
+                            td.peerResult
                                 a(href='#' value='peerScore' title='peerScore') 83점  
-                            td
+                            td.pmResult
                                 a(href='#' value='pmScore' title='omScore') 83점
-                            td
+                            td.customerResult
                                 a(href='#' value='customerScore' title='customerScore') 83점
-                            td 249점
-                            td 83점
+                            td.sum 249점
+                            td.avg 83점
 
                         tr
-                            td 김명지
-                            td 네이버 ver8.04
-                            td
+                            td.goodEmployeeCheck
+                                input(type='checkbox' aria-label='excellent_employee' value='excellent_employee')
+                            td.employeeName 김명지
+                            td.projectName 네이버 ver8.04
+                            td.peerResult
                                 a(href='#' value='peerScore' title='peerScore') 83점  
-                            td
+                            td.pmResult
                                 a(href='#' value='pmScore' title='omScore') 83점
-                            td
+                            td.customerResult
                                 a(href='#' value='customerScore' title='customerScore') 83점
-                            td 249점
-                            td 83점
+                            td.sum 249점
+                            td.avg 83점
                         tr
-                            td 홍길동
-                            td 카카오톡ver5.03
-                            td
+                            td.goodEmployeeCheck
+                                input(type='checkbox' aria-label='excellent_employee' value='excellent_employee')
+                            td.employeeName 홍길동
+                            td.projectName 카카오톡ver5.03
+                            td.peerResult
                                 a(href='#' value='peerScore' title='peerScore') 80점  
-                            td
+                            td.pmResult
                                 a(href='#' value='pmScore' title='omScore') 86점
-                            td
+                            td.customerResult
                                 a(href='#' value='customerScore' title='customerScore') 86점
-                            td 252점
-                            td 84점
+                            td.sum 252점
+                            td.avg 84점
