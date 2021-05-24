@@ -36,14 +36,15 @@ html
     //-   include ./navbar/index 
 
     if flashMessages
-      each texts, type in flashMessages
-        .position-fixed.bottom-0.end-0.p-3
-          .toast.show.align-items-center.text-white.border-0(role="alert", aria-live="assertive", aria-atomic="true", class=`bg-${type}`)
-            .d-flex
-              .toast-body
-                each msg in texts
-                  | #{msg} 
-              //- button(type='button', class="btn-close btn-close-white me-2 m-auto", data-dismiss="toast", aria-label="Close")
+      .position-realtive(aria-live="polite", aria-atomic="true")
+        .toast-container.position-absolute.bottom-0.end-0.p-3
+          each texts, type in flashMessages
+            .toast.show.align-items-center.text-white.border-0(role="alert", aria-live="assertive", aria-atomic="true", class=`bg-${type}`)
+              .d-flex
+                .toast-body
+                  each msg in texts
+                    | #{msg} 
+                //- button(type='button', class="btn-close btn-close-white me-2 m-auto", data-dismiss="toast", aria-label="Close")
             
 
     block navbar
