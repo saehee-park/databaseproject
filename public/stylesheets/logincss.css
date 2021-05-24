@@ -3,31 +3,64 @@
 */
 
 .loginView {
-    margin: 0 auto;
+    /* margin: 0 auto;
     align-items: center;
+    width: 30%; */
     width: 30%;
-    background-color: burlywood;
+    padding: 8% 0 0;
+    margin: auto;
+    
   }
-  
+
+p{
+  text-align: center;
+  font-weight: bold;
+}
 
 input.myinput {
     margin-left: 0%;
     margin-right: 0%;
-    width: 60%;
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+    display: block;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    text-align: center;
+    
     
     /* text-align: center; */
 }
 
-  
-  button.loginButton{
-   width: 60%;
-   
-  }
-  
-  button.signinButton{
-    width: 60%;
-    
-  }
-  
 
-  
+button.loginButton {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+button.signinButton{
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    
+}
+
+
