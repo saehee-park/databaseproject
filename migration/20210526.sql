@@ -1,0 +1,1 @@
+ALTER TABLE participation ADD (participate varchar(45) not null);

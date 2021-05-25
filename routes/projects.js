@@ -18,13 +18,12 @@ router.get('/', catchErrors(async (req, res, next) => {
       }
     ]
   });
-  console.log(projects);
   res.render('project/list', { projects: projects });
 }));
 
-router.post('/detail', catchErrors(async (req, res, next) => {
+router.get('/:project_no', catchErrors(async (req, res, next) => {
   const project = await Project.findOne({
-    where: { project_no: req.body.proejct_no },
+    where: { project_no: req.params.project_no },
     include: [
       {
         model: Employee,
@@ -35,8 +34,8 @@ router.post('/detail', catchErrors(async (req, res, next) => {
       }
     ]
   });
-  res.render('project/detail', { project: project });
+  console.log(project.project_emp[0]);
+  res.render('project/details', { project: project });
 }));
-
 
 module.exports = router;

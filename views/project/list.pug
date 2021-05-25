@@ -6,13 +6,18 @@ block content
     h1.text-center-mt-5 프로젝트 목록
 
     each project in projects
-      .card-group
-        .card 
-          h5.project_name= project.project_name
-          p.start_date= project.start_date
-          p.end_date= project.end_date
-          p.duty= project.duty
-          p.state= project.state
-          .d-grid.gap-2.mt-2
-            a.btn.btn-outline-warning(href="/project/details") 자세히
+      if(project.project_emp[0])
+        .card-group
+          .card 
+            h5.project_name= project.project_name
+            p.start_date= project.start_date
+            p.end_date= project.end_date
+            p.duty= project.duty
+            p.state= project.state
+            .d-grid.gap-2.mt-2
+              a.btn.btn-outline-warning(href=`/projects/${project.project_no}`) 자세히
+      else 
+        .card-group
+          .card 
+            h5 존재하는 프로젝트가 없습니다.
 
