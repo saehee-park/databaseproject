@@ -1,5 +1,5 @@
 /*
-nav바 css
+평가 table css
 */
 
 .container.tableStyle{
@@ -11,7 +11,7 @@ nav바 css
 }
 table.custom_list.table-hover{
     width: 50%;
-    
+    border-radius: 10px;
     background-color: #fafdfe;
     align-items: center;
     margin: auto;
