@@ -1,33 +1,74 @@
 /*
 로그인 뷰 css
 */
-
+.container {
+	background: #607D8B;
+  width: 100%;
+  height: 80vh;
+}
 .loginView {
-    margin: 0 auto;
+    background: #ffffff;
+    text-align: center;
     align-items: center;
     width: 30%;
-    background-color: burlywood;
+    padding: 8% 0 0;
+    margin: auto;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    
+    
   }
-  
+
+p{
+  text-align: center;
+  font-weight: bold;
+}
 
 input.myinput {
     margin-left: 0%;
     margin-right: 0%;
-    width: 60%;
+    border: none;
+    width: 100%;
+    display: block;
+    margin-top: 5px;
+    margin-left: 25px;
+    margin-right: 25px;
+    font-size: 16px;
+    border-bottom: 1px solid #575757;
+    
     
     /* text-align: center; */
 }
 
-  
-  button.loginButton{
-   width: 60%;
-   
-  }
-  
-  button.signinButton{
-    width: 60%;
-    
-  }
-  
 
+button.loginButton {
+	border-radius: 20px;
+	border: 1px solid #45aba6;
+	background-color: #45aba6;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 10px 30px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+  width: 40%;
   
+}
+button.signinButton{
+    border-radius: 20px;
+    border: 1px solid #45aba6;
+    background-color: #ffffff;
+    color:#45aba6;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    width: 40%;
+    
+}
+form.guest{
+  
+  
+}

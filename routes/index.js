@@ -3,6 +3,7 @@ var router = express.Router();
 var Employee = require("../models/employee");
 var Skill = require("../models/skill");
 var EmpSkill = require("../models/emp_skill");
+var Project = require('../models/project');
 const catchErrors = require("../lib/async-error");
 var bcrypt = require("bcrypt");
 
@@ -41,6 +42,27 @@ function validateForm(form) {
 
     if (password.length < 7) {
         return "비밀번호가 너무 짧습니다. (8자 이상)";
+    }
+
+    return null;
+}
+
+function getDday(end) {
+    let today = new Date();
+    let year = today.getFullYear(); // 년도
+    let month = today.getMonth() + 1;  // 월
+    let day = today.getDate();  // 날짜
+
+    var endArray = end.split(" ");
+    var end_date = endArray[0];
+    var dateArray = end_date.split("-");
+
+    if(year == dateArray[0]) {
+        if(month == dateArray[1]) {
+            if(dateArray[2] - day <= 7) {
+                return dateArray[2] - day;
+            }
+        }
     }
 
     return null;
@@ -92,16 +114,32 @@ router.route("/signin")
 
             const user = await Employee.findOne({ where: { ID: req.body.id } });
             if (!user) {
-                req.flash("danger", "Not exist user.");
+                req.flash("danger", "존재하지 않는 ID 입니다.");
                 return res.redirect("back");
             }
 
-            // const compare = await comparePassword(req.body.password, user.PWD);
-            // if (!compare) {
-            //     req.flash("danger", "Passsword do not match.");
-            //     return res.redirect("back");
-            // }
+            const projects = await Project.findAll({
+                where: {
+                    state: '진행중'
+                },
+                include: [
+                    {    
+                        model: Employee,
+                        as: 'project_emp',
+                        through: {
+                            where: { emp_no: user.emp_no }
+                        }
+                    }
+                ]
+            });
 
+            for(let project of projects) {
+                var d_day = getDday(project.dataValues.end_date);
+                if(d_day) {
+                    req.flash("warning", `${project.project_name} 프로젝트의 마감일자까지 ${d_day}일 남았습니다.`);
+                }
+            }
+            
             req.session.user = user;
             req.session.authorization = user.authorization_no;
             req.flash("success", `${user.name}님 환영합니다!`);
