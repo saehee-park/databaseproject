@@ -6,7 +6,7 @@ var Employee = require('../models/employee');
 const catchErrors = require('../lib/async-error');
 var router = express.Router();
 
-router.post('/list', catchErrors(async (req, res, next) => {
+router.get('/', catchErrors(async (req, res, next) => {
   const projects = await Project.findAll({
     include: [
       {    
@@ -18,13 +18,12 @@ router.post('/list', catchErrors(async (req, res, next) => {
       }
     ]
   });
-  res.render('project/list', { projects: participations });
   console.log(projects);
   res.render('project/list', { projects: projects });
 }));
 
 router.post('/detail', catchErrors(async (req, res, next) => {
-  const projects = await Project.findAll({
+  const project = await Project.findOne({
     where: { project_no: req.body.proejct_no },
     include: [
       {
@@ -36,7 +35,7 @@ router.post('/detail', catchErrors(async (req, res, next) => {
       }
     ]
   });
-  res.render('project/detail', { projects: projects });
+  res.render('project/detail', { project: project });
 }));
 
 
