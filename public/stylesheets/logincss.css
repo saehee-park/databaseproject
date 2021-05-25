@@ -2,11 +2,12 @@
 로그인 뷰 css
 */
 .container {
-	background: #607D8B;
+	background: #3a3a3a;
   width: 100%;
   height: 80vh;
 }
 .loginView {
+    border-radius: 10px;
     background: #ffffff;
     text-align: center;
     align-items: center;
@@ -42,8 +43,8 @@ input.myinput {
 
 button.loginButton {
 	border-radius: 20px;
-	border: 1px solid #45aba6;
-	background-color: #45aba6;
+	border: 1px solid #000000;
+	background-color: #000000;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -56,9 +57,9 @@ button.loginButton {
 }
 button.signinButton{
     border-radius: 20px;
-    border: 1px solid #45aba6;
+    border: 1px solid #000000;
     background-color: #ffffff;
-    color:#45aba6;
+    color:#000000;
     font-size: 12px;
     font-weight: bold;
     padding: 10px 45px;
@@ -69,6 +70,5 @@ button.signinButton{
     
 }
 form.guest{
-  
-  
+
 }

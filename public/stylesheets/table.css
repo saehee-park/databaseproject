@@ -1,0 +1,30 @@
+/*
+nav바 css
+*/
+
+.container.tableStyle{
+    background-color: #3a3a3a;
+}
+
+.container.tableStyle h3 {
+    color: #ffffff;
+}
+table.custom_list.table-hover{
+    width: 50%;
+    
+    background-color: #fafdfe;
+    align-items: center;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+table thead tr{
+    background-color: #fafdfe;
+    font-size: large;
+}
+table tbody tr{
+    background-color: #ffffff;
+    border-radius: 25px;
+    width: 80%;
+}
