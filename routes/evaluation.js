@@ -2,7 +2,7 @@
 var express = require('express');
 var router = express.Router();
 const catchErrors = require("../lib/async-error");
-const { Project, Employee, Participation, PeerEvaluation, PMEvaluation, CustomerEvaluation } = require('../models');
+const { Project, Employee, Participation, PeerEvaluation, PMEvaluation, CustomerEvaluation} = require('../models');
 
 
 router.get('/peer', async (req, res, next) => {
@@ -25,12 +25,12 @@ router.get('/inputCustomer_evaluation', async (req, res) => {
     res.render('evaluation/inputCustomer_evaluation.');
 });
 
-router.get('/inputPeer_evaluation', async (req, res) => {
-    res.render('evaluation/inputPeer_evaluation.');
-});
-
 router.get('/inquiry', async (req, res) => {
     res.render('management/evaluationResult_inquiry');
+});
+
+router.get('/evaluate', async(req, res) => {
+    res.render('management/registerEvaluation');
 });
 
 router.get('/project_list', catchErrors(async (req, res) => {
