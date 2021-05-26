@@ -7,9 +7,36 @@ block content
       h1.text-center-mt-5 종료된 프로젝트
 
       .card-group
-        .card 
-          h5.project_name 프로젝트 이름
-          p.end_date 프로젝트 종료 날짜
-          p.state 종료
-          .d-grid.gap-2.mt-2
-            button.btn.btn-outline-dark(type="submit", style="float: right") 인증키 부여
+        .card.mb-3
+          .card-body 
+            h5 프로젝트명
+            p.project_name 데베프
+            h6 프로젝트 종료 날짜
+            p.end_date 2021.05.26
+            h6 상태
+            p.state 종료
+            h6 담당자
+            p.PM PM 이름
+            button.btn.btn-outline-dark(type="submit" style="float: right") 인증키 부여
+
+
+      hr(style="border-top:3px solid #F12121")
+
+      h2 마감일자가 지난 프로젝트
+
+      .card-group
+        .card.mb-3
+          .card-body 
+            h5 프로젝트명
+            p.project_name 데베프
+            h6 프로젝트 종료 날짜
+            p.end_date 2021.05.22
+            h6 상태
+            p.state 진행중
+            h6 담당자
+            p.PM PM 이름
+            button.btn.btn-outline-dark(type="submit" style="float: right" id="finish") 종료하기
+
+
+        
+              
