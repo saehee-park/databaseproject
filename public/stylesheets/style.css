@@ -1,7 +1,15 @@
 a {
   color: #00B7FF;
 }
-
+img.card-img{
+  margin: auto;
+  width: 80%;
+  height: 100%;
+}
+.carousel-caption {
+  height : 370px;
+  font-size : 70px;
+}
 .card-group {
   padding-top: 20px;
 }
