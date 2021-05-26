@@ -5,8 +5,6 @@
     <!-- css 적용하기-->
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/logincss.css">
-    <link rel="stylesheet" href="/stylesheets/table.css">
-    <link rel="stylesheet" href="/stylesheets/nav.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-design-blocks/1.0.2/css/froala_blocks.min.css">
@@ -21,53 +19,48 @@
   </head>
   <body>
     <header>
-      <nav class="navbar static-top navbar-expand-lg navbar-dark" style="background-color: #3a3a3a;">
+      <nav class="navbar static-top navbar-expand-lg navbar-light" style="background-color: #ffffff;">
         <div class="container-lg"><a class="navbar-brand" href="/">Prompt Solution</a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item me-3"><a class="btn btn-outline-light" href="/signin">로그인</a></li>
-              <li class="nav-item"> <a class="btn btn-outline-dark" href="/signup">회원가입</a></li>
+              <li class="nav-item me-3"><a class="btn btn-outline-success" href="/signin">로그인</a></li>
+              <li class="nav-item"> <a class="btn btn-outline-primary" href="/signup">회원가입</a></li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-    <div class="container"> 
-      <form action="#" method="post">
-        <h1 class="text-center-mt-5">종료된 프로젝트</h1>
-        <div class="card-group">
-          <div class="card mb-3">
-            <div class="card-body"> 
-              <h5>프로젝트명</h5>
-              <p class="project_name">데베프</p>
-              <h6>프로젝트 종료 날짜</h6>
-              <p class="end_date">2021.05.26</p>
-              <h6>상태</h6>
-              <p class="state">종료</p>
-              <h6>담당자</h6>
-              <p class="PM">PM 이름</p>
-              <button class="btn btn-outline-dark" type="submit" style="float: right">인증키 부여</button>
+    <div class="container">
+      <form action="/employeeDetail" method="post"></form>
+      <h1 class="text-center mt-5">직원 Information</h1>
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-body">
+          <h5 class="card-title">직원 이름</h5>
+          <p class="card-text" style="text-align: left;">홍길동</p>
+          <h5 class="card-title">skill</h5>
+          <p class="card-text" style="text-align: left;">~~~</p>
+          <div class="chart-container">
+            <div class="chart">
+              <div class="chart-row chart-period">
+                <div class="chart-row-item"></div><span>1월</span><span>2월</span><span>3월</span><span>4월</span><span>5월</span><span>6월</span><span>7월</span><span>8월</span><span>9월</span><span>10월</span><span>11월</span><span>12월</span>
+              </div>
+              <div class="chart-row chart-lines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="chart-row"> 
+                <div class="chart-row-item">task1</div>
+                <ul class="chart-row-bars">
+                  <li class="chart-li-one">2021.03~2021.08.25</li>
+                </ul>
+              </div>
+              <div class="chart-row">
+                <div class="chart-row-item">task2 </div>
+                <ul class="chart-row-bars">
+                  <li class="chart-li-two">2021.02~2021.03.15</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-        <hr style="border-top:3px solid #F12121">
-        <h2>마감일자가 지난 프로젝트</h2>
-        <div class="card-group">
-          <div class="card mb-3">
-            <div class="card-body"> 
-              <h5>프로젝트명</h5>
-              <p class="project_name">데베프</p>
-              <h6>프로젝트 종료 날짜</h6>
-              <p class="end_date">2021.05.22</p>
-              <h6>상태</h6>
-              <p class="state">진행중</p>
-              <h6>담당자</h6>
-              <p class="PM">PM 이름</p>
-              <button class="btn btn-outline-dark" type="submit" style="float: right" id="finish">종료하기</button>
-            </div>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   </body>
 </html>

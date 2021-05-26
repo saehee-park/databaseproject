@@ -34,36 +34,49 @@
     </header>
     <div class="container"> 
       <form action="#" method="post">
-        <h1 class="text-center-mt-5">종료된 프로젝트</h1>
-        <div class="card-group">
-          <div class="card mb-3">
-            <div class="card-body"> 
-              <h5>프로젝트명</h5>
-              <p class="project_name">데베프</p>
-              <h6>프로젝트 종료 날짜</h6>
-              <p class="end_date">2021.05.26</p>
-              <h6>상태</h6>
-              <p class="state">종료</p>
-              <h6>담당자</h6>
-              <p class="PM">PM 이름</p>
-              <button class="btn btn-outline-dark" type="submit" style="float: right">인증키 부여</button>
+        <h1 class="text-center-mt-5">Add Task</h1>
+        <div class="form-group">
+          <div class="form-row">
+            <div class="form-group col-md-12 mt-4"> 
+              <h4>업무명</h4>
+              <input class="form-control" type="text" placeholder="업무명" name="name">
             </div>
           </div>
-        </div>
-        <hr style="border-top:3px solid #F12121">
-        <h2>마감일자가 지난 프로젝트</h2>
-        <div class="card-group">
-          <div class="card mb-3">
-            <div class="card-body"> 
-              <h5>프로젝트명</h5>
-              <p class="project_name">데베프</p>
-              <h6>프로젝트 종료 날짜</h6>
-              <p class="end_date">2021.05.22</p>
-              <h6>상태</h6>
-              <p class="state">진행중</p>
-              <h6>담당자</h6>
-              <p class="PM">PM 이름</p>
-              <button class="btn btn-outline-dark" type="submit" style="float: right" id="finish">종료하기</button>
+          <div class="form-row">
+            <div class="form-group col-md-12 mt-4"> 
+              <h4>업무 내용</h4>
+              <input class="form-control" type="text" placeholder="업무 내용" name="detail">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mt-4">
+              <h4>시작 일자</h4>
+              <input class="form-control" type="date" placeholder="starts" name="begin_date">
+            </div>
+            <div class="form-group col-md-6 mt-4">
+              <h4>종료 일자</h4>
+              <input class="form-control" type="date" placeholder="lasts" name="last_date">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6 mt-4">
+              <h3>제출 파일 종류</h3>
+              <select class="form-control" name="file">
+                <option>문서</option>
+                <option>Excel</option>
+                <option>html/js</option>
+                <option>C#, C/C++</option>
+                <option>Dart/Flutter, Java</option>
+                <option>기타</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6 mt-4">
+              <h3>수행 직원</h3>
+              <select class="form-control" name="file">
+                <option>홍길동</option>
+                <option>강동원</option>
+                <option>공유</option>
+              </select>
             </div>
           </div>
         </div>
