@@ -1,0 +1,34 @@
+extends layout 
+
+//- 직원 정보 확인
+block content
+  .container
+    form(action="/employeeInfo", method="post")
+      h1.text-center.mt-5 직원 Information
+
+    .form-row
+        .form-group.col-md-4
+          h6 직원 이름
+          input.form-control(type="text", placeholder="name", name="name")
+        .form-group.col-md-4
+          h6 skill
+          input.form-control(type="text", placeholder="skill", name="skill")
+        .form-group.col-md-4
+          h6 부서
+          select#inputState.form-select(name="department" size="1")
+                            option(value='1') 마케팅
+                            option(value='2') 연구관리
+                            option(value='3') 경영관리
+                            option(value='4') 개발
+    .row.justify-content-start.mt-4
+        .col(style="margin-bottom: 1em")
+        button.btn.btn-outline-dark(type="submit", style="float: right") Search
+
+    .list-group.list-group-flush(style="margin-top: 10px")
+        a.list-group-item.list-group-item-action(href="employeeDetail") 홍길동
+        a.list-group-item.list-group-item-action(href="employeeDetail") 전종훈
+        a.list-group-item.list-group-item-action(href="employeeDetail") 박세희
+
+
+
+

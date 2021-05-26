@@ -371,4 +371,9 @@ router.get("/addclient", function (req, res, next) {
     res.render("addclient", { title: "Express" });
 });
 
+/*add Task*/
+router.get("/project/addTask", function (req, res, next) {
+    res.render("project/addTask", { title: "Express" });
+});
+
 module.exports = router;

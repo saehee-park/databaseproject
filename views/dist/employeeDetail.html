@@ -30,30 +30,37 @@
         </div>
       </nav>
     </header>
-    <div class="container"> 
-      <form action="#" method="post">
-        <h1 class="text-center-mt-5">Project Details</h1>
-        <div class="card-group"> 
-          <div class="card"> 
-            <h4>프로젝트명</h4>
-            <p class="name">DB프로젝트</p>
-            <h4>프로젝트 설명</h4>
-            <p class="details">이 프로젝트는 .... 그래그래그거에요 교수님께서 데베프 수업때 해달라고 하신 그거에요.</p>
-            <h4>프로젝트 담당자</h4>
-            <p class="PM">4조</p>
-            <h4>거래처</h4>
-            <p class="client">전종훈 교수님</p>
-            <h4>투입 직원</h4>
-            <h6 class="employee">이름: 홍길동</h6>
-            <p class="duty">직무: FrontEnd</p>
-            <h6 class="employee">이름: 저팔계</h6>
-            <p class="duty">직무: BackEnd</p>
-            <h4>진행 상태</h4>
-            <p class="status">진행중</p><a href="#" class="btn btn-outline-dark">프로젝트 수정</a>
-<a href="#" class="btn btn-outline-dark">프로젝트 삭제</a><a href="#" class="btn btn-outline-dark">List로 돌아가기</a>
+    <div class="container">
+      <form action="/employeeDetail" method="post"></form>
+      <h1 class="text-center mt-5">직원 Information</h1>
+      <div class="card" style="margin-top: 20px;">
+        <div class="card-body">
+          <h5 class="card-title">직원 이름</h5>
+          <p class="card-text" style="text-align: left;">홍길동</p>
+          <h5 class="card-title">skill</h5>
+          <p class="card-text" style="text-align: left;">~~~</p>
+          <div class="chart-container">
+            <div class="chart">
+              <div class="chart-row chart-period">
+                <div class="chart-row-item"></div><span>1월</span><span>2월</span><span>3월</span><span>4월</span><span>5월</span><span>6월</span><span>7월</span><span>8월</span><span>9월</span><span>10월</span><span>11월</span><span>12월</span>
+              </div>
+              <div class="chart-row chart-lines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="chart-row"> 
+                <div class="chart-row-item">task1</div>
+                <ul class="chart-row-bars">
+                  <li class="chart-li-one">2021.03~2021.08.25</li>
+                </ul>
+              </div>
+              <div class="chart-row">
+                <div class="chart-row-item">task2 </div>
+                <ul class="chart-row-bars">
+                  <li class="chart-li-two">2021.02~2021.03.15</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </body>
 </html>

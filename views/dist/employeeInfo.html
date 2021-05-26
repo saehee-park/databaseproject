@@ -30,30 +30,34 @@
         </div>
       </nav>
     </header>
-    <div class="container"> 
-      <form action="#" method="post">
-        <h1 class="text-center-mt-5">Project Details</h1>
-        <div class="card-group"> 
-          <div class="card"> 
-            <h4>프로젝트명</h4>
-            <p class="name">DB프로젝트</p>
-            <h4>프로젝트 설명</h4>
-            <p class="details">이 프로젝트는 .... 그래그래그거에요 교수님께서 데베프 수업때 해달라고 하신 그거에요.</p>
-            <h4>프로젝트 담당자</h4>
-            <p class="PM">4조</p>
-            <h4>거래처</h4>
-            <p class="client">전종훈 교수님</p>
-            <h4>투입 직원</h4>
-            <h6 class="employee">이름: 홍길동</h6>
-            <p class="duty">직무: FrontEnd</p>
-            <h6 class="employee">이름: 저팔계</h6>
-            <p class="duty">직무: BackEnd</p>
-            <h4>진행 상태</h4>
-            <p class="status">진행중</p><a href="#" class="btn btn-outline-dark">프로젝트 수정</a>
-<a href="#" class="btn btn-outline-dark">프로젝트 삭제</a><a href="#" class="btn btn-outline-dark">List로 돌아가기</a>
-          </div>
-        </div>
+    <div class="container">
+      <form action="/employeeInfo" method="post">
+        <h1 class="text-center mt-5">직원 Information</h1>
       </form>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <h6>직원 이름</h6>
+          <input class="form-control" type="text" placeholder="name" name="name">
+        </div>
+        <div class="form-group col-md-4">
+          <h6>skill</h6>
+          <input class="form-control" type="text" placeholder="skill" name="skill">
+        </div>
+        <div class="form-group col-md-4">
+          <h6>부서</h6>
+          <select class="form-select" id="inputState" name="department" size="1">
+            <option value="1">마케팅</option>
+            <option value="2">연구관리</option>
+            <option value="3">경영관리</option>
+            <option value="4">개발</option>
+          </select>
+        </div>
+      </div>
+      <div class="row justify-content-start mt-4">
+        <div class="col" style="margin-bottom: 1em"></div>
+        <button class="btn btn-outline-dark" type="submit" style="float: right">Search</button>
+      </div>
+      <div class="list-group list-group-flush" style="margin-top: 10px"><a class="list-group-item list-group-item-action" href="employeeDetail">홍길동</a><a class="list-group-item list-group-item-action" href="employeeDetail">전종훈</a><a class="list-group-item list-group-item-action" href="employeeDetail">박세희</a></div>
     </div>
   </body>
 </html>
