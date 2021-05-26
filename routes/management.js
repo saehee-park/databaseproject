@@ -173,24 +173,13 @@ router.post('/evaluation/register', catchErrors(async (req, res, next) => {
     item_example: req.body.example
   });
 
-  if(req.body.type='동료') {
-    const items = await EvaluationItem.findAll({ where: { evaluation_type: "동료" } });
-    res.render('management/evaluationItemList', { type: '동료', items: items });
-  }
-  else if(req.body.type='PM') {
-    const items = await EvaluationItem.findAll({ where: { evaluation_type: "PM" } });
-    res.render('management/evaluationItemList', { type: "PM", items: items });
-  }
-  else {
-    const items = await EvaluationItem.findAll({ where: { evaluation_type: "고객" } });
-    res.render('management/evaluationItemList', { type: "고객", items: items });
-  }
+  res.render('management/evaluationTypeList', {});
 }));
 
 router.get('/evaluation/:evaluation_item_no/delete', catchErrors(async (req, res, next) => {
   const item = await EvaluationItem.findOne({ where: { evaluation_item_no: req.params.evaluation_item_no }});
   item.destroy();
-  res.redirect('/management/evaluation/peer/manage');
+  res.render('management/evaluationTypeList', {});
 }));
 
 module.exports = router;
