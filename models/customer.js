@@ -13,6 +13,14 @@ module.exports = class Customer extends Sequelize.Model {
                 type: Sequelize.STRING(255),
                 allowNull: false,
             },
+            e_mail: {
+                type: Sequelize.STRING(255),
+                allowNull: false,
+            },
+            auth_key: {
+                type: Sequelize.STRING(255),
+                allowNull: true,
+            },
         }, {
             sequelize,
             timestamps: false,

@@ -29,10 +29,6 @@ module.exports = class Employee extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 
             },
-            work_experience: {
-                type: Sequelize.FLOAT,
-                allowNull: true,
-            },
         }, {
             sequelize,
             timestamps: false,
@@ -57,6 +53,9 @@ module.exports = class Employee extends Sequelize.Model {
         
         // Department Model과 연결
         db.Employee.belongsTo(db.Department, { foreignKey: 'dept_no', targetKey: 'dept_no'});
+
+        // Employee(PM)과 연결
+        db.Employee.hasOne(db.Project, { foreignKey: 'pm_no', sourceKey: 'emp_no'});
 
         // 동료 평가 Model과 연결
         db.Employee.hasMany(db.PeerEvaluation, { foreignKey: 'evaluator_no', sourceKey: 'emp_no'});
