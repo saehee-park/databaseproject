@@ -22,25 +22,24 @@ router.get('/', catchErrors(async (req, res, next) => {
       }
     ]
   });
-  res.render('project/list', { projects: projects });
+  res.render('project/list', { projects });
 }));
 
-router.get('/:project_no', catchErrors(async (req, res, next) => {
-  const project = await Project.findOne({
-    where: { project_no: req.params.project_no },
-    include: [
-      {
-        model: Employee,
-        as: 'project_emp'
-      },
-      {
-        model: Customer
-      }
-    ]
-  });
-  console.log(project.project_emp[0]);
-  res.render('project/details', { project: project });
-}));
+// router.get('/:project_no', catchErrors(async (req, res, next) => {
+//   const project = await Project.findOne({
+//     where: { project_no: req.params.project_no },
+//     include: [
+//       {
+//         model: Employee,
+//         as: 'project_emp'
+//       },
+//       {
+//         model: Customer
+//       }
+//     ]
+//   });
+//   res.render('project/details', { project: project });
+// }));
 
 // 업무 진척도 조회 페이지
 router.get('/tasks/:project_no/:emp_no', catchErrors(async (req, res) => {
@@ -119,14 +118,34 @@ router.get('/tasks/:project_no/:emp_no', catchErrors(async (req, res) => {
 
 // addTask 페이지 응답 
 router.get('/addTask', catchErrors(async (req, res) => {
-  res.render('/project/addTask', {});
+  res.render('project/addTask', {});
 }));
 
 // 업무를 DB에 추가
 router.post('/addTask', catchErrors(async (req, res) => {
+  console.log(req.body);
+  const title = req.body.title;
+  const content = req.body.content;
+  const start_date = req.body.start_date;
+  const end_date = req.body.end_date;
+  const submit_file = req.body.submit_file;
+  const emp_no = req.body.emp_no;
+  const project_no = req.body.project_no;
+
   const task = await Task.create({
-    
+    title,
+    content,
+    start_date,
+    end_date,
+    submit_file,
+    emp_no,
+    project_no,
   });
+  if(task != null) {
+    return res.send('true');
+  } else {
+    return res.send('false');
+  }
 }));
 
 // 스킬셋이 HTML & JAVASCRIPT인 직원 리스트 응답
@@ -173,30 +192,160 @@ router.get('/addTask/HJ', catchErrors(async (req, res) => {
 }));
 
 // 스킬셋이 C# & C/C++인 직원 리스트 응답
-router.get('addTask/CCC', catchErrors(async (req, res) => {
+router.get('/addTask/CCC', catchErrors(async (req, res) => {
+  // 직원 리스트 선언
+  let empList = [];
+  let empNoList = [];
+  let empNameList = [];
+
+  // EmpSkill 가져오기
   const empSkill = await EmpSkill.findAll({
     where: {
       skill_no: [3, 4],
     }
   });
+  
+  // 해당 스킬셋을 가진 직원들에 대해 모든 이름 값을 가져오기 위한 반복문
+  for (let i=0; i<empSkill.length; i++) {
+    // Employee 가져오기
+    const emp = await Employee.findOne({
+      where: {
+        emp_no: empSkill[i].emp_no,
+      },
+      attributes: ['name'],
+    });
+
+    // 모든 직원 추가
+    empNoList.push(empSkill[i].emp_no);
+    empNameList.push(emp.name);
+  }
+
+  // 중복 제거
+  const set1 = new Set(empNoList);
+  const set2 = new Set(empNameList);
+  empNoList = [...set1];
+  empNameList = [...set2];
+
+
+  for (let i=0; i<empNoList.length; i++) {
+    empList.push([empNoList[i], empNameList[i]]);
+  }
+  // 최종 리스트 전달
+  res.send(empList);
 }));
 
 // 스킬셋이 Dart/Flutter & Java 인 직원 리스트 응답
-router.get('addTask/DFJ', catchErrors(async (req, res) => {
+router.get('/addTask/DFJ', catchErrors(async (req, res) => {
+  // 직원 리스트 선언
+  let empList = [];
+  let empNoList = [];
+  let empNameList = [];
+
+  // EmpSkill 가져오기
   const empSkill = await EmpSkill.findAll({
     where: {
       skill_no: [5, 6],
     }
   });
+  
+  // 해당 스킬셋을 가진 직원들에 대해 모든 이름 값을 가져오기 위한 반복문
+  for (let i=0; i<empSkill.length; i++) {
+    // Employee 가져오기
+    const emp = await Employee.findOne({
+      where: {
+        emp_no: empSkill[i].emp_no,
+      },
+      attributes: ['name'],
+    });
+
+    // 모든 직원 추가
+    empNoList.push(empSkill[i].emp_no);
+    empNameList.push(emp.name);
+  }
+
+  // 중복 제거
+  const set1 = new Set(empNoList);
+  const set2 = new Set(empNameList);
+  empNoList = [...set1];
+  empNameList = [...set2];
+
+
+  for (let i=0; i<empNoList.length; i++) {
+    empList.push([empNoList[i], empNameList[i]]);
+  }
+  // 최종 리스트 전달
+  res.send(empList);
 }));
 
-// 스킬셋이 Dart/Flutter & Java 인 직원 리스트 응답
-router.get('addTask/Python', catchErrors(async (req, res) => {
+// 스킬셋이 Python 인 직원 리스트 응답
+router.get('/addTask/Python', catchErrors(async (req, res) => {
+  // 직원 리스트 선언
+  let empList = [];
+  let empNoList = [];
+  let empNameList = [];
+
+  // EmpSkill 가져오기
   const empSkill = await EmpSkill.findAll({
     where: {
       skill_no: 7,
     }
   });
+  
+  // 해당 스킬셋을 가진 직원들에 대해 모든 이름 값을 가져오기 위한 반복문
+  for (let i=0; i<empSkill.length; i++) {
+    // Employee 가져오기
+    const emp = await Employee.findOne({
+      where: {
+        emp_no: empSkill[i].emp_no,
+      },
+      attributes: ['name'],
+    });
+
+    // 모든 직원 추가
+    empNoList.push(empSkill[i].emp_no);
+    empNameList.push(emp.name);
+  }
+
+  // 중복 제거
+  const set1 = new Set(empNoList);
+  const set2 = new Set(empNameList);
+  empNoList = [...set1];
+  empNameList = [...set2];
+
+
+  for (let i=0; i<empNoList.length; i++) {
+    empList.push([empNoList[i], empNameList[i]]);
+  }
+  // 최종 리스트 전달
+  res.send(empList);
+}));
+
+// 일반 option에 대한 모든 직원 리스트 응답
+router.get('/addTask/all/:project_no', catchErrors(async (req, res) => {
+  // 직원 리스트 선언
+  let empList = [];
+
+  // EmpSkill 가져오기
+  const participations = await Participation.findAll({
+    where: {
+      project_no: req.params.project_no,
+    }
+  });
+  
+  for(let i=0; i<participations.length; i++) {
+    // Employee 가져오기
+    const emp = await Employee.findOne({
+      where: {
+        emp_no: participations[i].emp_no,
+      },
+      attributes: ['name'],
+    });
+
+    empList.push([participations[i].emp_no, emp.name]);
+  }
+
+  // 최종 리스트 전달
+  res.send(empList);
 }));
 
 module.exports = router;

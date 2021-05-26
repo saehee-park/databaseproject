@@ -10,20 +10,20 @@ block content
       div.card-group 
         .card 
           h4 프로젝트명
-          p.name= project.project_name
+          p.name= projects.project_name
           h4 프로젝트 설명
-          p.details= project.description
+          p.details= projects.description
           h4 프로젝트 담당자
           p.PM 4조
           h4 거래처
-          p.client= project.Customer.customer_name
+          p.client= projects.Customer.customer_name
           h4 투입 직원
-          h6.employee= project.project_emp[0].name
+          h6.employee= projects.project_emp[0].name
           p.duty 직무: FrontEnd
           h6.employee 이름: 저팔계
           p.duty 직무: BackEnd
           h4 진행 상태
-          p.status= project.state
+          p.status= projects.state
 
           .chart-container
             .chart

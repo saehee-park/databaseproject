@@ -41,7 +41,7 @@ window.onload = function () {
             console.log(result.data);
             if(result.data == true) {
                 alert('성공적으로 평가를 마쳤습니다!');
-                window.location.replace('/pm_evaluation');
+                window.location.replace('/');
             } else {
                 alert('평가가 서버에 저장되지 않았습니다.');
             }

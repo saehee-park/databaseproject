@@ -37,11 +37,9 @@ window.onload = function () {
 
             // Server에 /pm_evaluation POST 요청
             const result = await axios.post('/peer_evaluation', { content1, content2, score1, score2, project_no, non_evaluator_no });
-            console.log(result);
-            console.log(result.data);
             if(result.data == true) {
                 alert('성공적으로 평가를 마쳤습니다!');
-                window.location.replace('/peer_evaluation');
+                window.location.replace('/');
             } else {
                 alert('평가가 서버에 저장되지 않았습니다.');
             }

@@ -3,44 +3,43 @@ extends ../layout
 //- 프로젝트 수정
 block content
   .container 
-    form(action="#", method="post")
+    form(action="/")
       h1.text-center-mt-5 Add Task
 
       .form-group
         .form-row
             .form-group.col-md-12.mt-4 
                 h4 업무명
-                input.form-control(type="text", placeholder="업무명", name = "name")
+                input.form-control(type="text", placeholder="업무명", name = "title")
         .form-row
             .form-group.col-md-12.mt-4 
                 h4 업무 내용
-                input.form-control(type="text", placeholder="업무 내용", name = "detail")
+                input.form-control(type="text", placeholder="업무 내용", name = "content")
         .form-row
             .form-group.col-md-6.mt-4
                 h4 시작 일자
-                input.form-control(type="date", placeholder="starts", name="begin_date")
+                input.form-control(type="date", placeholder="starts", name="start_date")
             .form-group.col-md-6.mt-4
                 h4 종료 일자
-                input.form-control(type="date", placeholder="lasts", name="last_date")
+                input.form-control(type="date", placeholder="lasts", name="end_date")
         .form-row
             .form-group.col-md-6.mt-4
                 h3 제출 파일 종류
-                select.form-control(name="file")
-                    option 문서
-                    option Excel
-                    option html/js
-                    option C#, C/C++
-                    option Dart/Flutter, Java
-                    option 기타
+                select#submitFileSelect.form-control(name="submit_file")
+                    option(value="문서") 문서
+                    option(value="엑셀") 엑셀
+                    option(value="Html/Javascript") Html/Javascript
+                    option(value="C#/C/C++") C#/C/C++
+                    option(value="Dart/Flutter/Java") Dart/Flutter/Java
+                    option(value="Python") Python
+                    option(value="기타") 기타
             .form-group.col-md-6.mt-4
                 h3 수행 직원
-                select.form-control(name="file")
-                    option 홍길동
-                    option 강동원
-                    option 공유
+                select#empSelect.form-control(name="emp_no")
+
         .form-row
             .form-group.col-md-12.mt-4 
-                button.btn.btn-outline-dark(type="submit" style="float: right" id="register") 등록하기
-
-            
-
+                button#register.btn.btn-outline-dark(type="submit" style="float: right") 등록하기
+    
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(src="/addTask.js")
