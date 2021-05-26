@@ -1,9 +1,9 @@
-extends layout 
+extends ../layout
 
 //- 직원 조회 페이지
 block content
   .container
-    form(action="/employeeInfo", method="post")
+    form(action="/inquiryEmployee", method="post")
       h1.text-center.mt-5 직원 Information
 
     .form-row
@@ -25,9 +25,9 @@ block content
         button.btn.btn-outline-dark(type="submit", style="float: right") Search
 
     .list-group.list-group-flush(style="margin-top: 10px")
-        a.list-group-item.list-group-item-action(href="employeeDetail") 홍길동
-        a.list-group-item.list-group-item-action(href="employeeDetail") 전종훈
-        a.list-group-item.list-group-item-action(href="employeeDetail") 박세희
+        a.list-group-item.list-group-item-action(href="#") 홍길동
+        a.list-group-item.list-group-item-action(href="#") 전종훈
+        a.list-group-item.list-group-item-action(href="#") 박세희
 
 
 

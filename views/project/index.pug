@@ -1,0 +1,31 @@
+extends ../layout 
+
+block content 
+  .container 
+    h1.mb-5.d-flex.justify-content-center 프로젝트
+    .row.mb-5
+      .col.d-flex.justify-content-center 
+        .card(style="width: 18rem;")
+          .card-body
+            h5.card-title.mb-3 프로젝트 등록
+            h6.card-subtitle.mb-4.text-muted Register Project
+            p.card-text 새로운 프로젝트를 등록할 수 있는 페이지로 이동합니다.
+            .d-grid.gap-2.mt-5
+              a.btn.btn-outline-success(href='/management/project/register') 프로젝트 등록하기
+      .col.d-flex.justify-content-center 
+        .card(style="width: 18rem;")
+          .card-body
+            h5.card-title.mb-3 프로젝트 조회
+            h6.card-subtitle.mb-4.text-muted View Projects
+            p.card-text 모든 프로젝트를 조회할 수 있는 페이지로 이동합니다.
+            .d-grid.gap-2.mt-5
+              a.btn.btn-outline-success(href='/projects') 프로젝트 조회하기
+      .col.d-flex.justify-content-center 
+        .card(style="width: 18rem;")
+          .card-body
+            h5.card-title.mb-3 업무 등록
+            h6.card-subtitle.mb-4.text-muted Register Task
+            p.card-text 직원에게 업무를 부여할 수 있는 페이지로 이동합니다.
+            .d-grid.gap-2.mt-5
+              a.btn.btn-outline-success(href='/project/addTask') 업무 등록하기
+    
