@@ -5,7 +5,6 @@ const catchErrors = require("../lib/async-error");
 var router = express.Router();
 const { PeerEvaluation, Participation, Employee, Project, Task } = require('../models');
 
-
 // 라우터 설정
 router.get('/project/:project_no', catchErrors(async (req, res) => {
     // 모든 태스크 가져오기
@@ -20,9 +19,7 @@ router.get('/project/:project_no', catchErrors(async (req, res) => {
             current_state: 'end',
         }
     });
-    console.log(endTasks.length);
-    console.log(tasks.length);
-    console.log(Math.round(endTasks.length / tasks.length * 100));
+    
     res.send([Math.round(endTasks.length / tasks.length * 100)]);
 
 }));

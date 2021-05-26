@@ -19,9 +19,10 @@ INSERT INTO employee (ID, PWD, name, education, dept_no, authorization_no, work_
 INSERT INTO employee (ID, PWD, name, education, dept_no, authorization_no, work_experience) VALUES ('test3', '1234', '최치원', 'college', 3, 0, 3.5);
 
 -- 프로젝트 테이블
-INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 1: 쇼핑몰", "2021-01-01", "2022-01-01", " 진행중", 1, "쇼핑몰 웹 페이지 개발");
-INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 2: 캘린더", "2021-03-01", "2022-09-01", " 진행중", 2, "캘린더 어플 개발");
-INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 3: 게임", "2021-05-01", "2022-05-01", " 진행중", 3, "게임 개발");
+INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 1: 쇼핑몰", "2021-01-01", "2022-01-01", "진행중", 1, "쇼핑몰 웹 페이지 개발");
+INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 2: 캘린더", "2021-03-01", "2022-09-01", "진행중", 2, "캘린더 어플 개발");
+INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 3: 게임", "2021-05-01", "2022-05-01", "진행중", 3, "게임 개발");
+INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 4: Test", "2021-06-01", "2022-06-01", "종료", 3, "Test");
 
 -- 참여 테이블
 INSERT INTO participation (participation_date, duty, participate, emp_no, project_no) VALUES ('2021-02-01', '테스터', '참여중', 1, 1);
