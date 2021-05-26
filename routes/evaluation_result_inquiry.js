@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
     const { id } = req.params;
     if (!req.session.authorization) res.json({ message: "you should login" });
     const user = await Employee.findOne({
@@ -24,7 +24,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
     let max = -1;
     let index = -1;
     const scores = await Peer.findAll({});

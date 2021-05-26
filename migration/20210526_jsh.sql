@@ -21,8 +21,7 @@ INSERT INTO employee (ID, PWD, name, education, dept_no, authorization_no, work_
 -- 프로젝트 테이블
 INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 1: 쇼핑몰", "2021-01-01", "2022-01-01", "진행중", 1, "쇼핑몰 웹 페이지 개발");
 INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 2: 캘린더", "2021-03-01", "2022-09-01", "진행중", 2, "캘린더 어플 개발");
-INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 3: 게임", "2021-05-01", "2022-05-01", "진행중", 3, "게임 개발");
-INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 4: Test", "2021-06-01", "2022-06-01", "종료", 3, "Test");
+INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 3: 게임", "2021-05-01", "2021-05-26", "진행중", 3, "게임 개발");
 
 -- 참여 테이블
 INSERT INTO participation (participation_date, duty, participate, emp_no, project_no) VALUES ('2021-02-01', '테스터', '참여중', 1, 1);
@@ -38,6 +37,7 @@ INSERT INTO participation (participation_date, duty, participate, emp_no, projec
 INSERT INTO customer_evaluation (evaluation_content1, evaluation_score1, evaluation_content2, evaluation_score2, customer_id, non_evaluator_no, project_no) VALUES ("많이 좋음", 90, "보통임", 70, 1, 1, 1);
 INSERT INTO customer_evaluation (evaluation_content1, evaluation_score1, evaluation_content2, evaluation_score2, customer_id, non_evaluator_no, project_no) VALUES ("좋음", 70, "그럭저럭", 50, 1, 2, 1);
 INSERT INTO customer_evaluation (evaluation_content1, evaluation_score1, evaluation_content2, evaluation_score2, customer_id, non_evaluator_no, project_no) VALUES ("아주 좋음", 100, "별로", 30, 1, 3, 1);
+INSERT INTO customer_evaluation (evaluation_content1, evaluation_score1, evaluation_content2, evaluation_score2, customer_id, non_evaluator_no, project_no) VALUES ("아주 좋음", 100, "별로", 30, 1, 2, 2);
 
 
 -- 업무 테이블

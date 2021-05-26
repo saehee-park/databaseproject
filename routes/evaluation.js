@@ -91,7 +91,9 @@ router.get('/result/all', catchErrors(async (req, res) => {
                 emp_no: participations[i].emp_no
             },
         });
+        evaluationResult.push(employee.emp_no);
         evaluationResult.push(employee.name);
+        
     
         // 프로젝트 이름 추가
         const project = await Project.findOne({
@@ -154,12 +156,15 @@ router.get('/result/all', catchErrors(async (req, res) => {
         evaluationResult.push(Math.round((evaluation_score1 + evaluation_score2 + evaluation_score3)/3) + "점");
 
         // 평가 정보 리스트 전달
-        if(evaluationResult.length == 7)
+        if(evaluationResult.length == 8)
             allEvaluationList.push(evaluationResult);
     }
 
     res.send(allEvaluationList);
 }));
+
+
+
 
 router.get('/result/empName', catchErrors(async (req, res) => {
     var allEvaluationList = [];

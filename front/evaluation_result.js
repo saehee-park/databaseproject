@@ -38,7 +38,8 @@ async function showEvaluation(option) {
         
         // Td들 생성
         var td1 = document.createElement('td');
-        td1.classList.add(className[0]);  
+        td1.classList.add(className[0]);
+
         // creating checkbox element
         var checkbox = document.createElement('input');
               
@@ -51,20 +52,21 @@ async function showEvaluation(option) {
         td1.appendChild(checkbox);
         row.appendChild(td1);
 
-        for (let j=0; j<evaluationResultList[i].length; j++) {
+        for (let j=1; j<evaluationResultList[i].length; j++) {
             var td = document.createElement('td');
             td.innerHTML = evaluationResultList[i][j];
-            td.className = className[j+1];  
-            console.log(evaluationResultList[i][j]);
-            console.log(td.className);
+            td.tagName = evaluationResultList[i][j];
+            td.className = className[j+1];
+            console.log(evaluationResultList[i][0]);
+            if(j==1) td.value = evaluationResultList[i][0];
             row.appendChild(td);
         }
+
 
         // row 추가
         document.getElementById('tbody').appendChild(row);
     }
-
-    
+    setBadge();
 }
 
 async function setSearchButton() {
@@ -118,4 +120,29 @@ function removeRow() {
     while(tbody.firstChild) {
         tbody.removeChild(tbody.firstChild);
     }
+}
+
+async function setBadge() {
+    var tbody = document.getElementById('tbody');
+    var max = 0;
+    var rows = tbody.children;
+    var cnt = 0;
+
+    // 전체 테이블 돌몀서 총합 가장 큰 직원의 직원 명 가져와야 함
+    for(let i=0; i<rows.length; i++) {
+        var score = parseInt(rows[i].children.item(6).innerHTML.replace('점', ''));
+        if(max < score) {
+            max = score;
+            emp_no = rows[i].children.item(1).value;
+            cnt = i;
+        }
+    }
+    // span#badge.badge.badge-pill.badge-danger 이달의 직원
+    var badge = document.createElement('span');
+    badge.classList.add('badge');
+    badge.classList.add('badge-pill');
+    badge.classList.add('badge-danger');
+    badge.innerHTML = '이달의 직원';
+    console.log(rows[cnt].children.item(1));
+    rows[cnt].children.item(1).appendChild(badge);
 }
