@@ -16,10 +16,6 @@ module.exports = class Task extends Sequelize.Model {
                 allowNull: false,
                 defaultValue: Sequelize.NOW,
             },
-            submit_state: {
-                type: Sequelize.BOOLEAN,
-                defaultValue: false,
-            },
             current_state: {
                 type: Sequelize.ENUM(['uncheck', 'progress', 'verify', 'end']),
                 defaultValue: 'uncheck',
@@ -43,6 +39,5 @@ module.exports = class Task extends Sequelize.Model {
 
         // Project Model과 연결
         db.Task.belongsTo(db.Project, { foreignKey: 'project_no', targetKey: 'project_no'});
-
     }
 };
