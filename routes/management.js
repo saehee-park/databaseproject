@@ -173,11 +173,11 @@ router.post('/evaluation/register', catchErrors(async (req, res, next) => {
     item_example: req.body.example
   });
 
-  if(req.body.type='동료') {
+  if(req.body.type=='동료') {
     const items = await EvaluationItem.findAll({ where: { evaluation_type: "동료" } });
     res.render('management/evaluationItemList', { type: '동료', items: items });
   }
-  else if(req.body.type='PM') {
+  else if(req.body.type=='PM') {
     const items = await EvaluationItem.findAll({ where: { evaluation_type: "PM" } });
     res.render('management/evaluationItemList', { type: "PM", items: items });
   }

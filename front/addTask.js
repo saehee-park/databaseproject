@@ -22,7 +22,7 @@ window.onload = function () {
 
 
     // 업무 등록 버튼에 대한 이벤트 리스너 등록
-    document.getElementById('formId').addEventListener('submit', async (e) => {
+    document.getElementById('submit').addEventListener('submit', async (e) => {
         e.preventDefault();
         const title = e.target.title.value;
         const content = e.target.content.value;

@@ -338,10 +338,6 @@ router.get("/addclient", function (req, res, next) {
     res.render("addclient", { title: "Express" });
 });
 
-/*add Task*/
-router.get("/project/addTask", function (req, res, next) {
-    res.render("project/addTask", { title: "Express" });
-});
 
 /*project finish*/
 router.get("/project/finish", function (req, res, next) {
