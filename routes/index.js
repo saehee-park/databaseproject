@@ -63,7 +63,7 @@ function getDday(end) {
     let month = today.getMonth() + 1;  // 월
     let day = today.getDate();  // 날짜
 
-    var endArray = end.split(" ");
+    var endArray = end.toString().split(" ");
     var end_date = endArray[0];
     var dateArray = end_date.split("-");
 
@@ -206,44 +206,44 @@ router.get("/test", function (req, res, next) {
     res.render("index2", { title: "Express", name: "han sh" });
 });
 
-router.get("/project/:id", async (req, res) => {
-    const { id } = req.params;
-    if (!req.session.authorization) res.json({ message: "you should login" });
-    const user = await Employee.findOne({
-        where: { id },
-    });
-    let total = 0;
-    const scores = await Peer.findAll({
-        where: {
-            evaluation_no: user.emp_no,
-        },
-    });
+// router.get("/project/:id", catchErrors( async (req, res) => {
+//     const { id } = req.params;
+//     if (!req.session.authorization) res.json({ message: "you should login" });
+//     const user = await Employee.findOne({
+//         where: { id },
+//     });
+//     let total = 0;
+//     const scores = await Peer.findAll({
+//         where: {
+//             evaluation_no: user.emp_no,
+//         },
+//     });
 
-    scores.forEach((val) => {
-        total += val.evaluation_score1;
-        total += val.evaluation_score2;
-    });
+//     scores.forEach((val) => {
+//         total += val.evaluation_score1;
+//         total += val.evaluation_score2;
+//     });
 
-    res.json({
-        total,
-        average: total / (scores.length * 2),
-    });
-});
+//     res.json({
+//         total,
+//         average: total / (scores.length * 2),
+//     });
+// }));
 
-router.get("/project", async (req, res) => {
-    let max = -1;
-    let index = -1;
-    const scores = await Peer.findAll({});
-    scores.forEach((val, i) => {
-        const temp = val.evaluation_score1 + val.evaluation_score2;
-        if (max < temp) index = i;
-    });
-    const user = await Employee.findOne({
-        where: { emp_no: scores[index].evaluation_no },
-    });
+// router.get("/project", catchErrors( async (req, res) => {
+//     let max = -1;
+//     let index = -1;
+//     const scores = await Peer.findAll({});
+//     scores.forEach((val, i) => {
+//         const temp = val.evaluation_score1 + val.evaluation_score2;
+//         if (max < temp) index = i;
+//     });
+//     const user = await Employee.findOne({
+//         where: { emp_no: scores[index].evaluation_no },
+//     });
 
-    res.json(user);
-});
+//     res.json(user);
+// }));
 
 // mypage router 사용
 const mypage = require("./mypage");
@@ -348,8 +348,8 @@ router.get('/evaluation/resultPeer_eval', function(req, res, next){
   });
 
 /*project list*/
-router.get("/project/list", function (req, res, next) {
-    res.render("project/list", { title: "Express" });
+router.get('/project/list', function (req, res, next) {
+    res.render('project/list', { title: "Express" });
 });
 
 /*project create*/
@@ -382,9 +382,21 @@ router.get("/project/addTask", function (req, res, next) {
     res.render("project/addTask", { title: "Express" });
 });
 
-/*add Task*/
+/*project finish*/
 router.get("/project/finish", function (req, res, next) {
     res.render("project/finish", { title: "Express" });
 });
+
+/*inquiry Employee*/
+router.get("/employee/inquiryEmployee", function (req, res, next) {
+    res.render("employee/inquiryEmployee", { title: "Express" });
+});
+
+/*inquiry Employee*/
+router.get("/employee/detailEmployee", function (req, res, next) {
+    res.render("employee/detailEmployee", { title: "Express" });
+});
+
+
 
 module.exports = router;

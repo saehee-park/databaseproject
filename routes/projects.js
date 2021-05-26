@@ -22,7 +22,7 @@ router.get('/', catchErrors(async (req, res, next) => {
       }
     ]
   });
-  res.render('project/list', { projects: projects });
+  res.render('project/index', { projects: projects });
 }));
 
 router.get('/:project_no', catchErrors(async (req, res, next) => {

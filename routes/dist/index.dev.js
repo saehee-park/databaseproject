@@ -18,6 +18,15 @@ var bcrypt = require("bcrypt");
 
 var Peer = require("../models/peer_evaluation");
 
+var admin = require("firebase-admin");
+
+var serAccount = require("../node-7fe56-firebase-adminsdk-6a08y-3ebbb95309.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serAccount)
+});
+express().set("admin", admin);
+
 function generateHash(password) {
   return bcrypt.hash(password, 10);
 }
@@ -65,7 +74,7 @@ function getDday(end) {
 
   var day = today.getDate(); // 날짜
 
-  var endArray = end.split(" ");
+  var endArray = end.toString().split(" ");
   var end_date = endArray[0];
   var dateArray = end_date.split("-");
 
@@ -397,7 +406,7 @@ router.get("/test", function (req, res, next) {
     title: "Express",
     name: "han sh"
   });
-}); // router.get("/project/:id", (req, res) => {
+}); // router.get("/project/:id", catchErrors( async (req, res) => {
 //     const { id } = req.params;
 //     if (!req.session.authorization) res.json({ message: "you should login" });
 //     const user = await Employee.findOne({
@@ -417,8 +426,8 @@ router.get("/test", function (req, res, next) {
 //         total,
 //         average: total / (scores.length * 2),
 //     });
-// });
-// router.get("/project", (req, res) => {
+// }));
+// router.get("/project", catchErrors( async (req, res) => {
 //     let max = -1;
 //     let index = -1;
 //     const scores = await Peer.findAll({});
@@ -430,11 +439,12 @@ router.get("/test", function (req, res, next) {
 //         where: { emp_no: scores[index].evaluation_no },
 //     });
 //     res.json(user);
-// });
-// // mypage router 사용
-// const mypage = require("./routes/mypage");
-// express().use("/mypage", mypage);
+// }));
+// mypage router 사용
 
+var mypage = require("./mypage");
+
+express().use("/mypage", mypage);
 /*회원가입 화면*/
 
 router.get("/test3", function (req, res, next) {
@@ -444,15 +454,8 @@ router.get("/test3", function (req, res, next) {
 });
 /*nav_개발자*/
 
-router.get("/nav_developer", function (req, res, next) {
-  res.render("nav_develop", {
-    title: "Express"
-  });
-});
-/*nav_경영진*/
-
-router.get("/nav_management", function (req, res, next) {
-  res.render("nav_management", {
+router.get("/navbar", function (req, res, next) {
+  res.render("includes/navbar", {
     title: "Express"
   });
 });
@@ -577,8 +580,8 @@ router.get('/evaluation/resultPeer_eval', function (req, res, next) {
 });
 /*project list*/
 
-router.get("/project/list", function (req, res, next) {
-  res.render("project/list", {
+router.get('/project/list', function (req, res, next) {
+  res.render('project/list', {
     title: "Express"
   });
 });
@@ -624,10 +627,24 @@ router.get("/project/addTask", function (req, res, next) {
     title: "Express"
   });
 });
-/*add Task*/
+/*project finish*/
 
 router.get("/project/finish", function (req, res, next) {
   res.render("project/finish", {
+    title: "Express"
+  });
+});
+/*inquiry Employee*/
+
+router.get("/employee/inquiryEmployee", function (req, res, next) {
+  res.render("employee/inquiryEmployee", {
+    title: "Express"
+  });
+});
+/*inquiry Employee*/
+
+router.get("/employee/detailEmployee", function (req, res, next) {
+  res.render("employee/detailEmployee", {
     title: "Express"
   });
 });
