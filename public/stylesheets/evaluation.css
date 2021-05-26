@@ -1,0 +1,9 @@
+/*
+평가 input , result css
+*/
+
+.container.inputBackground{
+    background-color: #3a3a3a;
+    width: 100%;
+    height: 100vh;
+}

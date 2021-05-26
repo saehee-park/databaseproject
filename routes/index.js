@@ -247,14 +247,11 @@ router.get("/test3", function (req, res, next) {
 });
 
 /*nav_개발자*/
-router.get("/nav_developer", function (req, res, next) {
-    res.render("nav_develop", { title: "Express" });
+router.get("/navbar", function (req, res, next) {
+    res.render("includes/navbar", { title: "Express" });
 });
 
-/*nav_경영진*/
-router.get("/nav_management", function (req, res, next) {
-    res.render("nav_management", { title: "Express" });
-});
+
 
 /*프로젝트 등록 페이지*/
 router.get("/addproject", function (req, res, next) {
