@@ -62,6 +62,9 @@ module.exports = class Project extends Sequelize.Model {
 
         // Task Model과 연결
         db.Project.hasMany(db.Task, { foreignKey: 'project_no', sourceKey: 'project_no'});
+        
+        // evaluation_result
+        db.Project.hasMany(db.EvaluationResult, { foreignKey: 'project_no', sourceKey: 'project_no'});
 
     }
 };

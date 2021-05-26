@@ -1,10 +1,14 @@
 var express = require("express");
+const Sequelize = require('sequelize');
 var router = express.Router();
 var Employee = require("../models/employee");
 var Participation = require("../models/participation");
 var Customer = require("../models/customer");
 var Project = require("../models/project");
+var EvaluationItem = require('../models/evaluation_items');
 const catchErrors = require("../lib/async-error");
+
+const Op = Sequelize.Op;
 
 router.get('/', function (req, res, next) {
   res.render('management/index',{});
@@ -35,10 +39,6 @@ router.get('/project/register', catchErrors(async (req, res, next) => {
   const development = await Employee.findAll({ where: { dept_no: 4 } });
   res.render('management/registerProject', { 
     customers: customers, marketing: marketing, research: research, business: business, development: development });
-}));
-
-router.get('/project/search', catchErrors(async (req, res, next) => {
-  res.render('management/searchProject', {});
 }));
 
 router.post('/project/register', catchErrors(async (req, res, next) => {
@@ -118,6 +118,10 @@ router.put('/project/:project_no/edit', catchErrors(async (req, res, next) => {
   }
 }));
 
+router.get('/project/search', catchErrors(async (req, res, next) => {
+  res.render('management/searchProject', {projects: null});
+}));
+
 router.post('/project/search', catchErrors(async (req, res, next) => {
   console.log(req.body);
 
@@ -142,7 +146,12 @@ router.post('/project/search', catchErrors(async (req, res, next) => {
       }
     ]
   });
-  res.render('project/list', { projects: projects });
+  res.render('management/searchProject', { projects: projects });
+}));
+
+router.get('/evaluation/peer/manage', catchErrors(async (req, res, next) => {
+  const items = await EvaluationItem.findAll({ where: { evaluation_type: "동료" } });
+  res.render('evaluation/modification_peerEval', { items: items });
 }));
 
 module.exports = router;

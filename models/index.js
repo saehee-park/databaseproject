@@ -11,6 +11,8 @@ const PMEvaluation = require('./pm_evaluation');
 const Project = require('./project');
 const Skill = require('./skill');
 const Task = require('./task');
+const EvaluationItems = require('./evaluation_items');
+const EvaluationResult = require('./evaluation_result');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config.json')[env];
@@ -32,6 +34,8 @@ db.PMEvaluation = PMEvaluation;
 db.Project = Project;
 db.Skill = Skill;
 db.Task = Task;
+db.EvaluationItems = EvaluationItems;
+db.EvaluationResult = EvaluationResult;
 
 Authorization.init(sequelize);
 Customer.init(sequelize);
@@ -45,6 +49,8 @@ PMEvaluation.init(sequelize);
 Project.init(sequelize);
 Skill.init(sequelize);
 Task.init(sequelize);
+EvaluationItems.init(sequelize);
+EvaluationResult.init(sequelize);
  
 Authorization.associate(db);
 Customer.associate(db);
@@ -58,5 +64,7 @@ PMEvaluation.associate(db);
 Project.associate(db);
 Skill.associate(db);
 Task.associate(db);
+EvaluationItems.associate(db);
+EvaluationResult.associate(db);
 
 module.exports = db;
