@@ -3,39 +3,53 @@ extends ../layout
 //- 종료된 프로젝트 리스트
 block content
   .container 
-    form(action="/projects/finish", method="post")
-      h1.text-center-mt-5 종료된 프로젝트
+    h1.text-center-mt-5 종료된 프로젝트
 
+    if(end_state_projects)
+      for project in end_state_projects
+        form(action="#", method="post")
+          .card-group
+            .card.mb-3
+              .card-body 
+                h5 프로젝트명
+                p.project_name= project.project_name
+                h6 프로젝트 종료 날짜
+                p.end_date= project.end_date
+                h6 상태
+                p.state= project.state
+                h6 담당자
+                p.PM PM 이름
+                button.btn.btn-outline-dark(type="submit" style="float: right") 인증키 부여
+    else 
       .card-group
         .card.mb-3
           .card-body 
-            h5 프로젝트명
-            p.project_name 데베프
-            h6 프로젝트 종료 날짜
-            p.end_date 2021.05.26
-            h6 상태
-            p.state 종료
-            h6 담당자
-            p.PM PM 이름
-            button#grantKey.btn.btn-outline-dark(type="submit" style="float: right") 인증키 부여
+            h5 종료된 프로젝트가 없습니다.
 
 
-      hr(style="border-top:3px solid #F12121")
+    hr(style="border-top:3px solid #F12121")
 
-      h2 마감일자가 지난 프로젝트
-
+    h2 마감일자가 지난 프로젝트
+    if(end_date_projects)
+      for project in end_date_projects
+        form(action=`/management/project/state/end/${project.project_no}`, method="post")
+          .card-group
+            .card.mb-3
+              .card-body 
+                h5 프로젝트명
+                p.project_name= project.project_name
+                h6 프로젝트 종료 날짜
+                p.end_date= project.end_date
+                h6 상태
+                p.state= project.state
+                h6 담당자
+                p.PM PM 이름
+                button.btn.btn-outline-danger(type="submit" style="float: right" id="finish") 종료하기
+    else 
       .card-group
         .card.mb-3
           .card-body 
-            h5 프로젝트명
-            p.project_name 데베프
-            h6 프로젝트 종료 날짜
-            p.end_date 2021.05.22
-            h6 상태
-            p.state 진행중
-            h6 담당자
-            p.PM PM 이름
-            button.btn.btn-outline-dark(type="submit" style="float: right" id="finish") 종료하기
+            h5 마감일자가 지난 프로젝트가 없습니다.
 
 
   script(src='https://unpkg.com/axios/dist/axios.min.js')
