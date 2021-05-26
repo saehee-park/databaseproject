@@ -26,8 +26,12 @@
         <div class="container-lg"><a class="navbar-brand" href="/">Prompt Solution</a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item me-3"><a class="btn btn-outline-light" href="/signin">로그인</a></li>
-              <li class="nav-item"> <a class="btn btn-outline-dark" href="/signup">회원가입</a></li>
+              <li class="nav-ttem me-3">
+                <button class="loginNav" type="button" onclick="location.href='/signin' ">로그인</button>
+              </li>
+              <li class="nav-item"> 
+                <button class="signinNav" type="button" onclick="location.href='/signup' ">회원가입</button>
+              </li>
             </ul>
           </div>
         </div>
@@ -60,7 +64,7 @@
         <div class="col" style="margin-bottom: 1em"></div>
         <button class="btn btn-outline-dark" type="submit" style="float: right">Search</button>
       </div>
-      <div class="list-group list-group-flush" style="margin-top: 10px"><a class="list-group-item list-group-item-action" href="#">홍길동</a><a class="list-group-item list-group-item-action" href="#">전종훈</a><a class="list-group-item list-group-item-action" href="#">박세희</a></div>
+      <div class="list-group list-group-flush" style="margin-top: 10px"><a class="list-group-item list-group-item-action" href="employee/detailEmployee">홍길동</a><a class="list-group-item list-group-item-action" href="employee/detailEmployee">전종훈</a><a class="list-group-item list-group-item-action" href="employee/detailEmployee">박세희</a></div>
     </div>
   </body>
 </html>
