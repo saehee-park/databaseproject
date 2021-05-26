@@ -79,7 +79,7 @@ button.signupBtn{
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
-  width: 40%;
+  width: 100%;
 }
 button.loginButton {
 	border-radius: 20px;

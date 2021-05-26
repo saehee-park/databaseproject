@@ -63,7 +63,7 @@ function getDday(end) {
     let month = today.getMonth() + 1;  // 월
     let day = today.getDate();  // 날짜
 
-    var endArray = end.split(" ");
+    var endArray = end.toString().split(" ");
     var end_date = endArray[0];
     var dateArray = end_date.split("-");
 
