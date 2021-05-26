@@ -1,28 +1,30 @@
 extends ../layout
 //-고객평가 입력페이지
 block content
-    .container 
-        .row.align-items-center
-            h3 고객평가
-        .row.align-items-center.mt-4
-            .col 
-                h3.mb-3.ml-3 평가 프로젝트
-                input.form-control(type="text" name="project" value=`project_name` readonly)
-            .col
-                h3.mb-3.ml-3 평가 직원
-                input.form-control(type="text" name="employee" value=`employee_name` readonly)
-        br      
-        form(action="/", method='post')
-            .form-group
-                label(for="inputWorkScore") 업무수행 평가 점수
-                input#inputworkscore.form-control(type="number" name="work_score" min="0" max="100" placeholder="0~100점")
-            .form-group
-                label(for="inputWorkContent") 업무수행 평가 세부내용
-                input#inputworkcontent.form-control(type="text" name="work_content" placeholder="ex) 고객의 요구사항을 다 만족함")
-            .form-group
-                label(for="inputCommunicationScore") 커뮤니케이션 평가 점수
-                input#inputcommunicationscore.form-control(type="number" name="communication_score" min="0" max="100" placeholder="0~100점")
-            .form-group
-                label(for="inputCommunicationContent") 커뮤니케이션 평가 세부내용
-                input#inputcommunicationcontent.form-control(type="text" name="communication_content" placeholder="ex) 고객의 피드백을 즉각 반영함")
-            button.btn.btn-primary(type="submit") 평가 등록 
+    .container
+        .evaluationView
+            .row
+                h3 고객평가
+            br
+            .row
+                .col 
+                    label.form-label.signupLabel(for='project_name') 평가 프로젝트
+                    input.form-control(type="text" name="project" value=`project_name` readonly)
+                .col
+                    label.form-label.signupLabel(for='employee_name') 평가 직원
+                    input.form-control(type="text" name="employee" value=`employee_name` readonly)
+            br      
+            form(action="/", method='post')
+                .form-group
+                    label(for="inputWorkScore") 업무수행 평가 점수
+                    input#inputworkscore.form-control(type="number" name="work_score" min="0" max="100" placeholder="0~100점")
+                .form-group
+                    label(for="inputWorkContent") 업무수행 평가 세부내용
+                    input#inputworkcontent.form-control(type="text" name="work_content" placeholder="ex) 고객의 요구사항을 다 만족함")
+                .form-group
+                    label(for="inputCommunicationScore") 커뮤니케이션 평가 점수
+                    input#inputcommunicationscore.form-control(type="number" name="communication_score" min="0" max="100" placeholder="0~100점")
+                .form-group
+                    label(for="inputCommunicationContent") 커뮤니케이션 평가 세부내용
+                    input#inputcommunicationcontent.form-control(type="text" name="communication_content" placeholder="ex) 고객의 피드백을 즉각 반영함")
+                button.signinButton(type="submit") 평가 등록 
