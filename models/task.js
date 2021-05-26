@@ -11,14 +11,21 @@ module.exports = class Task extends Sequelize.Model {
                 type: Sequelize.TEXT,
                 allowNull: false,
             },
-            deadline: {
+            start_date: {
                 type: Sequelize.DATE,
                 allowNull: false,
-                defaultValue: Sequelize.NOW,
+                defaultValue: Sequelize.NOW
+            },
+            end_date: {
+                type: Sequelize.DATE,
+                allowNull: false,
             },
             current_state: {
                 type: Sequelize.ENUM(['uncheck', 'progress', 'verify', 'end']),
                 defaultValue: 'uncheck',
+            },
+            submit_file: {
+                type: Sequelize.ENUM(['문서', '엑셀', 'Html/Javascript', 'C#/C/C++', 'Dart/Flutter/Java', 'Python']),
             },
 
         }, {
