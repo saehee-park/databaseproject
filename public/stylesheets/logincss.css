@@ -36,7 +36,11 @@
   margin-left: 60px;
   margin-right: 60px;
 }
-p{
+p.loginMember{
+  text-align: center;
+  font-weight: bold;
+}
+p.loginCustomer{
   text-align: center;
   font-weight: bold;
 }
