@@ -578,10 +578,10 @@ router.get('/evaluation/resultPeer_eval', function (req, res, next) {
     title: 'Express'
   });
 });
-/*project list*/
+/*project index*/
 
-router.get('/project/list', function (req, res, next) {
-  res.render('project/list', {
+router.get('/project/index', function (req, res, next) {
+  res.render('project/index', {
     title: "Express"
   });
 });

@@ -49,7 +49,7 @@ router.get('/', catchErrors(function _callee(req, res, next) {
 
         case 2:
           projects = _context.sent;
-          res.render('project/index', {
+          res.render('project/list', {
             projects: projects
           });
 

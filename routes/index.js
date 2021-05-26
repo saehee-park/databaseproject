@@ -347,9 +347,9 @@ router.get('/evaluation/resultPeer_eval', function(req, res, next){
     res.render('evaluation/resultPeer_eval', { title: 'Express' });
   });
 
-/*project list*/
-router.get('/project/list', function (req, res, next) {
-    res.render('project/list', { title: "Express" });
+/*project index*/
+router.get('/project/index', function (req, res, next) {
+    res.render('project/index', { title: "Express" });
 });
 
 /*project create*/
