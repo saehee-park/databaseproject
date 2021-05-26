@@ -74,14 +74,6 @@ router.get('/employee/:project_no/:emp_no', catchErrors(async (req, res) => {
         }
     });
 
-    console.log(Math.round(endTasks.length / tasks.length * 100));
-    console.log(endTasks.length);
-    console.log(verifyTask.length);
-    console.log(progressTask.length);
-    console.log(uncheckTask.length);
-
-    
-
     res.send(employeeTaskList);
 
 }));
