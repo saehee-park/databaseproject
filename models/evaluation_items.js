@@ -9,7 +9,7 @@ module.exports = class Employee extends Sequelize.Model {
         autoIncrement: true,
         primaryKey: true,
       },
-      evalutaion_type: {
+      evaluation_type: {
         type: Sequelize.STRING,
         allowNull: false,
       },

@@ -68,12 +68,6 @@ router.post('/project/register', catchErrors(async (req, res, next) => {
   res.render('project/list', {});
 }));
 
-// 평가 항목 등록
-router.get('/evaluation/register', catchErrors(async (req, res, next) => {
-  res.render('management/registerEvaluation', {});
-}));
-
-
 router.get('/project/:project_no/edit', catchErrors(async (req, res, next) => {
   const project = await Project.findOne({ where: {project_no: req.params.project_no} });
   const customers = await Customer.findAll();
@@ -149,9 +143,54 @@ router.post('/project/search', catchErrors(async (req, res, next) => {
   res.render('management/searchProject', { projects: projects });
 }));
 
+router.get('/evaluation/list', catchErrors(async (req, res, next) => {
+  res.render('management/evaluationTypeList', {});
+}));
+
 router.get('/evaluation/peer/manage', catchErrors(async (req, res, next) => {
   const items = await EvaluationItem.findAll({ where: { evaluation_type: "동료" } });
-  res.render('evaluation/modification_peerEval', { items: items });
+  res.render('management/evaluationItemList', { type: '동료', items: items });
+}));
+
+router.get('/evaluation/pm/manage', catchErrors(async (req, res, next) => {
+  const items = await EvaluationItem.findAll({ where: { evaluation_type: "PM" } });
+  res.render('management/evaluationItemList', { type: "PM", items: items });
+}));
+
+router.get('/evaluation/customer/manage', catchErrors(async (req, res, next) => {
+  const items = await EvaluationItem.findAll({ where: { evaluation_type: "고객" } });
+  res.render('management/evaluationItemList', { type: "고객", items: items });
+}));
+
+router.get('/evaluation/register', catchErrors(async (req, res, next) => {
+  res.render('management/registerEvaluation_form', { });
+}));
+
+router.post('/evaluation/register', catchErrors(async (req, res, next) => {
+  const item = await EvaluationItem.create({
+    evaluation_type: req.body.type,
+    item_title: req.body.title,
+    item_example: req.body.example
+  });
+
+  if(req.body.type='동료') {
+    const items = await EvaluationItem.findAll({ where: { evaluation_type: "동료" } });
+    res.render('management/evaluationItemList', { type: '동료', items: items });
+  }
+  else if(req.body.type='PM') {
+    const items = await EvaluationItem.findAll({ where: { evaluation_type: "PM" } });
+    res.render('management/evaluationItemList', { type: "PM", items: items });
+  }
+  else {
+    const items = await EvaluationItem.findAll({ where: { evaluation_type: "고객" } });
+    res.render('management/evaluationItemList', { type: "고객", items: items });
+  }
+}));
+
+router.get('/evaluation/:evaluation_item_no/delete', catchErrors(async (req, res, next) => {
+  const item = await EvaluationItem.findOne({ where: { evaluation_item_no: req.params.evaluation_item_no }});
+  item.destroy();
+  res.redirect('/management/evaluation/peer/manage');
 }));
 
 module.exports = router;
