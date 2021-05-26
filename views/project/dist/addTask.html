@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/stylesheets/logincss.css">
     <link rel="stylesheet" href="/stylesheets/table.css">
     <link rel="stylesheet" href="/stylesheets/nav.css">
+    <link rel="stylesheet" href="/stylesheets/evaluation.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-design-blocks/1.0.2/css/froala_blocks.min.css">
@@ -25,8 +26,12 @@
         <div class="container-lg"><a class="navbar-brand" href="/">Prompt Solution</a>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item me-3"><a class="btn btn-outline-light" href="/signin">로그인</a></li>
-              <li class="nav-item"> <a class="btn btn-outline-dark" href="/signup">회원가입</a></li>
+              <li class="nav-ttem me-3">
+                <button class="loginNav" type="button" onclick="location.href='/signin' ">로그인</button>
+              </li>
+              <li class="nav-item"> 
+                <button class="signinNav" type="button" onclick="location.href='/signup' ">회원가입</button>
+              </li>
             </ul>
           </div>
         </div>
@@ -77,6 +82,11 @@
                 <option>강동원</option>
                 <option>공유</option>
               </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12 mt-4"> 
+              <button class="btn btn-outline-dark" type="submit" style="float: right" id="register">등록하기</button>
             </div>
           </div>
         </div>
