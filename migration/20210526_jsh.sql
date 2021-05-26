@@ -1,5 +1,5 @@
 -- 권한 테이블
-INSERT INTO `authorization` VALUES (0,'일반'),(1,'경영진');
+INSERT INTO `authorization` VALUES (0,'일반'), (1,'경영진');
 
 -- 부서 테이블
 INSERT INTO `department` (dept_name) VALUES ('마케팅'), ('연구관리'), ('경영관리'), ('개발');
@@ -8,20 +8,17 @@ INSERT INTO `department` (dept_name) VALUES ('마케팅'), ('연구관리'), ('�
 INSERT INTO skills (skill_name) VALUES ('HTML'), ('Javascript'), ('C#'), ('C/C++'), ('Python'), ('Dart/Flutter'), ('Java');
 
 -- 고객 테이블
-INSERT INTO customer (customer_name) VALUES ("외주 1"), ("외주 2"), ("외주 3");
+INSERT INTO customer (customer_name, e_mail) VALUES ("외주 1", "arenslien@gmail.com"), ("외주 2", "sehui0709@gmail.com"), ("외주 3", "wngus4838@gmail.com");
 
 -- 직원 테이블
--- INSERT INTO employee (ID, PWD, name, resident_registeration_number, education, dept_no, authorization_no, work_experience) VALUES ('test', '1234', '홍길동', '123456-1234567', 'college', 3, 1, 1.5);
--- INSERT INTO employee (ID, PWD, name, resident_registeration_number, education, dept_no, authorization_no, work_experience) VALUES ('test2', '1234', '이순신', '123456-1234567', 'college', 2, 0, 2.5);
--- INSERT INTO employee (ID, PWD, name, resident_registeration_number, education, dept_no, authorization_no, work_experience) VALUES ('test3', '1234', '최치원', '123456-1234567', 'college', 3, 0, 3.5);
-INSERT INTO employee (ID, PWD, name, education, dept_no, authorization_no, work_experience) VALUES ('test', '1234', '홍길동', 'college', 3, 1, 1.5);
-INSERT INTO employee (ID, PWD, name, education, dept_no, authorization_no, work_experience) VALUES ('test2', '1234', '이순신', 'college', 2, 0, 2.5);
-INSERT INTO employee (ID, PWD, name, education, dept_no, authorization_no, work_experience) VALUES ('test3', '1234', '최치원', 'college', 3, 0, 3.5);
+INSERT INTO employee (ID, PWD, name, education, dept_no, authorization_no) VALUES ('test', '1234', '홍길동', 'college', 3, 1);
+INSERT INTO employee (ID, PWD, name, education, dept_no, authorization_no) VALUES ('test2', '1234', '이순신', 'college', 2, 0);
+INSERT INTO employee (ID, PWD, name, education, dept_no, authorization_no) VALUES ('test3', '1234', '최치원', 'college', 3, 0);
 
 -- 프로젝트 테이블
-INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 1: 쇼핑몰", "2021-01-01", "2022-01-01", "진행중", 1, "쇼핑몰 웹 페이지 개발");
-INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 2: 캘린더", "2021-03-01", "2022-09-01", "진행중", 2, "캘린더 어플 개발");
-INSERT INTO project (project_name, start_date, end_date, state, customer_id, description) VALUES ("프로젝트 3: 게임", "2021-05-01", "2021-05-26", "진행중", 3, "게임 개발");
+INSERT INTO project (project_name, start_date, end_date, state, customer_id, description, pm_no) VALUES ("프로젝트 1: 쇼핑몰", "2021-01-01", "2022-01-01", "진행중", 1, "쇼핑몰 웹 페이지 개발", 2);
+INSERT INTO project (project_name, start_date, end_date, state, customer_id, description, pm_no) VALUES ("프로젝트 2: 캘린더", "2021-03-01", "2022-09-01", "진행중", 2, "캘린더 어플 개발", 1);
+INSERT INTO project (project_name, start_date, end_date, state, customer_id, description, pm_no) VALUES ("프로젝트 3: 게임", "2021-05-01", "2021-05-26", "진행중", 3, "게임 개발", 3);
 
 -- 참여 테이블
 INSERT INTO participation (participation_date, duty, participate, emp_no, project_no) VALUES ('2021-02-01', '테스터', '참여중', 1, 1);

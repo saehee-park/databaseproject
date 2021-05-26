@@ -348,4 +348,66 @@ router.get('/addTask/all/:project_no', catchErrors(async (req, res) => {
   res.send(empList);
 }));
 
+// 
+router.post('/finish', catchErrors(async (req, res) => {
+  // 인증키 문자열 선언
+  let grantKey = "";
+  // req body 값 가져오기
+  const { project_no, customer_id, start_date } = req.body;
+  // start_date값 쪼개기
+  const year = start_date.getFullYear();
+  const month = start_date.getMonth();
+  const day = start_date.getDay();
+
+  const items = [project_no, customer_id, year, month, day];
+
+  // 인증키 첫 번째 값: project_no
+  grantKey += project_no;
+
+  // 인증키 두 번째 값: day
+  grantKey += day;
+
+  // 인증키 세 번째 값: 모든 값의 합
+  let sum = 0;
+  for(let item in items) {
+    sum += parseInt(item);
+  }
+  grantKey += sum;
+
+  // 인증키 네 번째 값: year
+  grantKey += year;
+
+  // 인증키 다섯 번째 값: 모든 값의 곱
+  sum = 1;
+  for(let item in items) {
+    sum *= parseInt(item);
+  }
+  grantKey += sum;
+
+  // 인증키 여섯 번째 값: project_no
+  grantKey += customer_id;
+
+  // 인증키 일곱 번째 값: month
+  grantKey += month;
+
+  // 인증키 아홉 번째 값: 1
+  grantKey += "1";
+
+  // 고객 모델 가져오기
+  const customer = await Customer.findOne({
+    where: {
+      customer_id
+    },
+  });
+
+  // 고객의 인증키 컬럼에 인증키 값 추가하기
+  customer.update({
+    auth_key: grantKey,
+  });
+
+  // 인증키에 대한 이메일 보내기
+  // 이메일 보내기
+
+  return res.send('true');
+}));
 module.exports = router;

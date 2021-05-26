@@ -3,7 +3,7 @@ extends ../layout
 //- 종료된 프로젝트 리스트
 block content
   .container 
-    form(action="#", method="post")
+    form(action="/projects/finish", method="post")
       h1.text-center-mt-5 종료된 프로젝트
 
       .card-group
@@ -17,7 +17,7 @@ block content
             p.state 종료
             h6 담당자
             p.PM PM 이름
-            button.btn.btn-outline-dark(type="submit" style="float: right") 인증키 부여
+            button#grantKey.btn.btn-outline-dark(type="submit" style="float: right") 인증키 부여
 
 
       hr(style="border-top:3px solid #F12121")
@@ -38,5 +38,6 @@ block content
             button.btn.btn-outline-dark(type="submit" style="float: right" id="finish") 종료하기
 
 
-        
-              
+  script(src='https://unpkg.com/axios/dist/axios.min.js')
+  script(src="/projectFinish.js")      
+  
