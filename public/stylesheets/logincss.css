@@ -1,12 +1,14 @@
 /*
-로그인 뷰 css
+로그인,회원가입 뷰 css
 */
 .container {
-	background: #607D8B;
+	background: #3a3a3a;
   width: 100%;
-  height: 80vh;
+  height: 100vh;
 }
+
 .loginView {
+    border-radius: 10px;
     background: #ffffff;
     text-align: center;
     align-items: center;
@@ -17,8 +19,28 @@
     
     
   }
-
-p{
+.signupView{
+    border-radius: 10px;
+    background: #ffffff;
+    align-items: center;
+    width: 50%;
+    padding: 8% 0 0;
+    margin: auto;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+.signupView h2{
+  text-align: center;
+  font-weight: bold;
+}
+.signupView form{
+  margin-left: 60px;
+  margin-right: 60px;
+}
+p.loginMember{
+  text-align: center;
+  font-weight: bold;
+}
+p.loginCustomer{
   text-align: center;
   font-weight: bold;
 }
@@ -39,11 +61,30 @@ input.myinput {
     /* text-align: center; */
 }
 
-
+input.signupInput{
+    border: none;
+    width: 100%;
+    display: block;
+    font-size: 16px;
+    border-bottom: 1px solid #575757;
+}
+button.signupBtn{
+  border-radius: 20px;
+	border: 1px solid #000000;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 10px 30px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+  width: 40%;
+}
 button.loginButton {
 	border-radius: 20px;
-	border: 1px solid #45aba6;
-	background-color: #45aba6;
+	border: 1px solid #000000;
+	background-color: #000000;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -56,9 +97,9 @@ button.loginButton {
 }
 button.signinButton{
     border-radius: 20px;
-    border: 1px solid #45aba6;
+    border: 1px solid #000000;
     background-color: #ffffff;
-    color:#45aba6;
+    color:#000000;
     font-size: 12px;
     font-weight: bold;
     padding: 10px 45px;
@@ -69,6 +110,5 @@ button.signinButton{
     
 }
 form.guest{
-  
-  
+
 }
