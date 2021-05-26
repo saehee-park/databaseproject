@@ -10,6 +10,10 @@ module.exports = class Participation extends Sequelize.Model {
             duty: {
                 type: Sequelize.STRING(255),
                 allowNull: true,
+            },
+            participate: {
+                type: Sequelize.STRING(45),
+                allowNull: false
             }
         }, {
             sequelize,

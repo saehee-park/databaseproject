@@ -10,23 +10,23 @@ block content
       div.card-group 
         .card 
           h4 프로젝트명
-          p.name DB프로젝트
+          p.name= project.project_name
           h4 프로젝트 설명
-          p.details 이 프로젝트는 .... 그래그래그거에요 교수님께서 데베프 수업때 해달라고 하신 그거에요.
+          p.details= project.description
           h4 프로젝트 담당자
           p.PM 4조
           h4 거래처
-          p.client 전종훈 교수님
+          p.client= project.Customer.customer_name
           h4 투입 직원
-          h6.employee 이름: 홍길동
+          h6.employee= project.project_emp[0].name
           p.duty 직무: FrontEnd
           h6.employee 이름: 저팔계
           p.duty 직무: BackEnd
           h4 진행 상태
-          p.status 진행중
-          if(authorization != 0)
-            <a href="#" class="btn btn-outline-dark">프로젝트 수정</a>
-            <a href="#" class="btn btn-outline-dark">프로젝트 삭제</a>
+          p.status= project.state
+          if(authorization == 1)
+            a.btn.btn-outline-dark(href=`/management/proejct/${project.project_no}/edit`) 프로젝트 수정</a>
+            a.btn.btn-outline-dark(href=`/management/project/${project.project_no}/delete`) 프로젝트 삭제</a>
           <a href="#" class="btn btn-outline-dark">List로 돌아가기</a>
 
 

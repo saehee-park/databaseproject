@@ -34,29 +34,30 @@ router.route('/')
 // 참여한 프로젝트에 대한 GET 요청 처리 
 router.route('/project_list')
 .get(async (req, res, next) => {
-    try {
-        // 빈 리스트
-        var project_list = [];
+  try {
+    // 빈 리스트
+    var project_list = [];
 
-        // 사용자가 참여한 모든 프로젝트 쿼리
-        const participations = await Participation.findAll({
-            where: { emp_no: req.session.user.emp_no }
-        });
+    // 사용자가 참여한 모든 프로젝트 쿼리
+    const participations = await Participation.findAll({
+        where: { emp_no: req.session.user.emp_no }
+    });
 
-        // 참여한 프로젝트에 대한 프로젝트 명과 no을 리스트에 담음
-        for(let i=0; i<participations.length; i++) {
-          const project = await Project.findOne({
-            where: { project_no: participations[i].project_no }
-          });
-          project_list.push([participations[i].project_no, project.project_name]);
-        }
-        
-        // 참여한 리스트 전달
-        res.send(project_list);
-      } catch (err) {
-        console.error(err);
-        next(err);
-      }
+    // 참여한 프로젝트에 대한 프로젝트 명과 no을 리스트에 담음
+    for(let i=0; i<participations.length; i++) {
+      const project = await Project.findOne({
+        where: { project_no: participations[i].project_no }
+      });
+      project_list.push([participations[i].project_no, project.project_name]);
+    }
+    
+    // 참여한 리스트 전달
+    res.send(project_list);
+  }
+  catch (err) {
+    console.error(err);
+    next(err);
+  }
 });
 
 router.route('/employee_list/:project_no')
@@ -75,7 +76,17 @@ router.route('/employee_list/:project_no')
           const employee = await Employee.findOne({
             where: { emp_no: participations[i].emp_no }
           });
-          if(participations[i].emp_no != req.session.user.emp_no){
+
+          // 해당 employee에 대한 평가가 있는지 확인하기 위한 것
+          const peer_evaluation = await PeerEvaluation.findOne({
+            where: {
+              evaluator_no: req.session.user.emp_no,
+              non_evaluator_no: participations[i].emp_no,
+              project_no: req.params.project_no,
+            },
+          });
+
+          if((participations[i].emp_no != req.session.user.emp_no) && (peer_evaluation == null)){
             employee_list.push([participations[i].emp_no, employee.name]);
           }
         }
