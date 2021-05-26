@@ -5,34 +5,37 @@ extends ../layout
 block content
     div(name="mypageview")
     section.fdb-block.fp-active(data-block-type="contents" data-id="1" draggable="true")
-        .container
-            .row.text-left.align-items-center
-                .col-10.col-sm-6.m-auto.m-lg-0.col-lg-4
-                .col-10.col-lg-8.pt-4.pt-lg-0
-                    h1= name
-                        .row.mt-3
-                            .col-12.col-sm-6.pt-3.pt-sm-0
-                                h3
-                                    strong 아이디
-                                        p.text-h3.ml-3= id
-                            .col-12.col-sm-6.pt-3.pt-sm-0
-                                h3
-                                    strong 비밀번호
-                                        p.text-h3.ml-3= pwd
-                            .col-12.col-sm-6.pt-3.pt-sm-0
-                                h3
-                                    strong 학력
-                                        p.text-h3.ml-3= education
-                            .col-12.col-sm-6.pt-3.pt-sm-0
-                                h3
-                                    strong userSkills
-                                        p.text-h3.ml-3
-                                            | #{userSkills}
-                            .col-12.col-sm-6.pt-3.pt-sm-0
-                                h3
-                                    strong 경력
-                                        p.text-h3.ml-3= work_experience
-                            .col-12.col-sm-12.pt-3.pt-sm-0
-                                a.btn.btn-black.btn-empty(href='/mypage/myProfileEdit', style='float: right') 수정
-                        
+        .container.tableStyle
+            br
+            br
+            br
+            .mypageView
+                .row
+                    .col
+                        h1= name
+                            br
+                .row
+                    .col
+                        h3 아이디
+                            p.text-h3.ml-3= id
+                    .col
+                        h3 비밀번호
+                            p.text-h3.ml-3= pwd
+                .row
+                    .col
+                        h3 학력
+                            p.text-h3.ml-3= education
+                    .col
+                        h3 userSkills
+                            p.text-h3.ml-3
+                                | #{userSkills}
+                .row
+                    .col
+                        h3 경력
+                            p.text-h3.ml-3= work_experience
+                .row
+                    .col-12.col-sm-12.pt-3.pt-sm-0
+                        button.loginButton(type='button' onclick="location.href='/mypage/myProfileEdit' ") 수정
+                        br
+                            
 
