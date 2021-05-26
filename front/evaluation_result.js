@@ -3,64 +3,68 @@ var project_name = null;
 var emp_no = null;
 var emp_name = null;
 var optionValue = 'all';
+var className = ['goodEmployeeCheck', 'employeeName', 'projectName', 'peerResult', 'pmResult', 'customerResult', 'sum', 'avg'];
 
 // window onload시 프로젝트 리스트를 가져오고 이벤트 리스너를 등록함
 window.onload = function () {
-    showEvaluation();
+    showEvaluation(1);
     setSearchButton();
 };
 
 async function showEvaluation(option) {
-    var evaluationResultList = null;
+    removeRow();
+    var evaluationResultList = [];
     switch(option) {
         case 1:
-            evaluationResultList = getEvaluation1();
+            evaluationResultList = await getEvaluation1();
             break;
         case 2:
-            evaluationResultList = getEvaluation2();
+            evaluationResultList = await getEvaluation2();
             break;
         case 3:
-            evaluationResultList = getEvaluation3();
+            evaluationResultList = await getEvaluation3();
             break;
         case 4:
-            evaluationResultList = getEvaluation4();
+            evaluationResultList = await getEvaluation4();
             break;
     
         default:
             console.log("ERROR");
     }
-
+    evaluationResultList = evaluationResultList.data;
     for (let i=0; i<evaluationResultList.length; i++) {
-        //ROW 생성
-        var row = document.createElement('tr');
-    
-        //Td들 생성
-        for (let item in evaluationResultList) {
+        // ROW 생성
+        let row = document.createElement('tr');
+        
+        // Td들 생성
+        var td1 = document.createElement('td');
+        td1.classList.add(className[0]);  
+        // creating checkbox element
+        var checkbox = document.createElement('input');
+              
+        // Assigning the attributes
+        // to created checkbox
+        checkbox.type = "checkbox";
+        checkbox.value = "good_employee";
+        checkbox.ariaLabel = "good_employee";
+
+        td1.appendChild(checkbox);
+        row.appendChild(td1);
+
+        for (let j=0; j<evaluationResultList[i].length; j++) {
             var td = document.createElement('td');
-            td.style.innerHTML = item;
-            
+            td.innerHTML = evaluationResultList[i][j];
+            td.className = className[j+1];  
+            console.log(evaluationResultList[i][j]);
+            console.log(td.className);
             row.appendChild(td);
         }
+
+        // row 추가
+        document.getElementById('tbody').appendChild(row);
     }
 
-    // 옵션 추가
-    document.getElementById('evaluation_result_table').appendChild(row);
-}
-
-async function getEvaluation1() {
-    return await axios.get(`/evaluation/result/all`);
-}
-
-async function getEvaluation2() {
-    return await axios.get(`/evaluation/result/empName`);
-}
-
-async function getEvaluation3() {
-    return await axios.get(`/evaluation/result/empNum`);
-}
-
-async function getEvaluation4() {
-    return await axios.get(`/evaluation/result/projectName`);
+    
 }
 
 async function setSearchButton() {
@@ -89,4 +93,29 @@ async function setSearchButton() {
         e.preventDefault();
         // 우수 직원 취소
     });
+}
+
+async function getEvaluation1() {
+    return await axios.get(`/evaluation/result/all`);
+}
+
+async function getEvaluation2() {
+    return await axios.get(`/evaluation/result/empName`);
+}
+
+async function getEvaluation3() {
+    return await axios.get(`/evaluation/result/empNum/${emp_no}`);
+}
+
+async function getEvaluation4() {
+    return await axios.get(`/evaluation/result/projectName`);
+}
+
+function removeRow() {
+    // option 초기화
+    var tbody = document.getElementById('tbody');
+
+    while(tbody.firstChild) {
+        tbody.removeChild(tbody.firstChild);
+    }
 }

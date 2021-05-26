@@ -47,6 +47,9 @@ CREATE TABLE `customer_evaluation` (
 LOCK TABLES `customer_evaluation` WRITE;
 /*!40000 ALTER TABLE `customer_evaluation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `customer_evaluation` ENABLE KEYS */;
+INSERT INTO customer_evaluation (evaluation_content1, evaluation_score1, evaluation_content2, evaluation_score2, customer_id, non_evaluator_no, project_no) VALUES ("많이 좋음", 90, "보통임", 70, 1, 1, 1);
+INSERT INTO customer_evaluation (evaluation_content1, evaluation_score1, evaluation_content2, evaluation_score2, customer_id, non_evaluator_no, project_no) VALUES ("좋음", 70, "그럭저럭", 50, 1, 2, 1);
+INSERT INTO customer_evaluation (evaluation_content1, evaluation_score1, evaluation_content2, evaluation_score2, customer_id, non_evaluator_no, project_no) VALUES ("아주 좋음", 100, "별로", 30, 1, 3, 1);
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
