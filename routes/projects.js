@@ -3,9 +3,11 @@ var Participation = require('../models/participation');
 var Project = require('../models/project');
 var Customer = require('../models/customer');
 var Employee = require('../models/employee');
+var EmpSkill = require('../models/emp_skill');
 var Task = require('../models/task');
 
 const catchErrors = require('../lib/async-error');
+const { rawAttributes } = require('../models/customer');
 var router = express.Router();
 
 router.get('/', catchErrors(async (req, res, next) => {
@@ -115,7 +117,77 @@ router.get('/tasks/:project_no/:emp_no', catchErrors(async (req, res) => {
   res.render('project/checkTask', { projectPercent, employeePercent });
 }));
 
+// addTask 페이지 응답 
+router.get('/addTask', catchErrors(async (req, res) => {
+  res.render('/project/addTask', {});
+}));
 
+// 업무를 DB에 추가
+router.post('/addTask', catchErrors(async (req, res) => {
+  const task = await Task.create({
+    
+  });
+}));
 
+// 스킬셋이 HTML & JAVASCRIPT인 직원 리스트 응답
+router.get('/addTask/HJ', catchErrors(async (req, res) => {
+  // 직원 리스트 선언
+  let empList = [];
+
+  // EmpSkill 가져오기
+  const empSkill = await EmpSkill.findAll({
+    where: {
+      skill_no: [1, 2],
+    }
+  });
+  
+  // 해당 스킬셋을 가진 직원들에 대해 모든 이름 값을 가져오기 위한 반복문
+  for (let i=0; i<empSkill.length; i++) {
+    // Employee 가져오기
+    const emp = await Employee.findOne({
+      where: {
+        emp_no: empSkill[i].emp_no,
+      },
+      attributes: ['name'],
+    });
+
+    // 모든 직원 추가
+    empList.push([empSkill[i].emp_no, emp.name]);
+  }
+  // 중복 제거
+  const set = new Set(empList);
+  console.log(set);
+  empList = [...set];
+  console.log(empList[1][0] == empList[3][0]);
+  // 최종 리스트 전달
+  res.send(empList);
+}));
+
+// 스킬셋이 C# & C/C++인 직원 리스트 응답
+router.get('addTask/CCC', catchErrors(async (req, res) => {
+  const empSkill = await EmpSkill.findAll({
+    where: {
+      skill_no: [3, 4],
+    }
+  });
+}));
+
+// 스킬셋이 Dart/Flutter & Java 인 직원 리스트 응답
+router.get('addTask/DFJ', catchErrors(async (req, res) => {
+  const empSkill = await EmpSkill.findAll({
+    where: {
+      skill_no: [5, 6],
+    }
+  });
+}));
+
+// 스킬셋이 Dart/Flutter & Java 인 직원 리스트 응답
+router.get('addTask/Python', catchErrors(async (req, res) => {
+  const empSkill = await EmpSkill.findAll({
+    where: {
+      skill_no: 7,
+    }
+  });
+}));
 
 module.exports = router;

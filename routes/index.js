@@ -197,7 +197,7 @@ router.get("/test", function (req, res, next) {
     res.render("index2", { title: "Express", name: "han sh" });
 });
 
-router.get("/project/:id", (req, res) => {
+router.get("/project/:id", async (req, res) => {
     const { id } = req.params;
     if (!req.session.authorization) res.json({ message: "you should login" });
     const user = await Employee.findOne({
@@ -221,7 +221,7 @@ router.get("/project/:id", (req, res) => {
     });
 });
 
-router.get("/project", (req, res) => {
+router.get("/project", async (req, res) => {
     let max = -1;
     let index = -1;
     const scores = await Peer.findAll({});
@@ -237,8 +237,8 @@ router.get("/project", (req, res) => {
 });
 
 // mypage router 사용
-const mypage = require("./routes/mypage");
-express().use("/mypage", mypage);
+// const mypage = require("./routes/mypage");
+// express().use("/mypage", mypage);
 
 
 /*회원가입 화면*/
