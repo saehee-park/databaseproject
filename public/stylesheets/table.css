@@ -7,6 +7,7 @@
 }
 .container.tableStyle{
     background-color: #3a3a3a;
+    height: 100vh;
 }
 
 .container.tableStyle h3 {
@@ -27,6 +28,7 @@ table.custom_list.table-hover{
     padding: 20px;	
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
+
 table.table.table-bordered{
     width: 100%;
     border-radius: 5px;
@@ -45,7 +47,19 @@ table tbody tr{
     border-radius: 25px;
     width: 80%;
 }
-
+.mypageView{
+    border-radius: 10px;
+    background: #ffffff;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    padding: 3% 0 0;
+    margin: auto;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.mypageView.row{
+    margin: auto;
+}
 .evaluationView{
     border-radius: 10px;
     background: #ffffff;
