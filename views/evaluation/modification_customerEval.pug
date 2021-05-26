@@ -6,12 +6,12 @@ block content
         .table-wrapper
           .table-title
             .row
-              .col-sm-10
+              .col-sm-8
                 h2  고객평가서 항목 수정
-              .col-sm-1
-                button.btn.btn-primary(type='button' value='add' title='add') 항목추가
-              .col-sm-1
-                button.btn.btn-dark(type='button' value='completion' title='completion') 수정완료
+              .col-sm-4
+                button-group 
+                  button.addButton(type='button' value='add' title='add') 항목추가
+                  button.finishButton(type='button' value='completion' title='completion') 수정완료
           br
           table.table.table-bordered
             thead
@@ -24,17 +24,17 @@ block content
                 td.categoryNum 01
                 td.categoryContent 업무수행 평가
                 td
-                  button.btn.btn-danger(type='button' value='Edit' title='Edit') 수정
-                  button.btn.btn-warning(type='button' value='Delete' title='Delete') 항목삭제   
+                  button.modifyButton(type='button' value='Edit' title='Edit') 수정
+                  button.deleteButton(type='button' value='Delete' title='Delete') 삭제   
               tr
                 td.categoryNum 02
                 td.categoryContent 커뮤니케이션 평가
                 td
-                  button.btn.btn-danger(type='button' value='Edit' title='Edit') 수정
-                  button.btn.btn-warning(type='button' value='Delete' title='Delete') 항목삭제
+                  button.modifyButton(type='button' value='Edit' title='Edit') 수정
+                  button.deleteButton(type='button' value='Delete' title='Delete') 삭제
               tr
                 td.categoryNum 03
                 td.categoryContent 기타 업무 평가
                 td
-                  button.btn.btn-danger(type='button' value='Edit' title='Edit') 수정
-                  button.btn.btn-warning(type='button' value='Delete' title='Delete') 항목삭제
+                  button.modifyButton(type='button' value='Edit' title='Edit') 수정
+                  button.deleteButton(type='button' value='Delete' title='Delete') 삭제
