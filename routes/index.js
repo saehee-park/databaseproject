@@ -237,7 +237,7 @@ router.get("/test", function (req, res, next) {
 // });
 
 // // mypage router 사용
-// const mypage = require("./routes/mypage");
+// const mypage = require("./mypage");
 // express().use("/mypage", mypage);
 
 
