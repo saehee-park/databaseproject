@@ -315,6 +315,11 @@ router.get("/project/modify", function (req, res, next) {
     res.render("project/modify", { title: "Express" });
 });
 
+/*project task*/
+router.get("/project/checkTask", function (req, res, next) {
+    res.render("project/checkTask", { title: "Express" });
+});
+
 /*add Client*/
 router.get("/addclient", function (req, res, next) {
     res.render("addclient", { title: "Express" });
