@@ -103,10 +103,15 @@ router.get('/tasks/:project_no/:emp_no', catchErrors(async (req, res) => {
       }
   });
 
-
   projectPercent = String(Math.round(endTasks.length / tasks.length * 100));
   employeePercent = String(Math.round(empEndTasks.length / empTasks.length * 100));
-  console.log(projectPercent);
+
+  // employeeTaskList.push(Math.round(endTasks.length / tasks.length * 100));
+  // employeeTaskList.push(endTasks.length);
+  // employeeTaskList.push(verifyTask.length);
+  // employeeTaskList.push(progressTask.length);
+  // employeeTaskList.push(uncheckTask.length);
+
   res.render('project/checkTask', { projectPercent, employeePercent });
 }));
 
