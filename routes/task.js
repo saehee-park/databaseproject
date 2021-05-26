@@ -80,11 +80,7 @@ router.get('/employee/:project_no/:emp_no', catchErrors(async (req, res) => {
     console.log(progressTask.length);
     console.log(uncheckTask.length);
 
-    employeeTaskList.push(Math.round(endTasks.length / tasks.length * 100));
-    employeeTaskList.push(endTasks.length);
-    employeeTaskList.push(verifyTask.length);
-    employeeTaskList.push(progressTask.length);
-    employeeTaskList.push(uncheckTask.length);
+    
 
     res.send(employeeTaskList);
 

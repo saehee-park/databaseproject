@@ -1,0 +1,81 @@
+extends ../layout 
+
+//- 특정직원의 동료,pm,peer평가 결과(점수,합계,평균)를 확인하는 페이지
+block content
+    .container-lg
+        .table-responsive
+            .table-wrapper
+                .table-title
+                    form(action="/", method="post")
+                        .row
+                            .col-sm-1
+                                select#researchOption.form-control
+                                    option.entire(value='all') 전체
+                                    option.employeeName(value='empName') 직원명
+                                    option.employeeNum(value='empNum') 직원번호
+                                    option.projectName(value='projectName') 프로젝트명
+                            .col-sm-2
+                                input#inputInformation.form-control(type='information')
+                            .col-sm-1
+                                button#search.btn.btn-primary(type='button' value='inquiry' title='inquiry') 조회
+                            .col-sm-5
+                            .col-sm-1
+                                button#goodEmpAdd.btn.btn-primary(type='button' value='good_employee_add' title='good_employee_add') 우수직원선정
+                            .col-sm-1
+                                button#goodEmpDelete.btn.btn-primary(type='button' value='good_employee_delete' title='good_employee_delete') 우수직원취소
+                    br
+                table.table.table-bordered
+                    thead
+                        tr  
+                            th check
+                            th 직원명
+                            th 프로젝트명
+                            th 동료평가
+                            th PM평가
+                            th 고객평가
+                            th 총합
+                            th 평균
+                    tbody#tbody
+                        tr
+                            td.goodEmployeeCheck
+                                input(type='checkbox' aria-label='good_employee' value='good_employee')
+                            td.employeeName 김명지
+                            td.projectName 카카오톡ver5.03
+                            td.peerResult
+                                a(href='#' value='peerScore' title='peerScore') 83점  
+                            td.pmResult
+                                a(href='#' value='pmScore' title='omScore') 83점
+                            td.customerResult
+                                a(href='#' value='customerScore' title='customerScore') 83점
+                            td.sum 249점
+                            td.avg 83점
+
+                        tr
+                            td.goodEmployeeCheck
+                                input(type='checkbox' aria-label='excellent_employee' value='excellent_employee')
+                            td.employeeName 김명지
+                            td.projectName 네이버 ver8.04
+                            td.peerResult
+                                a(href='#' value='peerScore' title='peerScore') 83점  
+                            td.pmResult
+                                a(href='#' value='pmScore' title='omScore') 83점
+                            td.customerResult
+                                a(href='#' value='customerScore' title='customerScore') 83점
+                            td.sum 249점
+                            td.avg 83점
+                        tr
+                            td.goodEmployeeCheck
+                                input(type='checkbox' aria-label='excellent_employee' value='excellent_employee')
+                            td.employeeName 홍길동
+                            td.projectName 카카오톡ver5.03
+                            td.peerResult
+                                a(href='#' value='peerScore' title='peerScore') 80점  
+                            td.pmResult
+                                a(href='#' value='pmScore' title='omScore') 86점
+                            td.customerResult
+                                a(href='#' value='customerScore' title='customerScore') 86점
+                            td.sum 252점
+                            td.avg 84점
+
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(src="/evaluation_result.js")
