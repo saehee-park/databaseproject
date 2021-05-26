@@ -75,7 +75,18 @@ router.route('/employee_list/:project_no')
           const employee = await Employee.findOne({
             where: { emp_no: participations[i].emp_no }
           });
-          if(participations[i].emp_no != req.session.user.emp_no){
+
+          // 해당 employee에 대한 평가가 있는지 확인하기 위한 것
+          const pm_evaluation = await PMEvaluation.findOne({
+            where: {
+              evaluator_no: req.session.user.emp_no,
+              non_evaluator_no: participations[i].emp_no,
+              project_no: req.params.project_no,
+            },
+          });
+          
+          // 자기 자신에 대한 평가는 안되기 때문에 리스트에 자신을 추가하지 않음 
+          if((participations[i].emp_no != req.session.user.emp_no) && (pm_evaluation == null) ){
             employee_list.push([participations[i].emp_no, employee.name]);
           }
         }

@@ -63,4 +63,9 @@ router.post('/project/register', catchErrors(async (req, res, next) => {
   res.render('project/list', {});
 }));
 
+// 평가 항목 등록
+router.get('/evaluation/register', catchErrors(async (req, res, next) => {
+  res.render('management/registerEvaluation', {});
+}));
+
 module.exports = router;

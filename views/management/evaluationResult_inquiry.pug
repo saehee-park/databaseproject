@@ -6,23 +6,23 @@ block content
         .table-responsive
             .table-wrapper
                 .table-title
-                    form(action="#", method="post")
+                    form(action="/", method="post")
                         .row
                             .col-sm-1
                                 select#researchOption.form-control
-                                    option.entire 전체
-                                    option.employeeName 직원명
-                                    option.employeeNum 직원번호
-                                    option.projectName 프로젝트명
+                                    option.entire(value='all') 전체
+                                    option.employeeName(value='empName') 직원명
+                                    option.employeeNum(value='empNum') 직원번호
+                                    option.projectName(value='projectName') 프로젝트명
                             .col-sm-2
                                 input#inputInformation.form-control(type='information')
                             .col-sm-1
-                                button.btn.btn-primary(type='button' value='inquiry' title='inquiry') 조회
+                                button#search.btn.btn-primary(type='button' value='inquiry' title='inquiry') 조회
                             .col-sm-5
                             .col-sm-1
-                                button.btn.btn-primary(type='button' value='good_employee_add' title='good_employee_add') 우수직원선정
+                                button#goodEmpAdd.btn.btn-primary(type='button' value='good_employee_add' title='good_employee_add') 우수직원선정
                             .col-sm-1
-                                button.btn.btn-primary(type='button' value='good_employee_delete' title='good_employee_delete') 우수직원취소
+                                button#goodEmpDelete.btn.btn-primary(type='button' value='good_employee_delete' title='good_employee_delete') 우수직원취소
                     br
                 table.table.table-bordered
                     thead
@@ -76,3 +76,6 @@ block content
                                 a(href='#' value='customerScore' title='customerScore') 86점
                             td.sum 252점
                             td.avg 84점
+
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(src="/evaluation_result.js")

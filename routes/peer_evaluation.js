@@ -76,7 +76,17 @@ router.route('/employee_list/:project_no')
           const employee = await Employee.findOne({
             where: { emp_no: participations[i].emp_no }
           });
-          if(participations[i].emp_no != req.session.user.emp_no){
+
+          // 해당 employee에 대한 평가가 있는지 확인하기 위한 것
+          const peer_evaluation = await PeerEvaluation.findOne({
+            where: {
+              evaluator_no: req.session.user.emp_no,
+              non_evaluator_no: participations[i].emp_no,
+              project_no: req.params.project_no,
+            },
+          });
+
+          if((participations[i].emp_no != req.session.user.emp_no) && (peer_evaluation == null)){
             employee_list.push([participations[i].emp_no, employee.name]);
           }
         }

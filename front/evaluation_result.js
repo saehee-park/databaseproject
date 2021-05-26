@@ -1,95 +1,92 @@
 // 전역 변수
-var project_no = null;
+var project_name = null;
 var emp_no = null;
+var emp_name = null;
+var optionValue = 'all';
 
 // window onload시 프로젝트 리스트를 가져오고 이벤트 리스너를 등록함
 window.onload = function () {
-    setProjectSelector();
+    showEvaluation();
+    setSearchButton();
 };
 
-// 프로젝트 셀렉터에 대한 함수
-async function setProjectSelector() {
-    // project List 받아오기
-    const project_list = await axios.get('/evaluation/project_list');
-
-    // option에 추가
-    for(let i=0; i < project_list.data.length; i++) {
-        // project 셀렉터 검색
-        var project_select = document.getElementById('project');
-
-        // 옵션 생성
-        var option = document.createElement('option');
-        option.value = project_list.data[i][0];
-        option.innerHTML = project_list.data[i][1];
-
-        // 옵션 추가
-        project_select.appendChild(option);
+async function showEvaluation(option) {
+    var evaluationResultList = null;
+    switch(option) {
+        case 1:
+            evaluationResultList = getEvaluation1();
+            break;
+        case 2:
+            evaluationResultList = getEvaluation2();
+            break;
+        case 3:
+            evaluationResultList = getEvaluation3();
+            break;
+        case 4:
+            evaluationResultList = getEvaluation4();
+            break;
+    
+        default:
+            console.log("ERROR");
     }
 
-    // project select tag에 대한 이벤트 리스너 등록
-    document.getElementById('project').addEventListener('change', async (e) => {
-        e.preventDefault();
-
-        // 선택한 프로젝트에 대한 모든 참여 인원을 받아옴.
-        getParticipatedEmployee(e.target.value);
-
-        // 선택한 프로젝트에 대한 project_no는 변수에 저장해둠.
-        project_no = e.target.value;
-    });
-}
-
-//  프로젝트 선택 시 서버에 GET 요청하는 function
-async function getParticipatedEmployee(project_no) {
-    // 직원 리스트 받아오기
-    const employee_list = await axios.get(`/evaluation/employee_list/${project_no}`);
-
-    // option 초기화
-    var employee_select = document.getElementById('employee');
-    while(employee_select.hasChildNodes()) {
-        employee_select.removeChild();
-    }
-
-    // option에 추가
-    for(let i=0; i<employee_list.data.length; i++) {
-
-        var option = document.createElement('option');
-        option.value = employee_list.data[i][0];
-        option.innerHTML = employee_list.data[i][1];
-
-        employee_select.appendChild(option);
-    }
-
-    // employee select tag에 대한 이벤트 리스너 등록
-    document.getElementById('employee').addEventListener('change', async (e) => {
-        e.preventDefault();
-        emp_no = e.target.value;
-
-        // 해당 직원에 대한 평가 결과들 출력
-        showEvaluation();
-    });
-}
-
-async function showEvaluation() {
-    var evaluation_result_list = getEvaluationResult();
-    //
-    var row = document.createElement('tr');
-
-    for (let item in evaluation_result_list) {
-        var td = document.createElement('td');
-        td.style.innerHTML = item;
-        
-        row.appendChild(td);
+    for (let i=0; i<evaluationResultList.length; i++) {
+        //ROW 생성
+        var row = document.createElement('tr');
+    
+        //Td들 생성
+        for (let item in evaluationResultList) {
+            var td = document.createElement('td');
+            td.style.innerHTML = item;
+            
+            row.appendChild(td);
+        }
     }
 
     // 옵션 추가
     document.getElementById('evaluation_result_table').appendChild(row);
 }
 
-async function getEvaluationResult() {
-    return await axios.get(
-        `/evaluation/result/`,
-        {
-            params : { emp_no, project_no }
-        },
-    );
+async function getEvaluation1() {
+    return await axios.get(`/evaluation/result/all`);
+}
+
+async function getEvaluation2() {
+    return await axios.get(`/evaluation/result/empName`);
+}
+
+async function getEvaluation3() {
+    return await axios.get(`/evaluation/result/empNum`);
+}
+
+async function getEvaluation4() {
+    return await axios.get(`/evaluation/result/projectName`);
+}
+
+async function setSearchButton() {
+    document.getElementById('search').addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        // select Element 가져오기
+        var option = document.getElementById('researchOption');
+        option.addEventListener('change', async (e) => {
+            e.preventDefault();
+            optionValue = e.target.value;
+        });
+
+        if (optionValue == 'all') showEvaluation(1);
+        else if (optionValue == 'empName') showEvaluation(2);
+        else if (optionValue == 'empNum') showEvaluation(3);
+        else if (optionValue == 'projectName') showEvaluation(4);
+    });
+
+    document.getElementById('goodEmpAdd').addEventListener('click', async (e) => {
+        e.preventDefault();
+        // 우수 직원 선정
+    });
+
+    document.getElementById('goodEmpDelete').addEventListener('click', async (e) => {
+        e.preventDefault();
+        // 우수 직원 취소
+    });
 }
