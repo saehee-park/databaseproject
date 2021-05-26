@@ -19,6 +19,17 @@ table.custom_list.table-hover{
     border-spacing: 0 1rem;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+
+table.table.table-bordered{
+    width: 80%;
+    border-radius: 5px;
+    background-color: #fafdfe;
+    align-items: center;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
 table thead tr{
     background-color: #fafdfe;
     font-size: large;
