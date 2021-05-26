@@ -132,7 +132,7 @@ router.route("/signin")
                         }
                     }
                 ]
-            });
+            }); 
 
             for(let project of projects) {
                 var d_day = getDday(project.dataValues.end_date);
