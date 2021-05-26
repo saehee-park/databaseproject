@@ -2,7 +2,7 @@ extends ../layout
 
 //- 특정직원의 동료,pm,peer평가 결과(점수,합계,평균)를 확인하는 페이지
 block content
-    .container
+    .container-lg
         .table-responsive
             .table-wrapper
                 .table-title
@@ -40,7 +40,6 @@ block content
                             td.goodEmployeeCheck
                                 input(type='checkbox' aria-label='good_employee' value='good_employee')
                             td.employeeName 김명지
-                                span.badge.badge-pill.badge-danger 이달의직원
                             td.projectName 카카오톡ver5.03
                             td.peerResult
                                 a(href='#' value='peerScore' title='peerScore') 83점  

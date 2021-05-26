@@ -29,6 +29,14 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// sequelize.sync({ force: true })
+//     .then(() => {
+//         console.log("데이터베이스 연결 성공");
+//     })
+//     .catch((err) => {
+//         console.error(err);
+//     });
+
 // database connection
 async function connectionTesting() {
   try {

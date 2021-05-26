@@ -72,5 +72,9 @@ module.exports = class Employee extends Sequelize.Model {
         // Task Model과 연결
         db.Employee.hasMany(db.Task, { foreignKey: 'emp_no', sourceKey: 'emp_no'});
 
+        // 평가 결과 Model과 연결
+        db.Employee.hasMany(db.EvaluationResult, { foreignKey: 'evaluator_emp_no', sourceKey: 'emp_no'});
+        db.Employee.hasMany(db.EvaluationResult, { foreignKey: 'non_evaluator_emp_no', sourceKey: 'emp_no'});
+
     }
 };
