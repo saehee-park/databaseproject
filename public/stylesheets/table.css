@@ -119,3 +119,57 @@ button.finishButton{
     transition: transform 80ms ease-in;
     width: 50%;
 }
+button.selectButton{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color:#000000;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    width: 50%;
+}
+button.cancellButton{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid #000000;
+	background-color: #3a3a3a;
+	color: #FFFFFF;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    width: 50%;
+}
+
+input.searchInput {
+    border: none;
+    width: 100%;
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid #575757;
+    
+    
+    /* text-align: center; */
+}
+button.searchNav {
+    border-radius: 5px;
+	border: 1px solid #000000;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 6px 8px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+    width: 80%;
+  
+}
