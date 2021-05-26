@@ -7,6 +7,15 @@ var Project = require('../models/project');
 const catchErrors = require("../lib/async-error");
 var bcrypt = require("bcrypt");
 const Peer = require("../models/peer_evaluation");
+const admin = require("firebase-admin");
+
+let serAccount = require("../node-7fe56-firebase-adminsdk-6a08y-3ebbb95309.json");
+
+admin.initializeApp({
+    credential: admin.credential.cert(serAccount),
+});
+
+express().set("admin", admin);
 
 function generateHash(password) {
     return bcrypt.hash(password, 10);
@@ -197,7 +206,7 @@ router.get("/test", function (req, res, next) {
     res.render("index2", { title: "Express", name: "han sh" });
 });
 
-router.get("/project/:id", async (req, res) => {
+router.get("/project/:id", (req, res) => {
     const { id } = req.params;
     if (!req.session.authorization) res.json({ message: "you should login" });
     const user = await Employee.findOne({
@@ -221,7 +230,7 @@ router.get("/project/:id", async (req, res) => {
     });
 });
 
-router.get("/project", async (req, res) => {
+router.get("/project", (req, res) => {
     let max = -1;
     let index = -1;
     const scores = await Peer.findAll({});
@@ -237,49 +246,8 @@ router.get("/project", async (req, res) => {
 });
 
 // mypage router 사용
-// const mypage = require("./routes/mypage");
-// router.get("/project/:id", (req, res) => {
-//     const { id } = req.params;
-//     if (!req.session.authorization) res.json({ message: "you should login" });
-//     const user = await Employee.findOne({
-//         where: { id },
-//     });
-//     let total = 0;
-//     const scores = await Peer.findAll({
-//         where: {
-//             evaluation_no: user.emp_no,
-//         },
-//     });
-
-//     scores.forEach((val) => {
-//         total += val.evaluation_score1;
-//         total += val.evaluation_score2;
-//     });
-
-//     res.json({
-//         total,
-//         average: total / (scores.length * 2),
-//     });
-// });
-
-// router.get("/project", (req, res) => {
-//     let max = -1;
-//     let index = -1;
-//     const scores = await Peer.findAll({});
-//     scores.forEach((val, i) => {
-//         const temp = val.evaluation_score1 + val.evaluation_score2;
-//         if (max < temp) index = i;
-//     });
-//     const user = await Employee.findOne({
-//         where: { emp_no: scores[index].evaluation_no },
-//     });
-
-//     res.json(user);
-// });
-
-// // mypage router 사용
-// const mypage = require("./mypage");
-// express().use("/mypage", mypage);
+const mypage = require("./mypage");
+express().use("/mypage", mypage);
 
 
 /*회원가입 화면*/
@@ -288,14 +256,11 @@ router.get("/test3", function (req, res, next) {
 });
 
 /*nav_개발자*/
-router.get("/nav_developer", function (req, res, next) {
-    res.render("nav_develop", { title: "Express" });
+router.get("/navbar", function (req, res, next) {
+    res.render("includes/navbar", { title: "Express" });
 });
 
-/*nav_경영진*/
-router.get("/nav_management", function (req, res, next) {
-    res.render("nav_management", { title: "Express" });
-});
+
 
 /*프로젝트 등록 페이지*/
 router.get("/addproject", function (req, res, next) {
@@ -410,6 +375,16 @@ router.get("/project/checkTask", function (req, res, next) {
 /*add Client*/
 router.get("/addclient", function (req, res, next) {
     res.render("addclient", { title: "Express" });
+});
+
+/*add Task*/
+router.get("/project/addTask", function (req, res, next) {
+    res.render("project/addTask", { title: "Express" });
+});
+
+/*add Task*/
+router.get("/project/finish", function (req, res, next) {
+    res.render("project/finish", { title: "Express" });
 });
 
 module.exports = router;

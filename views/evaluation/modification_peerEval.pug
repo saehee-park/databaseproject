@@ -7,7 +7,7 @@ block content
           .table-title
             .row
               .col-sm-10
-                h2  업무능력평가서 항목 수정
+                h2  동료 평가 항목 관리
               .col-sm-1
                 button.btn.btn-primary(type='button' value='add' title='add') 항목추가
               .col-sm-1
@@ -16,25 +16,17 @@ block content
           table.table.table-bordered
             thead
               tr
-                th 항목번호
                 th 항목내용
+                th 항목예시
                 th Actions
             tbody
-              tr
-                td.categoryNum 01
-                td.categoryContent 업무수행 평가
-                td
-                  button.btn.btn-danger(type='button' value='Edit' title='Edit') 수정
-                  button.btn.btn-warning(type='button' value='Delete' title='Delete') 항목삭제   
-              tr
-                td.categoryNum 02
-                td.categoryContent 커뮤니케이션 평가
-                td
-                  button.btn.btn-danger(type='button' value='Edit' title='Edit') 수정
-                  button.btn.btn-warning(type='button' value='Delete' title='Delete') 항목삭제
-              tr
-                td.categoryNum 03
-                td.categoryContent 기타 업무 평가
-                td
-                  button.btn.btn-danger(type='button' value='Edit' title='Edit') 수정
-                  button.btn.btn-warning(type='button' value='Delete' title='Delete') 항목삭제
+              if(items)
+                each item in items
+                  tr 
+                    td.itemContent= item.item_title
+                    td.itemExample= item.item_example
+                    td
+                      button.btn.btn-danger(type='button' value='Edit' title='Edit') 수정
+                      button.btn.btn-warning(type='button' value='Delete' title='Delete') 항목삭제
+              else 
+                

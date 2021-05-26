@@ -32,42 +32,34 @@
         </div>
       </nav>
     </header>
-    <div class="container"> 
-      <form action="#" method="post">
-        <h1 class="text-center-mt-5">종료된 프로젝트</h1>
-        <div class="card-group">
-          <div class="card mb-3">
-            <div class="card-body"> 
-              <h5>프로젝트명</h5>
-              <p class="project_name">데베프</p>
-              <h6>프로젝트 종료 날짜</h6>
-              <p class="end_date">2021.05.26</p>
-              <h6>상태</h6>
-              <p class="state">종료</p>
-              <h6>담당자</h6>
-              <p class="PM">PM 이름</p>
-              <button class="btn btn-outline-dark" type="submit" style="float: right">인증키 부여</button>
-            </div>
-          </div>
-        </div>
-        <hr style="border-top:3px solid #F12121">
-        <h2>마감일자가 지난 프로젝트</h2>
-        <div class="card-group">
-          <div class="card mb-3">
-            <div class="card-body"> 
-              <h5>프로젝트명</h5>
-              <p class="project_name">데베프</p>
-              <h6>프로젝트 종료 날짜</h6>
-              <p class="end_date">2021.05.22</p>
-              <h6>상태</h6>
-              <p class="state">진행중</p>
-              <h6>담당자</h6>
-              <p class="PM">PM 이름</p>
-              <button class="btn btn-outline-dark" type="submit" style="float: right" id="finish">종료하기</button>
-            </div>
-          </div>
-        </div>
+    <div class="container">
+      <form action="/employeeInfo" method="post">
+        <h1 class="text-center mt-5">직원 Information</h1>
       </form>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <h6>직원 이름</h6>
+          <input class="form-control" type="text" placeholder="name" name="name">
+        </div>
+        <div class="form-group col-md-4">
+          <h6>skill</h6>
+          <input class="form-control" type="text" placeholder="skill" name="skill">
+        </div>
+        <div class="form-group col-md-4">
+          <h6>부서</h6>
+          <select class="form-select" id="inputState" name="department" size="1">
+            <option value="1">마케팅</option>
+            <option value="2">연구관리</option>
+            <option value="3">경영관리</option>
+            <option value="4">개발</option>
+          </select>
+        </div>
+      </div>
+      <div class="row justify-content-start mt-4">
+        <div class="col" style="margin-bottom: 1em"></div>
+        <button class="btn btn-outline-dark" type="submit" style="float: right">Search</button>
+      </div>
+      <div class="list-group list-group-flush" style="margin-top: 10px"><a class="list-group-item list-group-item-action" href="employeeDetail">홍길동</a><a class="list-group-item list-group-item-action" href="employeeDetail">전종훈</a><a class="list-group-item list-group-item-action" href="employeeDetail">박세희</a></div>
     </div>
   </body>
 </html>
