@@ -54,7 +54,7 @@ function getDday(end) {
     let month = today.getMonth() + 1;  // 월
     let day = today.getDate();  // 날짜
 
-    var endArray = end.toDateString().split(" ");
+    var endArray = end.split(" ");
     var end_date = endArray[0];
     var dateArray = end_date.split("-");
 
@@ -238,6 +238,47 @@ router.get("/project", async (req, res) => {
 
 // mypage router 사용
 // const mypage = require("./routes/mypage");
+// router.get("/project/:id", (req, res) => {
+//     const { id } = req.params;
+//     if (!req.session.authorization) res.json({ message: "you should login" });
+//     const user = await Employee.findOne({
+//         where: { id },
+//     });
+//     let total = 0;
+//     const scores = await Peer.findAll({
+//         where: {
+//             evaluation_no: user.emp_no,
+//         },
+//     });
+
+//     scores.forEach((val) => {
+//         total += val.evaluation_score1;
+//         total += val.evaluation_score2;
+//     });
+
+//     res.json({
+//         total,
+//         average: total / (scores.length * 2),
+//     });
+// });
+
+// router.get("/project", (req, res) => {
+//     let max = -1;
+//     let index = -1;
+//     const scores = await Peer.findAll({});
+//     scores.forEach((val, i) => {
+//         const temp = val.evaluation_score1 + val.evaluation_score2;
+//         if (max < temp) index = i;
+//     });
+//     const user = await Employee.findOne({
+//         where: { emp_no: scores[index].evaluation_no },
+//     });
+
+//     res.json(user);
+// });
+
+// // mypage router 사용
+// const mypage = require("./mypage");
 // express().use("/mypage", mypage);
 
 
@@ -359,6 +400,11 @@ router.get("/project/details", function (req, res, next) {
 /*project modify*/
 router.get("/project/modify", function (req, res, next) {
     res.render("project/modify", { title: "Express" });
+});
+
+/*project task*/
+router.get("/project/checkTask", function (req, res, next) {
+    res.render("project/checkTask", { title: "Express" });
 });
 
 /*add Client*/
