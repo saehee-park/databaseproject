@@ -37,6 +37,10 @@ router.get('/project/register', catchErrors(async (req, res, next) => {
     customers: customers, marketing: marketing, research: research, business: business, development: development });
 }));
 
+router.get('/project/search', catchErrors(async (req, res, next) => {
+  res.render('management/searchProject', {});
+}));
+
 router.post('/project/register', catchErrors(async (req, res, next) => {
   //새로운 프로젝트를 생성하면서 동시에 participation 생성해야함.
 

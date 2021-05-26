@@ -1,0 +1,29 @@
+extends ../layout 
+
+//- 프로젝트 수정
+block content
+  .container 
+    form(action="#", method="post")
+      h1.text-center-mt-5 기간 별 프로젝트 정보
+
+      .form-row
+        .form-group.col-md-6
+          h4 시작 일자
+          input.form-control(type="date", placeholder="starts", name="begin_date")
+        .form-group.col-md-6
+          h4 종료 일자
+          input.form-control(type="date", placeholder="lasts", name="last_date")
+      .row.justify-content-start.mt-4
+            .col(style="margin-bottom: 1em")
+            button.btn.btn-outline-dark(type="submit", style="float: right") Search
+      
+      div.card-group 
+        .card 
+          h5.project_no 프로젝트 이름
+          p.start_date 프로젝트 시작 일자
+          p.end_date 프로젝트 종료 일자
+          p.leader 프로젝트 담당자
+          p.employee 프로젝트 참여 직원
+      
+
+        
