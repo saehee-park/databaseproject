@@ -185,12 +185,13 @@ router.post('/evaluation/register', catchErrors(async (req, res, next) => {
     const items = await EvaluationItem.findAll({ where: { evaluation_type: "고객" } });
     res.render('management/evaluationItemList', { type: "고객", items: items });
   }
+  res.render('management/evaluationTypeList', {});
 }));
 
 router.get('/evaluation/:evaluation_item_no/delete', catchErrors(async (req, res, next) => {
   const item = await EvaluationItem.findOne({ where: { evaluation_item_no: req.params.evaluation_item_no }});
   item.destroy();
-  res.redirect('/management/evaluation/peer/manage');
+  res.render('management/evaluationTypeList', {});
 }));
 
 module.exports = router;
