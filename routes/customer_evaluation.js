@@ -9,7 +9,7 @@ router.route('/')
     res.render('evaluation/customer_evaluation');
 })
 
-.post(anync (req, res, next) => {
+.post(async (req, res, next) => {
     console.log(req.session.user);
     console.log(req.session.authorization);
     console.log(req.session.user.emp_no);

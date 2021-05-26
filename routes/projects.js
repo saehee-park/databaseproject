@@ -133,6 +133,8 @@ router.post('/addTask', catchErrors(async (req, res) => {
 router.get('/addTask/HJ', catchErrors(async (req, res) => {
   // 직원 리스트 선언
   let empList = [];
+  let empNoList = [];
+  let empNameList = [];
 
   // EmpSkill 가져오기
   const empSkill = await EmpSkill.findAll({
@@ -152,13 +154,20 @@ router.get('/addTask/HJ', catchErrors(async (req, res) => {
     });
 
     // 모든 직원 추가
-    empList.push([empSkill[i].emp_no, emp.name]);
+    empNoList.push(empSkill[i].emp_no);
+    empNameList.push(emp.name);
   }
+
   // 중복 제거
-  const set = new Set(empList);
-  console.log(set);
-  empList = [...set];
-  console.log(empList[1][0] == empList[3][0]);
+  const set1 = new Set(empNoList);
+  const set2 = new Set(empNameList);
+  empNoList = [...set1];
+  empNameList = [...set2];
+
+
+  for (let i=0; i<empNoList.length; i++) {
+    empList.push([empNoList[i], empNameList[i]]);
+  }
   // 최종 리스트 전달
   res.send(empList);
 }));

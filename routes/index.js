@@ -63,7 +63,7 @@ function getDday(end) {
     let month = today.getMonth() + 1;  // 월
     let day = today.getDate();  // 날짜
 
-    var endArray = end.split(" ");
+    var endArray = end.toString().split(" ");
     var end_date = endArray[0];
     var dateArray = end_date.split("-");
 
@@ -87,31 +87,6 @@ router.get("/signup", catchErrors(async (req, res, next) => {
     const skills = await Skill.findAll();
     res.render("signup", {skills: skills});
 }));
-
-router.get("/mypage", async (req, res) => {
-    if (!req.session.authorization) res.json({ message: "you should login" });
-    const user = await Employee.findOne({
-        where: { authorization_no: req.session.authorization },
-    });
-    const { id, pwd, education, name, work_experience, emp_no } = user;
-    const userSkills = await Skill.findAll({
-        include: [
-            {
-                model: EmpSkill,
-                where: [`emp_no = ${emp_no}`],
-            },
-        ],
-        attributes: ["skill_name"],
-    });
-    res.json({
-        id,
-        pwd,
-        education,
-        skill: userSkills,
-        name,
-        work_experience,
-    });
-});
 
 router.route("/signin")
     .get((req, res) => {
@@ -245,11 +220,6 @@ router.get("/project", async (req, res) => {
     res.json(user);
 });
 
-// mypage router 사용
-const mypage = require("./mypage");
-express().use("/mypage", mypage);
-
-
 /*회원가입 화면*/
 router.get("/test3", function (req, res, next) {
     res.render("signup", { title: "Express" });
@@ -267,15 +237,6 @@ router.get("/addproject", function (req, res, next) {
     res.render("addProject", { title: "Express" });
 });
 
-/*마이페이지*/
-router.get("/mypage", function (req, res, next) {
-    res.render("mypage/mypageview", { title: "Express" });
-});
-
-/*개인정보 수정*/
-router.get("/myprofileedit", function (req, res, next) {
-    res.render("mypage/myProfileEdit", { title: "Express" });
-});
 
 /*고객평가 해당 직원 리스트 페이지*/
 router.get('/evaluation/customer_evaluation', function(req, res, next){
