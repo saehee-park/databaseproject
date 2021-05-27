@@ -6,12 +6,10 @@ block content
     h1.text-center-mt-5 프로젝트 목록
 
     if(projects)
-    
       each project in projects
-        if(project.project_emp[0])
+        if(project)
           .card-group
-            .card +
-            
+            .card            
               h5.project_name= project.project_name
               p.start_date= project.start_date
               p.end_date= project.end_date
