@@ -10,7 +10,8 @@ block content
       each project in projects
         if(project.project_emp[0])
           .card-group
-            .card 
+            .card +
+            
               h5.project_name= project.project_name
               p.start_date= project.start_date
               p.end_date= project.end_date

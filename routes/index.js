@@ -309,9 +309,7 @@ router.get('/evaluation/resultPeer_eval', function(req, res, next){
   });
 
 /*project index*/
-router.get('/project/index', function (req, res, next) {
-    res.render('project/index', { title: "Express" });
-});
+
 
 /*project create*/
 router.get("/project/new", function (req, res, next) {

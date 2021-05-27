@@ -25,6 +25,10 @@ router.get('/', catchErrors(async (req, res, next) => {
   res.render('project/list', { projects });
 }));
 
+router.get('/index', function (req, res, next) {
+  res.render('project/index', { title: "Express" });
+});
+
 // router.get('/:project_no', catchErrors(async (req, res, next) => {
 //   const project = await Project.findOne({
 //     where: { project_no: req.params.project_no },
@@ -42,7 +46,7 @@ router.get('/', catchErrors(async (req, res, next) => {
 // }));
 
 // 업무 진척도 조회 페이지
-router.get('/tasks/:project_no/:emp_no', catchErrors(async (req, res) => {
+router.get('/checkTask/:project_no/:emp_no', catchErrors(async (req, res) => {
   var projectPercent = 0;
   var employeePercent = 0;
   var employee;
