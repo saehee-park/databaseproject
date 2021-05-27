@@ -44,12 +44,13 @@ router.get("/", async (req, res) => {
 
 /*개인정보 수정*/
 router.get("/edit", catchErrors(async (req, res, next) => {
-    const employee = await Employee.findeOne({ where: { emp_no: req.session.user.emp_no } });
-    res.render("mypage/myProfileEdit", {employee: employee});
+    const employee = await Employee.findOne({ where: { emp_no: req.session.user.emp_no } });
+    const skills = await Skill.findAll();
+    res.render("mypage/myProfileEdit", {employee: employee, skills: skills});
 }));
 
 router.post(`/edit/:emp_no`, catchErrors(async (req, res, next) => {
-    const employee = await Employee.findeOne({ where: { emp_no: req.params.emp_no } });
+    const employee = await Employee.findOne({ where: { emp_no: req.params.emp_no } });
     employee.name = req.body.name;
     employee.education = req.body.education;
 
@@ -63,11 +64,13 @@ router.post(`/edit/:emp_no`, catchErrors(async (req, res, next) => {
 
     for(let skill of req.body.skills) {
         await EmpSkill.create({
-            emp_no: user.emp_no,
+            emp_no: employee.emp_no,
             skill_no: skill
         });
     }
-    res.render('/');
+
+    await employee.save();
+    res.render('/index');
 }));
 
 module.exports = router;

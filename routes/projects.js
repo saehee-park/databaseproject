@@ -10,7 +10,7 @@ const catchErrors = require('../lib/async-error');
 const { rawAttributes } = require('../models/customer');
 var router = express.Router();
 
-router.get('/', catchErrors(async (req, res, next) => {
+router.get('/list', catchErrors(async (req, res, next) => {
   const projects = await Project.findAll({
     include: [
       {    
@@ -23,6 +23,10 @@ router.get('/', catchErrors(async (req, res, next) => {
     ]
   });
   res.render('project/list', { projects });
+}));
+
+router.get('/index', catchErrors(async (req, res, next) => {
+  res.render('project/index');
 }));
 
 router.get('/:project_no', catchErrors(async (req, res, next) => {

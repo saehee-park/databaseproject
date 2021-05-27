@@ -43,7 +43,7 @@ module.exports = class Employee extends Sequelize.Model {
 
     static associate(db) {
         // Skill Model과 연결
-        db.Employee.belongsToMany(db.Skill, { through: 'EmpSkill', foreignKey: 'emp_no'});
+        db.Employee.belongsToMany(db.Skill, { through: 'EmpSkill', as: 'emp_skill', foreignKey: 'emp_no'});
 
         // Participation Model과 연결
         db.Employee.belongsToMany(db.Project, { foreignKey: 'emp_no', as: 'emp_project', through: 'Participation' });
