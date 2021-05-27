@@ -25,21 +25,23 @@ router.get('/', catchErrors(async (req, res, next) => {
   res.render('project/list', { projects });
 }));
 
-// router.get('/:project_no', catchErrors(async (req, res, next) => {
-//   const project = await Project.findOne({
-//     where: { project_no: req.params.project_no },
-//     include: [
-//       {
-//         model: Employee,
-//         as: 'project_emp'
-//       },
-//       {
-//         model: Customer
-//       }
-//     ]
-//   });
-//   res.render('project/details', { project: project });
-// }));
+router.get('/:project_no', catchErrors(async (req, res, next) => {
+  const project = await Project.findOne({
+    where: { project_no: req.params.project_no },
+    include: [
+      {
+        model: Employee,
+        as: 'project_emp'
+      },
+      {
+        model: Customer
+      }
+    ]
+  });
+  console.log(project);
+  res.render('project/details', { project: project });
+}));
+
 
 // 업무 진척도 조회 페이지
 router.get('/tasks/:project_no/:emp_no', catchErrors(async (req, res) => {
