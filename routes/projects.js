@@ -10,25 +10,43 @@ const catchErrors = require('../lib/async-error');
 const { rawAttributes } = require('../models/customer');
 var router = express.Router();
 
-router.get('/list', catchErrors(async (req, res, next) => {
-  const projects = await Project.findAll({
-    include: [
-      {
-        model: Employee,
-        as: 'project_emp'
+
+// 사용자가 project List를 조회할 때 요청
+router.get('/', catchErrors(async (req, res) => {
+  // 경영진의 권한을 가진 이에게는 모든 project에 대한 리스트를 줌
+  if(req.session.authorization == 1) {
+    const projects = await Project.findAll({});
+    return res.render('project/list', { projects });
+  }
+  
+  // 일반 권한을 가진 직원에게는 참여하고 있는 project에 대한 리스트만 줌
+  else {
+    let projects = [];
+    const participations = await Participation.findAll({
+      where: {
+        emp_no: req.session.user.emp_no,
       },
-      {
-        model: Customer
-      }
-    ]
-  });
-  res.render('project/details', { project: project });
+    });
+
+    for(let i=0; i<participations.length; i++) {
+      const project = await Project.findOne({
+        where: {
+          project_no: participations[i].project_no,
+        },
+      });
+      projects.push(project);
+    }
+    return res.render('project/list', { projects });
+  }
 }));
 
+// 경영진 권한에게 프로젝트 페이지를 보여줌.
 router.get('/index', catchErrors(async (req, res, next) => {
   res.render('project/index');
 }));
 
+
+// 프로젝트 자세히 보기
 router.get('/:project_no', catchErrors(async (req, res, next) => {
   const project = await Project.findOne({
     where: { project_no: req.params.project_no },
@@ -42,10 +60,43 @@ router.get('/:project_no', catchErrors(async (req, res, next) => {
       }
     ]
   });
-  console.log(project);
   res.render('project/details', { project: project });
 }));
 
+// 간트차트 태스크 데이터 가져오는 요청 처리
+router.get('/getTasks/:project_no', catchErrors(async (req, res) => {
+  let resultList = [];
+
+  // 모든 태스크 가져옴
+  const tasks = await Task.findAll({
+    where: {
+      project_no: req.params.project_no,
+    },
+  });
+
+  for(let i=0; i<tasks.length; i++) {
+    // rowList 생성
+    let rowList = [];
+    // id, title, submitFile, start_date, end_date, null, 100, null
+    
+    rowList.push(String(tasks[i].id));
+    rowList.push(tasks[i].title);
+    rowList.push(tasks[i].submit_file);
+    rowList.push(new Date(tasks[i].start_date));
+    rowList.push(new Date(tasks[i].end_date));
+    rowList.push(null);
+    if(tasks[i].current_state == 'uncheck') rowList.push(0);
+    else if(tasks[i].current_state == 'progress') rowList.push(25); 
+    else if(tasks[i].current_state == 'verify') rowList.push(90);
+    else if(tasks[i].current_state == 'end') rowList.push(100);
+    rowList.push(null);
+
+    // resultList에 rowList 추가
+    resultList.push(rowList);
+  }
+
+  return res.send(resultList);
+}));
 
 // 업무 진척도 조회 페이지
 router.get('/checkTask/:project_no', catchErrors(async (req, res) => {
@@ -347,44 +398,6 @@ router.get('/addTask/all/:project_no', catchErrors(async (req, res) => {
   // 최종 리스트 전달
   res.send(empList);
 }));
-
-// 간트차트 태스크 데이터 가져오는 요청 처리
-router.get('/getTasks/:project_no', catchErrors(async (req, res) => {
-  let resultList = [];
-
-  // 모든 태스크 가져옴
-  const tasks = await Task.findAll({
-    where: {
-      project_no: req.params.project_no,
-    },
-  });
-
-  for(let i=0; i<tasks.length; i++) {
-    // rowList 생성
-    let rowList = [];
-    // id, title, submitFile, start_date, end_date, null, 100, null
-    
-    rowList.push(tasks[i].id);
-    rowList.push(tasks[i].title);
-    rowList.push(tasks[i].submit_file);
-    rowList.push(tasks[i].start_date);
-    rowList.push(tasks[i].end_date);
-    rowList.push(null);
-    if(tasks[i].current_state == 'uncheck') rowList.push(0);
-    else if(tasks[i].current_state == 'progress') rowList.push(25); 
-    else if(tasks[i].current_state == 'verify') rowList.push(90);
-    else if(tasks[i].current_state == 'end') rowList.push(100);
-    rowList.push(null);
-
-    // resultList에 rowList 추가
-    resultList.push(rowList);
-  }
-
-  return res.send(resultList);
-}));
-
-
-
 
 // 
 router.post('/finish', catchErrors(async (req, res) => {
