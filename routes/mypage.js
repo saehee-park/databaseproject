@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const catchErrors = require("../lib/async-error");
 
 const { Skill, EmpSkill, Employee } = require("../models");
 
@@ -42,8 +43,31 @@ router.get("/", async (req, res) => {
 });
 
 /*개인정보 수정*/
-router.get("/myprofileEdit", function (req, res, next) {
-    res.render("mypage/myProfileEdit", { title: "Express" });
-});
+router.get("/edit", catchErrors(async (req, res, next) => {
+    const employee = await Employee.findeOne({ where: { emp_no: req.session.user.emp_no } });
+    res.render("mypage/myProfileEdit", {employee: employee});
+}));
+
+router.post(`/edit/:emp_no`, catchErrors(async (req, res, next) => {
+    const employee = await Employee.findeOne({ where: { emp_no: req.params.emp_no } });
+    employee.name = req.body.name;
+    employee.education = req.body.education;
+
+    const emp_skills = await EmpSkill.findAll({
+        where: {emp_no : req.params.emp_no}
+    });
+
+    for(let emp_skill of emp_skills){
+        await emp_skill.destroy();
+    }
+
+    for(let skill of req.body.skills) {
+        await EmpSkill.create({
+            emp_no: user.emp_no,
+            skill_no: skill
+        });
+    }
+    res.render('/');
+}));
 
 module.exports = router;

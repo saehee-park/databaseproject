@@ -2,7 +2,7 @@ extends ../layout
 
 //- 마이 페이지
 block content
-    form(action='/', method="POST")
+    form(action=`/mypage/edit/${employee.emp_no}`, method="POST")
         div(name="myprofileedit")
         section.fdb-block.fp-active(data-block-type="contents" data-id="1" draggable="true")
             .container.tableStyle
@@ -12,11 +12,11 @@ block content
                 .mypageView
                     .row
                         .col
-                            h1 user name
+                            h1 마이페이지 수정
                     .row
                         .col
-                            h3 직원명
-                                input.mypageInput(type="text", name="name" )
+                            h3 이름
+                                input.mypageInput(type="text", name="name", value=`${}` )
                     .row
                         .col
                             h3 아이디

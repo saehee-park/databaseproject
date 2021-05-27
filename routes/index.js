@@ -155,9 +155,8 @@ router.post("/signup", catchErrors(async (req, res, next) => {
         ID: req.body.id,
         PWD: password,
         dept_no: req.body.department,
-        authorization_no: null,
-        education: req.body.education,
-        work_experience: null
+        authorization_no: 0,
+        education: req.body.education
     });
 
     for(let skill of req.body.skills) {
