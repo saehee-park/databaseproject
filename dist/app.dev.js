@@ -34,7 +34,11 @@ var peerEvaluationRouter = require('./routes/peer_evaluation');
 
 var managementRouter = require('./routes/management');
 
-var taskRouter = require('./routes/task'); // Use express
+var taskRouter = require('./routes/task');
+
+var mypageRouter = require('./routes/mypage');
+
+var evalRouter = require('./routes/eval'); // Use express
 
 
 var app = express(); // view engine setup
@@ -48,35 +52,16 @@ sequelize.sync({
 })["catch"](function (err) {
   console.error(err);
 }); // database connection
-
-function connectionTesting() {
-  return regeneratorRuntime.async(function connectionTesting$(_context) {
-    while (1) {
-      switch (_context.prev = _context.next) {
-        case 0:
-          _context.prev = 0;
-          _context.next = 3;
-          return regeneratorRuntime.awrap(sequelize.authenticate());
-
-        case 3:
-          console.log('Connection has been established successfully.');
-          _context.next = 9;
-          break;
-
-        case 6:
-          _context.prev = 6;
-          _context.t0 = _context["catch"](0);
-          console.error('Unable to connect to the database:', _context.t0);
-
-        case 9:
-        case "end":
-          return _context.stop();
-      }
-    }
-  }, null, null, [[0, 6]]);
-}
-
-connectionTesting(); // Use Middleware
+// async function connectionTesting() {
+//   try {
+//     await sequelize.authenticate();
+//     console.log('Connection has been established successfully.');
+//   } catch (error) {
+//     console.error('Unable to connect to the database:', error);
+//   }
+// }
+// connectionTesting();
+// Use Middleware
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -112,7 +97,9 @@ app.use('/peer_evaluation', peerEvaluationRouter);
 app.use('/pm_evaluation', pmEvaluationRouter);
 app.use('/evaluation', evaluationRouter);
 app.use('/management', managementRouter);
-app.use('/task', taskRouter); // catch 404 and forward to error handler
+app.use('/task', taskRouter);
+app.use('/mypage', mypageRouter);
+app.use('/eval', evalRouter); // catch 404 and forward to error handler
 
 app.use(function (req, res, next) {
   next(createError(404));

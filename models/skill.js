@@ -26,6 +26,6 @@ module.exports = class Skill extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Skill.belongsToMany(db.Employee, { through: 'EmpSkill', foreignKey: 'skill_no' });
+        db.Skill.belongsToMany(db.Employee, { through: 'EmpSkill', as: 'skill_emp', foreignKey: 'skill_no' });
     }
 };

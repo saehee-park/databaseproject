@@ -10,7 +10,6 @@ var flash = require('connect-flash');
 //Import Model
 const { sequelize } = require('./models');
 
-
 // Import Router
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -22,8 +21,7 @@ var managementRouter = require('./routes/management');
 var taskRouter = require('./routes/task');
 var mypageRouter = require('./routes/mypage');
 var evalRouter = require('./routes/eval');
-
-
+var employeeRouter = require('./routes/employee');
 
 // Use express
 var app = express();
@@ -76,7 +74,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 // Connection Router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -88,7 +85,7 @@ app.use('/management', managementRouter);
 app.use('/task', taskRouter);
 app.use('/mypage', mypageRouter);
 app.use('/eval', evalRouter);
-
+app.use('/employee', employeeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

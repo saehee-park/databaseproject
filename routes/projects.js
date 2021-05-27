@@ -10,25 +10,24 @@ const catchErrors = require('../lib/async-error');
 const { rawAttributes } = require('../models/customer');
 var router = express.Router();
 
-router.get('/', catchErrors(async (req, res, next) => {
-  let projects = [];
-  const participations = await Participation.findAll({
-    where: {
-      emp_no: req.session.user.emp_no,
-    }
+router.get('/list', catchErrors(async (req, res, next) => {
+  const projects = await Project.findAll({
+    include: [
+      {
+        model: Employee,
+        as: 'project_emp'
+      },
+      {
+        model: Customer
+      }
+    ]
   });
-  for(let i=0; i<participations.length; i++) {
-    const project = await Project.findOne({
-      where: {project_no: participations[i].project_no}
-    });
-    projects.push(project);
-  }
-  res.render('project/list', { projects });
+  res.render('project/details', { project: project });
 }));
 
-router.get('/index', function (req, res, next) {
-  res.render('project/index', { title: "Express" });
-});
+router.get('/index', catchErrors(async (req, res, next) => {
+  res.render('project/index');
+}));
 
 router.get('/:project_no', catchErrors(async (req, res, next) => {
   const project = await Project.findOne({
@@ -43,8 +42,10 @@ router.get('/:project_no', catchErrors(async (req, res, next) => {
       }
     ]
   });
+  console.log(project);
   res.render('project/details', { project: project });
 }));
+
 
 // 업무 진척도 조회 페이지
 router.get('/checkTask/:project_no', catchErrors(async (req, res) => {
