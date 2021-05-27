@@ -33,6 +33,10 @@ router.get('/evaluate', async(req, res) => {
     res.render('management/registerEvaluation');
 });
 
+router.get('/index', async(req, res) => {
+    res.render('evaluation/index');
+});
+
 router.get('/project_list', catchErrors(async (req, res) => {
     // 빈 리스트
     var project_list = [];
