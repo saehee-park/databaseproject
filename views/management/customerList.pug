@@ -8,5 +8,7 @@ block content
         .card
           .card-body
             h3.card-title.mb-3.d-flex.justify-content-center= customer.customer_name
+            h3.card-title.mb-3.d-flex.justify-content-center= customer.e_mail
             .d-grid.gap-2.mt-2
-              a.btn.btn-outline-warning(href='#') 거래처 수정하기
+              a.btn.btn-outline-warning(href=`/management/customer/edit/${customer.customer_id}`) 거래처 수정하기
+              a.btn.btn-outline-danger(href=`/management/customer/delete/${customer.customer_id}`) 거래처 삭제하기
