@@ -1,0 +1,40 @@
+extends ../layout 
+//-고객평가서 항목 수정//
+block content 
+    .container
+      .table-responsive
+        .table-wrapper
+          .table-title
+            .row
+              .col-sm-8
+                h2  고객평가서 항목 수정
+              .col-sm-4
+                button-group 
+                  button.addButton(type='button' value='add' title='add') 항목추가
+                  button.finishButton(type='button' value='completion' title='completion') 수정완료
+          br
+          table.table.table-bordered
+            thead
+              tr
+                th 항목번호
+                th 항목내용
+                th Actions
+            tbody
+              tr
+                td.categoryNum 01
+                td.categoryContent 업무수행 평가
+                td
+                  button.modifyButton(type='button' value='Edit' title='Edit') 수정
+                  button.deleteButton(type='button' value='Delete' title='Delete') 삭제   
+              tr
+                td.categoryNum 02
+                td.categoryContent 커뮤니케이션 평가
+                td
+                  button.modifyButton(type='button' value='Edit' title='Edit') 수정
+                  button.deleteButton(type='button' value='Delete' title='Delete') 삭제
+              tr
+                td.categoryNum 03
+                td.categoryContent 기타 업무 평가
+                td
+                  button.modifyButton(type='button' value='Edit' title='Edit') 수정
+                  button.deleteButton(type='button' value='Delete' title='Delete') 삭제

@@ -34,6 +34,7 @@ CREATE TABLE `skills` (
 --
 
 LOCK TABLES `skills` WRITE;
+INSERT INTO skills (skill_name) VALUES ('Java'), ('C/C++'), ('HTML'), ('Python'), ('C#'), ('Javascript'), ('Dart/Flutter');
 /*!40000 ALTER TABLE `skills` DISABLE KEYS */;
 /*!40000 ALTER TABLE `skills` ENABLE KEYS */;
 UNLOCK TABLES;

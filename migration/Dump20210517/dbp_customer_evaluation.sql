@@ -23,18 +23,19 @@ DROP TABLE IF EXISTS `customer_evaluation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customer_evaluation` (
-  `project_no` int NOT NULL,
-  `evaluator_id` int NOT NULL,
-  `non_evaluator_no` int NOT NULL,
-  `evaluation_score1` int NOT NULL,
   `evaluation_content1` varchar(255) NOT NULL,
-  `evaluation_score2` int NOT NULL,
+  `evaluation_score1` int NOT NULL,
   `evaluation_content2` varchar(255) NOT NULL,
-  PRIMARY KEY (`project_no`,`non_evaluator_no`,`evaluator_id`),
+  `evaluation_score2` int NOT NULL,
+  `project_no` int NOT NULL,
+  `customer_id` int NOT NULL,
+  `non_evaluator_no` int NOT NULL,
+  
+  PRIMARY KEY (`project_no`,`non_evaluator_no`,`customer_id`),
   KEY `non_evaluator_no` (`non_evaluator_no`),
-  KEY `evaluator_id` (`evaluator_id`),
+  KEY `customer_id` (`customer_id`),
   CONSTRAINT `customer_evaluation_ibfk_1` FOREIGN KEY (`non_evaluator_no`) REFERENCES `employee` (`emp_no`),
-  CONSTRAINT `customer_evaluation_ibfk_2` FOREIGN KEY (`evaluator_id`) REFERENCES `customer` (`customer_id`),
+  CONSTRAINT `customer_evaluation_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`),
   CONSTRAINT `customer_evaluation_ibfk_3` FOREIGN KEY (`project_no`) REFERENCES `project` (`project_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -46,6 +47,9 @@ CREATE TABLE `customer_evaluation` (
 LOCK TABLES `customer_evaluation` WRITE;
 /*!40000 ALTER TABLE `customer_evaluation` DISABLE KEYS */;
 /*!40000 ALTER TABLE `customer_evaluation` ENABLE KEYS */;
+INSERT INTO customer_evaluation (evaluation_content1, evaluation_score1, evaluation_content2, evaluation_score2, customer_id, non_evaluator_no, project_no) VALUES ("많이 좋음", 90, "보통임", 70, 1, 1, 1);
+INSERT INTO customer_evaluation (evaluation_content1, evaluation_score1, evaluation_content2, evaluation_score2, customer_id, non_evaluator_no, project_no) VALUES ("좋음", 70, "그럭저럭", 50, 1, 2, 1);
+INSERT INTO customer_evaluation (evaluation_content1, evaluation_score1, evaluation_content2, evaluation_score2, customer_id, non_evaluator_no, project_no) VALUES ("아주 좋음", 100, "별로", 30, 1, 3, 1);
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

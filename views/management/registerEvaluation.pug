@@ -1,0 +1,35 @@
+extends ../layout 
+
+//- 거래처 추가 페이지
+block content
+  .container
+    h1.text-center.mt-5 평가 선택
+    form(action="/evaluation/inputPeer_evaluation", method="get")
+      .form-group
+        .row.align-items-center
+            .col.mt-4
+            h3 동료 평가
+        .row.justify-content-start.mt-4
+            .col(style="margin-bottom: 1em")
+            button.btn.btn-outline-dark(type="submit", style="float: right") 동료 평가 등록하기
+
+    form(action="/evaluation/inputPm_evaluation", method="get")
+      .form-group
+        .row.align-items-center
+            .col.mt-4
+            h3 PM 평가
+        .row.justify-content-start.mt-4
+            .col(style="margin-bottom: 1em")
+            button.btn.btn-outline-dark(type="submit", style="float: right") PM 평가 등록하기
+
+    form(action="/evaluation/customer", method="get")
+      .form-group
+        .row.align-items-center
+            .col.mt-4
+            h3 고객 평가
+        .row.justify-content-start.mt-4
+            .col(style="margin-bottom: 1em")
+            button.btn.btn-outline-dark(type="submit", style="float: right") 고객 평가 리스트 이동
+
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(src="/registerEvaluation.js")

@@ -65,3 +65,4 @@ config/
 
 package-lock.json
 
+.vscode/

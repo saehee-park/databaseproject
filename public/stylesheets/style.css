@@ -1,11 +1,23 @@
-#container {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
 a {
   color: #00B7FF;
 }
+img.card-img{
+  margin: auto;
+  width: 80%;
+  height: 100%;
+}
+.carousel-caption {
+  height : 370px;
+  font-size : 70px;
+}
+.card-group {
+  padding-top: 20px;
+}
 
-
-
+.end {
+  background-color: #3a3a3a;
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}

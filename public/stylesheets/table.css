@@ -1,0 +1,187 @@
+/*
+평가 table css
+*/
+
+.container.result.h2{
+    color: #ffffff;
+}
+.container.tableStyle{
+    background-color: #3a3a3a;
+    height: 100vh;
+}
+
+.container.tableStyle h3 {
+    color: #000000;
+}
+table.custom_list.table-hover{
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fafdfe;
+    align-items: center;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.table-wrapper{
+    background: #ffffff;
+    padding: 20px;	
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+table.table.table-bordered{
+    width: 100%;
+    border-radius: 5px;
+    background-color: #ffffff;
+    align-items: center;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+}
+table thead tr{
+    background-color: #fafdfe;
+    font-size: large;
+}
+table tbody tr{
+    background-color: #ffffff;
+    border-radius: 25px;
+    width: 80%;
+}
+.mypageView{
+    border-radius: 10px;
+    background: #ffffff;
+    align-items: center;
+    text-align: center;
+    width: 60%;
+    padding: 3% 0 0;
+    margin: auto;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.mypageView.row{
+    margin: auto;
+}
+.evaluationView{
+    border-radius: 10px;
+    background: #ffffff;
+    align-items: center;
+    width: 80%;
+    padding: 8% 0 0;
+    margin: auto;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.evaluationView h3 {
+    text-align: center;
+}
+.evaluationView form{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+button.modifyButton{
+    border-radius: 20px;
+	border: 1px solid #000000;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: normal;
+	padding: 5px 15px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+    width: 25%;
+}
+button.deleteButton{
+    border-radius: 20px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color:#000000;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    width: 25%;
+}
+button.addButton{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color:#000000;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    width: 50%;
+}
+button.finishButton{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid #000000;
+	background-color: #3a3a3a;
+	color: #FFFFFF;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    width: 50%;
+}
+button.selectButton{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    color:#000000;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    width: 50%;
+}
+button.cancellButton{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid #000000;
+	background-color: #3a3a3a;
+	color: #FFFFFF;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    width: 50%;
+}
+
+input.searchInput {
+    border: none;
+    width: 100%;
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid #575757;
+    
+    
+    /* text-align: center; */
+}
+button.searchNav {
+    border-radius: 5px;
+	border: 1px solid #000000;
+	background-color: #000000;
+	color: #FFFFFF;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 6px 8px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+    width: 80%;
+  
+}

@@ -1,0 +1,31 @@
+extends ../layout 
+
+//- 프로젝트 list 확인
+block content
+  .container
+    h1.text-center-mt-5 프로젝트 목록
+
+    if(projects)
+      each project in projects
+        if(project)
+          .card-group
+            .card            
+              h5.project_name= project.project_name
+              p.start_date= project.start_date
+              p.end_date= project.end_date
+              p.duty= project.duty
+              p.state= project.state
+              .d-grid.gap-2.mt-2
+                a.btn.btn-outline-warning(href=`/projects/${project.project_no}`) 자세히
+                a.btn.btn-outline-warning(href=`/projects/checkTask/${project.project_no}`) 진행 사항
+                if(authorization == 1)
+                  a.btn.btn-outline-warning(href=`/projects/addTask`) 직원별 업무 부여하기
+        else 
+          .card-group
+            .card 
+              h5 존재하는 프로젝트가 없습니다.
+    else 
+      .card-group
+        .card 
+          h5 존재하는 프로젝트가 없습니다.
+

@@ -1,0 +1,29 @@
+extends ../layout 
+//-업무능력 평가서 항목 수정//
+block content 
+    .container
+      .table-responsive
+        .table-wrapper
+          .table-title
+            .row
+              .col-sm-10
+                h2= `${type} 평가 항목 관리` 
+              .col-sm-1
+                a.btn.btn-outline-primary(href='/management/evaluation/register') 항목추가
+          br
+          table.table.table-bordered
+            thead
+              tr
+                th 항목내용
+                th 항목예시
+                th Actions
+            tbody
+              if(items)
+                each item in items
+                  tr 
+                    td.itemContent= item.item_title
+                    td.itemExample= item.item_example
+                    td
+                      a.btn.btn-outline-warning(href=`/management/evaluation/${item.evaluation_item_no}/edit`) 수정
+                      a.btn.btn-outline-danger(href=`/management/evaluation/${item.evaluation_item_no}/delete`) 항목삭제
+              else 

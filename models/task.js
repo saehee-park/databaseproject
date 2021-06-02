@@ -11,18 +11,21 @@ module.exports = class Task extends Sequelize.Model {
                 type: Sequelize.TEXT,
                 allowNull: false,
             },
-            deadline: {
+            start_date: {
                 type: Sequelize.DATE,
                 allowNull: false,
-                defaultValue: Sequelize.NOW,
+                defaultValue: Sequelize.NOW
             },
-            submit_status: {
-                type: Sequelize.BOOLEAN,
-                defaultValue: false,
+            end_date: {
+                type: Sequelize.DATE,
+                allowNull: false,
             },
-            current_status: {
+            current_state: {
                 type: Sequelize.ENUM(['uncheck', 'progress', 'verify', 'end']),
                 defaultValue: 'uncheck',
+            },
+            submit_file: {
+                type: Sequelize.ENUM(['문서', '엑셀', 'Html/Javascript', 'C#/C/C++', 'Dart/Flutter/Java', 'Python']),
             },
 
         }, {
@@ -30,7 +33,7 @@ module.exports = class Task extends Sequelize.Model {
             timestamps: false,
             underscored: false,
             modelName: 'Task',
-            tableName: 'tasks',
+            tableName: 'task',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
@@ -38,22 +41,10 @@ module.exports = class Task extends Sequelize.Model {
     }
 
     static associate(db) {
-        db.Task.belongsTo(db.Project, { foreinKey: 'projectID',targetKey: 'id'});
-        db.Task.belongsTo(db.Employee, { foreinKey: 'employeeID', 'targetKey': 'id'});
+        // Employee Model과 연결
+        db.Task.belongsTo(db.Employee, { foreignKey: 'emp_no', targetKey: 'emp_no'});
+
+        // Project Model과 연결
+        db.Task.belongsTo(db.Project, { foreignKey: 'project_no', targetKey: 'project_no'});
     }
 };
-
-/*
-TABLE[Task]
-
-업무 번호 AUTO_INCREMENT
-프로젝트 번호 FK
-사원 번호 FK
-
-업무 제목 = Varchar(50)
-업무 내용 = Text
-마감일 = DATETIME
-제출 파일 = {}
-현재 상태 = {시작 전, 진행 중, 검증 중, 완료}
-제출 여부 = { True, False } => 제출 파일이 NULL이면 False
-*/
